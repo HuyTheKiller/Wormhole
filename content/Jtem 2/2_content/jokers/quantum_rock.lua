@@ -308,14 +308,6 @@ function Card:update(...)
 	end
 end
 
-local old_save = Card.save
-function Card:save(...)
-	if is_rock(self) then
-		return nil
-	end
-	return old_save(self, ...)
-end
-
 local old_load = Card.load
 function Card:load(...)
 	old_load(self, ...)
