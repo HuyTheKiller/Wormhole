@@ -987,7 +987,7 @@ SMODS.DrawStep({
 	key = "nyan_cat_trail",
 	order = -15,
 	func = function(card)
-		if card.tarts and card.config.center.discovered then
+		if card.tarts and (card.config.center.discovered or card.bypass_discovery_center) then
 			Wormhole.TEAM_MEOW.rainbow_trail_sprite = Wormhole.TEAM_MEOW.rainbow_trail_sprite
 				or SMODS.create_sprite(0, 0, G.CARD_W, 2 * G.CARD_H, "worm_meow_nyan_cat_trail", { x = 0, y = 0 })
 			if #card.tarts > 0 or card.config.center.key == 'j_worm_meow_nyan_cat' then

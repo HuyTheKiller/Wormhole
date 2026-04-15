@@ -112,7 +112,7 @@ SMODS.DrawStep{
     key = 'tbp_spaceship',
     order = 30,
     func = function(card, layer)
-        if card and card.config.center.atlas == 'worm_tbp_ship' and card.config.center.discovered then
+        if card and card.config.center.atlas == 'worm_tbp_ship' and (card.config.center.discovered or card.bypass_discovery_center) then
             if G.tbp and G.tbp.spaceship then
                 G.tbp.spaceship.role.draw_major = card 
                 G.tbp.spaceship:draw_shader('dissolve',0, nil, nil, card.children.center, nil, nil, nil, nil, nil, 0.6)

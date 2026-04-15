@@ -98,7 +98,7 @@ SMODS.DrawStep {
     key = "lfc_magical_girl",
     order = 30,
     func = function(self, layer)
-        if self.config.center_key == "j_worm_lfc_magical_girl" and self.config.center.discovered then
+        if self.config.center_key == "j_worm_lfc_magical_girl" and (self.config.center.discovered or self.bypass_discovery_center) then
             --self.children.center:draw_shader('worm_lfc_magical_girl', nil, self.ARGS.send_to_shader)
             --print(self.config.center)
             self.config.lfc_decoration = self.config.lfc_decoration or

@@ -26,7 +26,7 @@ SMODS.Joker {
     end,
 
     draw = function(self, card, layer)
-        if (layer == 'card' or layer == 'both') and card.config.center.discovered then
+        if (layer == 'card' or layer == 'both') and (card.config.center.discovered or card.bypass_discovery_center) then
             if card.ability.extra.chicken then
                 card.children.center:set_sprite_pos({ x=1, y=2 })
             else
