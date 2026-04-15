@@ -689,10 +689,11 @@ SMODS.Consumable { -- Cosmospolitan
         else
             key = self.key
         end
-        local team_name = PotatoPatchUtils.Teams[card.ability.extra.current_team].loc and
-            localize { type = 'name', set = 'PotatoPatch', key = PotatoPatchUtils.Teams[card.ability.extra.current_team].loc } or
-            PotatoPatchUtils.Teams[card.ability.extra.current_team].name
-        return { key = key, vars = { team_name, card.ability.extra.planets_used, card.ability.extra.goal, colours = { PotatoPatchUtils.Teams[card.ability.extra.current_team].colour } } }
+        local team_index = PotatoPatchUtils.Teams[card.ability.extra.current_team]
+        local team_name = team_index.loc and (type(team_index.loc) == 'string' and localize { type = 'name_text', set = 'PotatoPatch', key = team_index.loc }
+            or type(team_index.loc) == 'boolean' and localize { type = 'name_text', set = 'PotatoPatch', key = 'PotatoPatchTeam_' .. team_index.name } )
+            or team_index.name
+        return { key = key, vars = { team_name, card.ability.extra.planets_used, card.ability.extra.goal, colours = { team_index.colour } } }
     end,
     calculate = function(self, card, context)
         if context.setting_blind and card.ability.drink_values.primed and card.ability.drink_values.filled then
