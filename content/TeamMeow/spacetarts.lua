@@ -55,6 +55,8 @@ end
 local card_save = Card.save
 function Card:save(...)
 	local st = card_save(self, ...)
+	if not st then return end
+	
 	st.tarts = self.tarts
 	return st
 end
