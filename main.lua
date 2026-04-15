@@ -27,9 +27,6 @@ SMODS.Atlas {
     py = 34
 }
 
--- Reset Game Globals func to hook
-function Wormhole.reset_game_globals(run_start) end
-
 --#region Custom Menu
 SMODS.Atlas {
     key = 'logo',
