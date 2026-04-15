@@ -12,7 +12,7 @@ SMODS.Back({
 	ppu_artist = { "aikoyori" },
 	ppu_coder = { "aikoyori" },
 	config = { tarot_rate = 0, spectral_rate = 4, consumables = { "c_worm_jtem2_kilonovae", "c_worm_jtem2_kilonovae" } },
-	unlocked = false,
+	unlocked = true,
 	apply = function(self, back)
 		G.GAME.tarot_rate = self.config.tarot_rate
 	end,
