@@ -587,12 +587,9 @@ SpaceTart({
 	},
 })
 
-SMODS.current_mod.optional_features = function()
-	return {
-		post_trigger = true,
-		retrigger_joker = true,
-	} -- oh NO
-end
+Wormhole.optional_features = (Wormhole.optional_features or {})
+Wormhole.optional_features.retrigger_joker = true
+Wormhole.optional_features.post_trigger = true
 
 SpaceTart({
 	key = "celestial_cinnamon",
