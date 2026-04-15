@@ -27,7 +27,8 @@ SMODS.Atlas({
 
 local rock = SMODS.Joker({
 	key = "jtem2_quantum_rock",
-
+	discovered = true,
+	unlocked = true,
 	ppu_team = { "jtem2" },
 	ppu_coder = { "sleepyg11" },
 	ppu_artist = { "aikoyori" },
