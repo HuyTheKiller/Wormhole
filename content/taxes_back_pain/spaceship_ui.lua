@@ -78,6 +78,10 @@ G.FUNCS.module_replace_yes = function(e)
     local current_module = spaceship.ability.extra.modules[slot]
     if current_module.key == module_def.key then
         current_module.durability = math.min(current_module.durability + module_def.durability, current_module.total_durability)
+        if G.GAME.module_replace_blocker then
+            G.GAME.module_replace_blocker:remove()
+            G.GAME.module_replace_blocker = nil
+        end
         if G.GAME.module_replace_overlay then
             G.GAME.module_replace_overlay:remove()
             G.GAME.module_replace_overlay = nil
@@ -98,6 +102,10 @@ G.FUNCS.module_replace_yes = function(e)
         spaceship.ability.extra.modules[slot][k] = v
     end
     SMODS.calculate_context({wormhole_tbp_module_install = true, card = spaceship, module = slot, type = 'Default'})
+    if G.GAME.module_replace_blocker then
+        G.GAME.module_replace_blocker:remove()
+        G.GAME.module_replace_blocker = nil
+    end
     if G.GAME.module_replace_overlay then
         G.GAME.module_replace_overlay:remove()
         G.GAME.module_replace_overlay = nil
@@ -126,6 +134,10 @@ G.FUNCS.module_replace_no = function(e)
             return true
         end
     }))
+    if G.GAME.module_replace_blocker then
+        G.GAME.module_replace_blocker:remove()
+        G.GAME.module_replace_blocker = nil
+    end
     if G.GAME.module_replace_overlay then
         G.GAME.module_replace_overlay:remove()
         G.GAME.module_replace_overlay = nil
@@ -214,6 +226,14 @@ G.FUNCS.show_module_replace_confirm = function(card, spaceship)
     G.E_MANAGER:add_event(Event({
         trigger = 'after', delay = 1.5,
         func = function()
+            G.GAME.module_replace_blocker = UIBox{
+                definition = {
+                    n = G.UIT.ROOT,
+                    config = {align = "cm", colour = G.C.CLEAR, minw = G.ROOM.T.w, minh = G.ROOM.T.h},
+                    nodes = {}
+                },
+                config = {align="cm", offset = {x=0,y=0}, major = G.ROOM_ATTACH, bond = 'Weak'}
+            }
             G.GAME.module_replace_overlay = UIBox{
                 definition = t,
                 config = {align="cm", offset = {x=0,y=0}, instance_type = 'CARD', major = G.ROOM_ATTACH, bond = 'Weak', draggable = true, collideable = true, can_collide = true}
@@ -222,6 +242,17 @@ G.FUNCS.show_module_replace_confirm = function(card, spaceship)
             G.GAME.module_replace_overlay.config.major = nil
             G.GAME.module_replace_overlay:set_role{role_type = 'Major'}
             G.GAME.module_replace_overlay.states.drag.can = true
+            local original_update = G.GAME.module_replace_overlay.update or function() end
+            G.GAME.module_replace_overlay.update = function(self, dt)
+                original_update(self, dt)
+                local padding = 0.1
+                local min_x = padding - self.T.w/2
+                local max_x = G.ROOM.T.w - padding - self.T.w/2
+                local min_y = padding - self.T.h/2
+                local max_y = G.ROOM.T.h - padding - self.T.h/2
+                self.T.x = math.max(min_x, math.min(max_x, self.T.x))
+                self.T.y = math.max(min_y, math.min(max_y, self.T.y))
+            end
             return true
         end
     }), "module_replace_dialog")
