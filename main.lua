@@ -5,6 +5,7 @@ function Wormhole.reset_game_globals(run_start) end
 
 if PotatoPatchUtils then
     local file_blacklist = {
+        ['tlr_gorilla.dll'] = true
         -- Format entries as `['filename.txt'] = true`
     }
 
