@@ -15,6 +15,7 @@ SMODS.Joker{
 			gadget = 'c_worm_acme_ball'
 		},
 	},
+	attributes = {"generation", "space"},
 	loc_vars = function(self,info_queue,center)
 		return{vars = {localize{type = 'name_text',set = 'ACME_Gadgets',
 		key = center.ability.extra.gadget}}}

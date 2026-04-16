@@ -10,6 +10,7 @@ SMODS.Joker{
     ppu_coder = {'Opal'},
     ppu_artist = {'FlameThrowerFIM'},
     ppu_team = { 'ACME' },
+    attributes = {"editions", "space"},
     calculate = function(self, card, context)
         if (context.card_added or context.modify_shop_card) and (context.card and context.card.ability and context.card.ability.set and context.card.ability.set == 'ACME_Gadget' and not (context.card.edition and context.card.edition.negative)) then
             context.card:set_edition('e_negative')

@@ -16,6 +16,7 @@ SMODS.Joker {
 		},
 		lastUsedConsumables = {},
 	},
+	attributes = {"chips", "scaling", "planet", "space"},
 	loc_vars = function(self, info_queue, center)
 		local planets_used = 0
 		for k, v in pairs(G.GAME.consumeable_usage) do

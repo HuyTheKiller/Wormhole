@@ -1,12 +1,12 @@
 Wormhole.JR_UTILS.create_UIBox_current_hand_row = function(handname, simple)
   local key = 'sat_worm_' .. Wormhole.JR_UTILS.get_satellite(handname)
-
+  local _level = Wormhole.JR_UTILS.get_level(handname, true)
   return (not in_collection or SMODS.is_poker_hand_visible(handname)) and
       (not simple and
         { n = G.UIT.R, config = { align = "cm", padding = 0.05, r = 0.1, colour = darken(G.C.JOKER_GREY, 0.1), emboss = 0.05, hover = true, force_focus = true, detailed_tooltip = G.P_CENTERS[key] }, nodes = {
           { n = G.UIT.C, config = { align = "cl", padding = 0, minw = 5 }, nodes = {
-            { n = G.UIT.C, config = { align = "cm", padding = 0.01, r = 0.1, colour = G.C.HAND_LEVELS[math.min(7, Wormhole.JR_UTILS.get_level(handname))], minw = 1.5, outline = 0.8, outline_colour = G.C.WHITE }, nodes = {
-              { n = G.UIT.T, config = { text = localize('k_level_prefix') .. Wormhole.JR_UTILS.get_level(handname), scale = 0.5, colour = G.C.UI.TEXT_DARK } }
+            { n = G.UIT.C, config = { align = "cm", padding = 0.01, r = 0.1, colour = G.C.HAND_LEVELS[math.min(7, _level)], minw = 1.5, outline = 0.8, outline_colour = G.C.WHITE }, nodes = {
+              { n = G.UIT.T, config = { text = localize('k_level_prefix') .. _level, scale = 0.5, colour = G.C.UI.TEXT_DARK } }
             } },
             { n = G.UIT.C, config = { align = "cm", minw = 4.5, maxw = 4.5 }, nodes = {
               { n = G.UIT.T, config = { text = ' ' .. localize(handname, 'poker_hands'), scale = 0.45, colour = G.C.UI.TEXT_LIGHT, shadow = true } }

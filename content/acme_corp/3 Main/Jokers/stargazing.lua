@@ -17,6 +17,7 @@ SMODS.Joker {
 			odds = 2
 		},
 	},
+	attributes = {"hand_type", "chance", "space"},
 	loc_vars = function(self, info_queue, center)
 		return { vars = { center.ability.extra.played_hand, center.ability.extra.odds } }
 	end,

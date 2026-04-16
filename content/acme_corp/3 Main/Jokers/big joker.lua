@@ -18,7 +18,8 @@ SMODS.Joker{
 		},
 		handbuf = 0,
 		activated = false
-		},
+	},
+	attibutes = {"hand_size", "space"},
 	loc_vars = function(self,info_queue,center)
 		return{vars = {center.ability.extra.cards,center.ability.extra.remainder}}
 	end,

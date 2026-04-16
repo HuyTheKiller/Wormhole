@@ -57,7 +57,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -105,7 +105,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.den, "worm_jr_messenger")
     return {
       vars = {
@@ -162,7 +162,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -228,7 +228,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.den, "venera_9")
     return {
       vars = {
@@ -285,7 +285,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -346,7 +346,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -392,7 +392,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -449,7 +449,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -478,7 +478,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -507,7 +507,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -539,7 +539,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,
@@ -588,7 +588,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
     return {
       vars = {
         _level,

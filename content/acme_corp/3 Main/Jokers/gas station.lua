@@ -17,6 +17,7 @@ SMODS.Joker{
 			xmult = 1
 		},
 	},
+	attributes = {"xmult", "scaling", "hand_type", "space"},
 	loc_vars = function(self,info_queue,center)
 		return{vars = {center.ability.extra.xmult_scale,
 		center.ability.extra.xmult}}
