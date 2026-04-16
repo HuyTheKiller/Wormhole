@@ -53,11 +53,12 @@ Wormhole.JR_UTILS.localize_satellite = function(hand)
   return localize('worm_jr_satellites_' .. Wormhole.JR_UTILS.get_satellite(hand))
 end
 
-Wormhole.JR_UTILS.get_level = function(hand)
+Wormhole.JR_UTILS.get_level = function(hand, fake_card)
+  fake_card = fake_card and 0 or 1
   if G.GAME.jr and G.GAME.jr.satellite_hands[hand].level then
-    return G.GAME.jr.satellite_hands[hand].level
+    return G.GAME.jr.satellite_hands[hand].level + fake_card
   else
-    return 0
+    return fake_card
   end
 end
 
