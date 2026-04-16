@@ -531,6 +531,56 @@ end
 
 --#region Actual stuff
 
+---@class Tetris.SpeedDefinition
+--- Defines speeds for certain things per level.
+---@field minimum_level integer Minimum level to use this speed on.
+---@field speed number The speed. Can be any unit.
+
+---@type table<integer, Tetris.SpeedDefinition>
+JtemTGM.PieceSpeedDefinitions = {
+	{ minimum_level = 0,   speed = 0.015625 },
+	{ minimum_level = 30,  speed = 0.0234375 },
+	{ minimum_level = 35,  speed = 0.03125 },
+	{ minimum_level = 40,  speed = 0.0390625 },
+	{ minimum_level = 50,  speed = 0.046875 },
+	{ minimum_level = 60,  speed = 0.0625 },
+	{ minimum_level = 80,  speed = 0.1875 / 2.0 },
+	{ minimum_level = 90,  speed = 0.25 / 2.0 },
+	{ minimum_level = 100, speed = 0.3125 / 2.0 },
+	{ minimum_level = 120, speed = 0.375 / 2.0 },
+	{ minimum_level = 140, speed = 0.4375 / 2.0 },
+	{ minimum_level = 160, speed = 0.5 / 2.0 },
+	{ minimum_level = 170, speed = 0.5625 / 2.0 },
+	{ minimum_level = 200, speed = 0.015625 },
+	{ minimum_level = 220, speed = 0.125 },
+	{ minimum_level = 230, speed = 0.25 },
+	{ minimum_level = 233, speed = 0.375 },
+	{ minimum_level = 236, speed = 0.5 },
+	{ minimum_level = 239, speed = 0.625 },
+	{ minimum_level = 243, speed = 0.75 },
+	{ minimum_level = 247, speed = 0.875 },
+	{ minimum_level = 251, speed = 1 },
+	{ minimum_level = 300, speed = 2 },
+	{ minimum_level = 330, speed = 3 },
+	{ minimum_level = 360, speed = 4 },
+	{ minimum_level = 400, speed = 5 },
+	{ minimum_level = 420, speed = 4 },
+	{ minimum_level = 450, speed = 3 },
+	{ minimum_level = 500, speed = 20 },
+}
+
+function JtemTGM.ChangeSpeeds(game)
+	local level = game.level + 1
+	for i = #JtemTGM.PieceSpeedDefinitions, 1, -1 do
+		local def = JtemTGM.PieceSpeedDefinitions[i]
+		if level >= def.minimum_level then
+			game.fall_speed = def.speed
+			-- print(game.fall_speed)
+			break
+		end
+	end
+end
+
 function JtemTGM.ResetPlayerState()
 	local board = {}
 	for y = BOARD_HCLEARANCE, BOARD_H - 1 do
@@ -664,6 +714,7 @@ function JtemTGM.ChangeState(game, newstate)
 			else
 				res = JtemTGM.StartNewPiece(game)
 			end
+			JtemTGM.ChangeSpeeds(game)
 			game.irs_held_piece = false
 			if res then newstate = STATE_GAMEOVER end
 		end
@@ -1407,6 +1458,7 @@ end
 JtemTGM.targetTPS = 1.0 / 60
 function JtemTGM.UpdateGame(game, dt)
 	if dt == 0 then return end
+	if game.dt == nil then return end
 	game.dt = game.dt + dt
 	if game.dt >= JtemTGM.targetTPS then
 		JtemTGM.HandleGame(game)
