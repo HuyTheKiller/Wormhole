@@ -157,3 +157,5 @@ Wormhole.config_tab = function()
     }
 end
 --#endregion
+
+assert(SMODS.load_file("bg.lua"))()

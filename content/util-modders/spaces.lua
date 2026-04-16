@@ -116,8 +116,7 @@ local nebulaColors = {
     G.C.SET.Default,
     G.C.ETERNAL,
 }
-local function calcCard(self, card)
-    local seed = card.ability.extra.seed
+local function calcCard(space_conf, seed)
     local opts = copy_table(options)
     local conf = {
 	seed = seed,
@@ -129,7 +128,7 @@ local function calcCard(self, card)
     local nebula = 1
     pseudoshuffle(opts, seed)
 
-    for i = 1, self.space_conf.options do
+    for i = 1, space_conf.options do
 	local opt = opts[i]
 	if opt == "shooting" then
 	    conf.shooting = true
@@ -140,10 +139,11 @@ local function calcCard(self, card)
     end
     return conf
 end
+Wormhole.util_calc_space = calcCard
 
 local function initSpace(self, card)
     card.ability.extra.seed = pseudorandom("worm_util_spaces_seed")
-    card.ability.extra.space_conf = calcCard(self, card)
+    card.ability.extra.space_conf = calcCard(self.space_conf, card.ability.extra.seed)
     if G.GAME.worm_util_spaces_force_hand then
 	card.ability.extra.poker_hand = G.GAME.worm_util_spaces_force_hand
 	G.GAME.worm_util_spaces_force_hand = nil

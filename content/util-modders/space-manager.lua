@@ -138,14 +138,20 @@ function manager:calc_bg()
     return conf
 end
 
-function manager:draw_background()
-    if not self.bg_active then return end
+function manager:draw_background(title)
+    if not self.bg_active and not title then return end
 
     local conf = self.bg_conf
+    if title then
+        if not self.title_conf then
+            self.title_conf = Wormhole.util_calc_space({ options = pseudorandom(math.random(), 1, 5) }, math.random())
+        end
+        conf = self.title_conf
+    end
 
     if not conf then return sendWarnMessage("BG Shader active but no conf??", "SpaceManager") end
-    local shader = self.manualSend(conf, nil, self.bg_transparency)
-    if self.bg_transparency == 1 then
+    local shader = self.manualSend(conf, nil, title and 1 or self.bg_transparency)
+    if title or self.bg_transparency == 1 then
         local w, h = love.graphics.getDimensions()
         love.graphics.setShader(shader)
         love.graphics.rectangle("fill", 0, 0, w, h)
@@ -180,6 +186,7 @@ function manager:reset()
     self.handname = nil
     self.targtHand = nil
     self.bg_conf = nil
+    self.title_conf = nil
 end
 
 function manager.manualSend(conf, scale, transparency)
@@ -200,7 +207,9 @@ end
 local game_delete_run = Game.delete_run
 function Game:delete_run()
     game_delete_run(self)
-    manager:reset()
+    if G.STATES == G.STATES.SPLASH then -- Don't reset title screen
+        manager:reset()
+    end
 end
 
 function manager:recalc_overlay()
