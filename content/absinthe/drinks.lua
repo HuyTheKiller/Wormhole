@@ -564,7 +564,7 @@ SMODS.Consumable { -- Pina Solada
         end
         if context.joker_main and card.ability.drink_values.filled and card.ability.drink_values.primed and not context.repetition then
             local has_light = false
-            for k, v in ipairs(G.hand.cards) do
+            for k, v in ipairs(G.play.cards) do
                 if v:is_suit('Hearts', nil, true) or v:is_suit('Diamonds', nil, true) then
                     has_light = true
                     break
