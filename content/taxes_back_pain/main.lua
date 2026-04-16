@@ -891,8 +891,11 @@ Wormhole.tbp.Module({
 	loc_vars = function(self, info_queue, module, card)
         local amount = 0
         if card then
-            for key, _ in pairs(Wormhole.tbp.get_equipped_modules(card)) do
-                amount = amount + 1
+            local modules = Wormhole.tbp.get_equipped_modules(card)
+            if modules then
+                for key, _ in pairs(modules) do
+                    amount = amount + 1
+                end
             end
         end
 		return { vars = { module.ability.extra.xmult, module.ability.extra.xmult ^ amount } }
@@ -900,9 +903,12 @@ Wormhole.tbp.Module({
     module_calculate = function (self, module, context, card)
         if context.joker_main and #context.scoring_hand == 5 then
             local amount = 0
-            for key, _ in pairs(Wormhole.tbp.get_equipped_modules(card)) do
-                amount = amount + 1
-                Wormhole.tbp.change_durability(card, key, -1)
+            local modules = Wormhole.tbp.get_equipped_modules(card)
+            if modules then
+                for key, _ in pairs(modules) do
+                    amount = amount + 1
+                    Wormhole.tbp.change_durability(card, key, -1)
+                end
             end
             if amount > 0 then -- should always be at least 1 but...
                 return {
@@ -931,7 +937,7 @@ Wormhole.tbp.Module({
 		return { vars = { module.ability.extra.percent * 100 } }
     end,
     module_calculate = function (self, module, context, card)
-        if context.setting_blind or (context.wormhole_tbp_module_install and G.GAME.blind) then
+        if context.setting_blind or (context.wormhole_tbp_module_install and G.GAME.blind and G.GAME.blind.in_blind) then
             if not module.fired_this_blind then
                 module.fired_this_blind = true
                 Wormhole.tbp.change_durability(card, self.slot, -1)
