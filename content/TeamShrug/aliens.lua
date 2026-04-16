@@ -348,7 +348,13 @@ SMODS.Consumable{
         return G.hand and #G.hand.highlighted >= 2 and #G.hand.highlighted <= card.ability.extra.selection
     end,
     use = function(self, card, area, copier)
-        local rank = G.hand.highlighted[1].config.card.value
+        local leftmost = G.hand.highlighted[1]
+        for i = 1, #G.hand.highlighted do
+            if G.hand.highlighted[i].T.x < leftmost.T.x then
+                leftmost = G.hand.highlighted[i]
+            end
+        end
+        local rank = leftmost.config.card.value
         flip_multiple(G.hand.highlighted)
         for _, c in ipairs(G.hand.highlighted) do
             G.E_MANAGER:add_event(Event({
