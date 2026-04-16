@@ -25,7 +25,7 @@ descriptions={
 			, text={
 				"{C:planet}#1#{} {C:attention}temporary{} levels to",
 				"each played {C:attention}poker hand{}",
-				"{C:planet,s:0.8}#2#{s:0.8} level per hand played{}",
+				"{C:planet,s:0.8}#2#{s:0.8} at end of round{}",
 			}
 		},
 		j_worm_mrrp_countdown ={
