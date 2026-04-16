@@ -621,6 +621,7 @@ SMODS.Joker {
     soul_pos = {x = 3, y = 3},
     display_size = {w = 89, h = 109},
     config = {extra = {tag = "tag_worm_ub"}},
+    attributes = {"generation", "tag", "boss_blind", "space"},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
