@@ -50,6 +50,7 @@ for i, v in ipairs({{"normal_1", 4, 3, 1}, {"normal_2", 4, 3, 1}, {"jumbo", 6, 4
 	key = "util_spaces_" .. v[1],
 	kind = 'util_Spaces',
 	atlas = "util_boosters",
+	ppu_team = {"util-modders"},
 	cost = v[2],
 	pos = { x = i - 1, y = 0 },
 	config = { extra = v[3], choose = v[4] },
