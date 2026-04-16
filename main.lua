@@ -41,13 +41,14 @@ Wormhole.colours = {
 }
 
 function Wormhole.init_custom_menu(change_context)
-    if not G.title_top.cards[1].mod_flag then
-        G.title_top.cards[1]:remove()
-        G.title_top.T.w = G.title_top.T.w - (1.7675 / math.max(#G.title_top.cards, 1))
-        G.title_top.T.x = G.title_top.T.x + (0.885 / math.max(#G.title_top.cards, 1))
-    end
-
     if Wormhole.config.menu then
+        --Remove menu Ace
+        if not G.title_top.cards[1].mod_flag then
+            G.title_top.cards[1]:remove()
+            G.title_top.T.w = G.title_top.T.w - (1.7675 / math.max(#G.title_top.cards, 1))
+            G.title_top.T.x = G.title_top.T.x + (0.885 / math.max(#G.title_top.cards, 1))
+        end
+
         -- Creates Wormhole Logo Sprite
         local SC_scale = 1.1 * (G.debug_splash_size_toggle and 0.8 or 1)
         G.SPLASH_WORMHOLE_LOGO = Sprite(0, 0,
