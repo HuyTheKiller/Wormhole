@@ -84,7 +84,7 @@ if multi_boxes[1] then
 '''
 payload = '''
 if next(tbp_module_info_boxes) then
-    ret_val.nodes[#ret_val.nodes + 1] = {n=G.UIT.C, config={align = "cm", func = 'show_spaceship_tooltips',object = Moveable(), ref_table = next(tbp_module_info_boxes) and tbp_module_info_boxes or nil}, nodes={}}
+    ret_val.nodes[#ret_val.nodes + 1] = {n=G.UIT.C, config={align = "cm", func = 'show_spaceship_tooltips',object = Moveable(), collection = card.area.config.collection and card.T.x, ref_table = next(tbp_module_info_boxes) and tbp_module_info_boxes or nil}, nodes={}}
 end
 '''
 
@@ -98,7 +98,7 @@ pattern = '''
 info_boxes = {{n=G.UIT.R, config = {align="cm", padding = 0.05, card_pos = card.T.x }, nodes = info_cols}}
 '''
 payload = '''
-if card.config.center_key == 'j_worm_tbp_spaceship' then info_boxes[1].config.tbp_spaceship = true end
+if card.config.center_key == 'j_worm_tbp_spaceship' then info_boxes[1].config.tbp_spaceship = true; info_boxes[1].config.tbp_collection = card.area.config.collection end
 '''
 
 

@@ -61,9 +61,13 @@ end
 
 G.FUNCS.show_spaceship_tooltips = function(e)
     if e.config.ref_table then 
+        local config = {offset = {x=0.03,y=0}, align = 'cr', parent = e}
+        if e.config.collection and e.config.collection > G.ROOM.T.w*0.4 then
+            config = {offset = {x=-3.88,y=0}, align = 'cl', parent = e}
+        end
         e.children.info = UIBox{
             definition = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, padding = 0.02}, nodes=e.config.ref_table},
-            config = {offset = {x=0.03,y=0}, align = 'cr', parent = e}}
+            config = config}
         e.children.info:align_to_major()
         e.config.ref_table = nil
     end
@@ -395,9 +399,18 @@ end
 local show_infotip_hook = G.FUNCS.show_infotip
 G.FUNCS.show_infotip = function(e)
     if e.config.ref_table and e.config.ref_table[1].config.tbp_spaceship then
+        
+        local config = {offset = {x=-0.03,y=0}, align = 'cl', parent = e}
+        if e.config.ref_table[1].config.tbp_collection then
+            if e.config.ref_table[1].config.card_pos < G.ROOM.T.w*0.4 then
+                config = {offset = {x=2.3,y=0}, align = 'cr', parent = e}
+            else
+                config = {offset = {x=-2.3,y=0}, align = 'cl', parent = e}
+            end
+        end
         e.children.info = UIBox{
             definition = {n=G.UIT.ROOT, config = {align = 'cm', colour = G.C.CLEAR, padding = 0.02}, nodes=e.config.ref_table},
-            config = {offset = {x=-0.03,y=0}, align = 'cl', parent = e}
+            config = config
         }
         e.children.info:align_to_major()
         e.config.ref_table = nil
