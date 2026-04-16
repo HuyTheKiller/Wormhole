@@ -29,6 +29,9 @@ SMODS.Consumable {
     ppu_artist = {'qunumeru'},
     ppu_coder = {'wombatcountry', 'professorrenderer'},
     ppu_team = {'Hedonia'},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_tipsy
+    end,
     use = function(self, card, area, copier)
         local card_to_drink = pseudorandom_element(G.hand.cards, 'alcohol') --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/spectrals.lua#L26
         card_to_drink:set_edition("e_worm_hedonia_tipsy" ,true)
@@ -46,6 +49,9 @@ SMODS.Consumable {
     ppu_artist = {'hellboydante', 'qunumeru'},
     ppu_coder = {'wombatcountry', 'professorrenderer'},
     ppu_team = {'Hedonia'},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_drunk
+    end,
     use = function(self, card, area, copier)
         local card_to_drink = pseudorandom_element(G.hand.cards, 'alcohol') --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/spectrals.lua#L26
         card_to_drink:set_edition("e_worm_hedonia_drunk" ,true) 
@@ -63,6 +69,9 @@ SMODS.Consumable {
     ppu_artist = {'qunumeru'},
     ppu_coder = {'wombatcountry', 'professorrenderer'},
     ppu_team = {'Hedonia'},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_very_drunk
+    end,
     use = function(self, card, area, copier)
         local card_to_drink = pseudorandom_element(G.hand.cards, 'alcohol') --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/spectrals.lua#L26
         card_to_drink:set_edition("e_worm_hedonia_very_drunk", true) 
@@ -80,6 +89,9 @@ SMODS.Consumable {
     ppu_artist = {'qunumeru'},
     ppu_coder = {'wombatcountry', 'professorrenderer'},
     ppu_team = {'Hedonia'},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_blackout
+    end,
     use = function(self, card, area, copier)
         local card_to_drink = pseudorandom_element(G.hand.cards, 'alcohol') --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/spectrals.lua#L26
         card_to_drink:set_edition("e_worm_hedonia_blackout" ,true) 
