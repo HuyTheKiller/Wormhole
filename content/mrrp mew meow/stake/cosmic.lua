@@ -14,7 +14,7 @@ SMODS.Stake{
         applied_stakes = false
     },
 	modifiers = function()
-		G.GAME.modifiers.enable_worm_meteoric = true
+		G.GAME.modifiers.enable_worm_mrrp_meteoric = true
 	end,
 
 }

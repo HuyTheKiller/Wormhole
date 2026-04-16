@@ -9,7 +9,7 @@ SMODS.Sticker{
     sets = {
         Joker = true
     },
-    rate = 0.3,
+    needs_enable_flag = true,
     calculate = function(self, card, context)
         if context.buying_card and context.buying_self then
             G.CONTROLLER.locks[card.ID] = true
