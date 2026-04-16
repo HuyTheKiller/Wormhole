@@ -109,6 +109,9 @@ function PotatoPatchUtils.Teams.worm_polar_skull.calculate(self, context)
 				replace_poker_hands = evaluate_fake_hands(context.scoring_hand, card.ability.extra.hand, replace_scoring_hands)
 			end
 		end
+		if replace_scoring_name then
+			context.display_name = replace_scoring_name
+		end
 		return {replace_scoring_name = replace_scoring_name, replace_poker_hands = replace_poker_hands}
 	end
 end
