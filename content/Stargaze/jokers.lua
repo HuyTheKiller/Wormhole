@@ -418,7 +418,8 @@ SMODS.Joker({
         if context.selling_card 
         and context.card 
         and context.card.ability 
-        and context.card.ability.set == "Joker" then
+        and context.card.ability.set == "Joker"
+        and context.card ~= card then
 
             card.ability.extra.sold =
                 card.ability.extra.sold + 1
