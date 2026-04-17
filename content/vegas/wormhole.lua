@@ -73,7 +73,7 @@ SMODS.Atlas{
 --Jokers
 SMODS.Joker{
 	key = "orbit",
-	attibutes = {"mult", "scaling", "rank", "space"},
+	attributes = {"mult", "scaling", "rank", "space"},
 	config = { extra = { gain = 1, rank = 14, current = 0}},
 	loc_vars = function(self, info_queue, card)
 		local rank = card.ability.extra.rank
@@ -125,7 +125,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "spaghettification",
-	attibutes = {"mult", "scaling", "hand_type", "chance", "space"},
+	attributes = {"mult", "scaling", "hand_type", "chance", "space"},
 	config = { extra = { odds = 4, current = 0 }},
 	loc_vars = function(self, info_queue, card)
 		local numerator = 1
@@ -173,7 +173,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "hubble",
-	attibutes = {"scaling", "hand_size", "planet", "space"},
+	attributes = {"scaling", "hand_size", "planet", "space"},
 	config = { extra = { h_size = 1, h_size_gain = 1, counter = 3, max = 3 }},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.h_size_gain, card.ability.extra.h_size, card.ability.extra.counter, card.ability.extra.max }}
@@ -213,7 +213,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "gravity_assist",
-	attibutes = {"chance", "planet", "space"},
+	attributes = {"chance", "planet", "space"},
 	config = { extra = { odds = 2 }},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = {key = "Inferior", set = "Other"}
@@ -278,7 +278,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "astronaut",
-	attibutes = {"hand_type", "economy", "space"},
+	attributes = {"hand_type", "economy", "space"},
 	config = { hand = nil, extra = { dollars = 1 }},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.dollars }}
@@ -306,7 +306,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "chthonian",
-	attibutes = {"discard", "enhancements", "space"},
+	attributes = {"discard", "enhancements", "space"},
 	config = { extra = { size = 2 }},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
@@ -343,7 +343,7 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "goldielocks",
-	attibutes = {"retrigger", "space"},
+	attributes = {"retrigger", "space"},
     config = { extra = { repetitions = 1, repetitions_odd = 2 }},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.repetitions, card.ability.extra.repetitions_odd }}
@@ -475,7 +475,7 @@ end
 
 SMODS.Joker{
 	key = "vegas",
-	attibutes = {"economy", "chance", "joker_slot", "joker", "space"},
+	attributes = {"economy", "chance", "joker_slot", "joker", "space"},
 	config = { gain = 6},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = {key = "SpaceRoulette", set = "Other"}
@@ -599,7 +599,7 @@ end
 
 SMODS.Joker{
 	key = "inthesky",
-	attibutes = {"suit", "diamonds", "hands", "editions", "space"},
+	attributes = {"suit", "diamonds", "hands", "editions", "space"},
 	config = { extra = { cards = 2, suit = 'Diamonds' }},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = {key = 'e_negative_playing_card', set = 'Edition', config = {extra = 1}}
@@ -633,7 +633,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "observable",
-	attibutes = {"xmult", "editions", "space"},
+	attributes = {"xmult", "editions", "space"},
 	config = { extra = { xmult = 1.5 }},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = {key = 'e_negative_playing_card', set = 'Edition', config = {extra = 1}}
@@ -696,7 +696,7 @@ CRT_shutoff = SMODS.ScreenShader{
 
 SMODS.Joker{
 	key = "Big_Bounce",
-	attibutes = {"passive", "prevents_death", "space"},
+	attributes = {"passive", "prevents_death", "space"},
 	config = { extra = {  }},
 	loc_vars = function(self, info_queue, card)
 		return { vars = {  }}
@@ -758,7 +758,7 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "bigbang",
-	attibutes = {"generation", "joker", "on_sell", "space"},
+	attributes = {"generation", "joker", "on_sell", "space"},
 	config = { extra = {JokerCount = 0, JokerNeed = 15}},
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.JokerNeed, colours = {G.C.RARITY.Legendary} }}
