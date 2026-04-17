@@ -13,15 +13,36 @@ SMODS.Back({
 	ppu_artist = { "KaitlynTheStampede", "DanielDeisar" },
 	ppu_team = { "Stargaze" },
 	unlocked = true,
+	config = { extra = { num = 1, den = 2 } },
+
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = { self.config.extra.num, self.config.extra.den }
+		}
+	end,
 
 	calculate = function(self, back, context)
 		if context.using_consumeable then
 			if context.consumeable and context.consumeable.ability and context.consumeable.ability.set == "Planet" then
 				G.E_MANAGER:add_event(Event({
 					func = function()
-						local roll = pseudorandom("cosmos_roll")
-						if roll < 0.55 then return true end
-						local pool = roll < 0.85 and "Tarot" or "Spectral"
+						local num, den = self.config.extra.num, self.config.extra.den
+
+						local r = SMODS.pseudorandom_probability(
+							back,
+							"cosmos_roll_" .. G.GAME.round_resets.ante,
+							num, den,
+							"worm_cosmos_deck"
+						)
+						if not r then return true end
+
+						local pool = SMODS.pseudorandom_probability(
+							back,
+							"cosmos_pool_roll_" .. G.GAME.round_resets.ante,
+							1, 2,
+							"worm_cosmos_deck_pool"
+						) and "Tarot" or "Spectral"
+
 						SMODS.add_card({
 							set = pool,
 							discover = true,
