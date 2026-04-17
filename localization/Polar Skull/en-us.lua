@@ -186,7 +186,7 @@ return {
 					"The current {C:attention}active {C:polarskull_rocket}Rocket{} card",
 					"lasts for {C:attention}+1{} extra round",
 					"each time you play the",
-					"{C:planet}Planet Card{} for the same hand",
+					"{C:planet}Planet{} card for the same hand",
 				},
 			},
 			v_worm_polarskull_prepetual_motion_machine = {

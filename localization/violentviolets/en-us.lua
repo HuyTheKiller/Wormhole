@@ -23,7 +23,7 @@ return {
         j_worm_alienx = {
             name = "Alien X",
             text = {
-                "{C:planet}Planet Cards{} have a {C:green}#1# in #2#{} Chance",
+                "{C:planet}Planet{} cards have a {C:green}#1# in #2#{} chance",
                 "to level up {C:attention}all poker hands{}"
                 }
             },
@@ -31,8 +31,8 @@ return {
             name = "Super Tengen Toppa Gurren Lagann",
             text = {
                 {"Creates {C:attention}#3#{} copies of",
-                "used non-{C:dark_edition}Negative{} {C:planet}Planet Cards{}"},
-                {"{C:planet}Planet Cards{} have a {C:green}#1# in #2#{} Chance",
+                "used non-{C:dark_edition}Negative{} {C:planet}Planet{} cards"},
+                {"{C:planet}Planet{} cards have a {C:green}#1# in #2#{} chance",
                 "to be {C:dark_edition}Negative{} when duplicated"}
                 }
             },

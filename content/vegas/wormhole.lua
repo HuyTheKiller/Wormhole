@@ -194,10 +194,10 @@ SMODS.Joker{
 	loc_txt = {
 		name = "Hubble Space Telescope",
 		text = {
-			"{C:attention}+#2#{} Hand Size",
-			"Gains {C:attention}+#1#{} Hand Size for",
-			"every {C:attention}#4#{} {C:blue}Planet{} Cards used",
-			"{C:attention}#3#{} {C:inactive}Planet Cards left"
+			"{C:attention}+#2#{} hand size",
+			"Gains {C:attention}+#1#{} hand size for",
+			"every {C:attention}#4#{} {C:planet}Planet{} cards used",
+			"{C:attention}#3#{} {C:inactive}Planet cards left"
 		}
 	},
 	attibutes = {"scaling", "hand_size", "planet", "space"},
@@ -244,8 +244,8 @@ SMODS.Joker{
 		name = "Gravity Assist",
 		text = {
 			"{C:green}#1# in #2#{} chance to create an",
-			"{C:attention}inferior{} {C:planet}Planet{} Card",
-			"when a {C:planet}Planet{} Card is used",
+			"{C:attention}inferior{} {C:planet}Planet{} card",
+			"when a {C:planet}Planet{} card is used",
 			"{C:inactive}(Must have room)"
 		}
 	},
