@@ -27,7 +27,7 @@ SMODS.Joker{
 		local unique = true
 		if G.jokers and G.jokers.cards then
 			for k, v in ipairs(G.jokers.cards) do
-				if v.ability.extra.kraft_e_id and v.ability.extra.kraft_e_id == card.ability.extra.kraft_e_id and not v == card then
+				if v.ability.extra and type(v.ability.extra) == 'table' and v.ability.extra.kraft_e_id and v.ability.extra.kraft_e_id == card.ability.extra.kraft_e_id and not v == card then
 					unique = false
 				end
 			end
@@ -36,7 +36,7 @@ SMODS.Joker{
 			card.ability.extra.kraft_e_id = math.random(-10000, 10000)
 			if G.jokers and G.jokers.cards then
 				for k, v in ipairs(G.jokers.cards) do
-					if v.ability.extra.kraft_e_id and v.ability.extra.kraft_e_id == card.ability.extra.kraft_e_id and not v == card then
+					if v.ability.extra and type(v.ability.extra) == 'table' and v.ability.extra.kraft_e_id == card.ability.extra.kraft_e_id and not v == card then
 						unique = false
 					end
 				end
