@@ -167,8 +167,6 @@ Wormhole.JR_UTILS.Satellite {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and 'y' or 'ies',
-        _level <= 1 and 'a ' or '',
         _level <= 1 and '' or 's',
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
@@ -483,7 +481,7 @@ Wormhole.JR_UTILS.Satellite {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        1 + card.ability.extra.xmult * _level,
+        card.ability.extra.xmult * _level,
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
     }

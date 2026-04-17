@@ -5,7 +5,7 @@ return {
         name = "New Horizon",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -18,7 +18,7 @@ return {
         name = "MESSENGER",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -32,14 +32,15 @@ return {
         name = "Tianwen-4",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
             "If played hand",
             "is a {C:attention}#2#{},",
-            "create {C:attention}#1#{} cop#3# of",
-            "#4#random scoring card#5#"
+            "create a copy of",
+            "a random scoring card",
+            "{C:attention}#1#{} time#3#"
           }
         }
       },
@@ -47,14 +48,14 @@ return {
         name = "Venera 9",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
             "If played hand",
             "is a {C:attention}#2#{},",
             "{C:attention}#1#{} card#3# in full deck",
-            "have a {C:green}#4# in #5#{} change to",
+            "each have a {C:green}#4# in #5#{} chance to",
             "become the rank of",
             "the {C:attention}#2#"
           }
@@ -64,13 +65,13 @@ return {
         name = "Cassini-Huygens",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
             "If played hand is a",
             "{C:attention}#2#{}, destroy {C:attention}#1#{} card#3#",
-            "in full deck of ranks",
+            "in full deck of rank#3#",
             "not in the {C:attention}#2#"
           }
         }
@@ -79,7 +80,7 @@ return {
         name = "Galileo",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -94,7 +95,7 @@ return {
         name = "Sputnik 1",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -111,7 +112,7 @@ return {
         name = "Mariner 9",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -126,7 +127,7 @@ return {
         name = "Voyager 2",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -141,7 +142,7 @@ return {
         name = "Death Egg",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -155,7 +156,7 @@ return {
         name = "Dawn",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
@@ -170,14 +171,14 @@ return {
         name = "Manhole Cover",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
+            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
             "{C:attention}#2#",
           },
           {
             "If played hand",
             "is a {C:attention}#2#{},",
-            "retrigger {C:attention}#1#{} card#3#",
-            "at random"
+            "retrigger random played cards",
+            "{C:attention}#1#{} time#3#"
           }
         }
       },
