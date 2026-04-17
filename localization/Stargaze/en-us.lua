@@ -41,8 +41,8 @@ return {
 				name = "The Punisher",
 				text = {
 					{ "{C:mult}+15{} Mult if {C:attention}5 cards{} are played" },
-					{ "Prevents death and has its final stand" },
-					{ "{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X3{} per round" }
+					{ "Prevents Death and has its final stand",
+					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X3{} per round" }
 				},
 			},
 
