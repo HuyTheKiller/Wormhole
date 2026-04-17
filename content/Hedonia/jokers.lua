@@ -18,6 +18,7 @@ SMODS.Joker {
     config = { extra = {
         items = 1
     }},
+    attributes = {"editions", "enhancements", "generation", "space"},
     ppu_artist = {'qunumeru'},
     ppu_coder = {'axyraandas', 'professorrenderer'},
     ppu_team = {'Hedonia'},
@@ -64,6 +65,7 @@ SMODS.Joker {
         current = 0,
         threshold = 13
     }},
+    attributes = {"generation", "hands", "space"},
     loc_vars = function(self,info_queue,center)
         return {vars = {center.ability.extra.threshold, center.ability.extra.threshold - center.ability.extra.current}}
     end,
@@ -110,6 +112,7 @@ SMODS.Joker {
     ppu_artist = {'hellboydante'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
+    attributes = {"generation", "joker", "chance", "space"},
     loc_vars = function(self,info_queue,center)
         local num = 1
         local denom = 5
@@ -151,6 +154,7 @@ SMODS.Joker {
     config = { extra = {
         chips = 0
     }},
+    attributes = {"chips", "space"},
     ppu_artist = {'alxndr2000'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
@@ -195,6 +199,7 @@ SMODS.Joker {
     config = { extra = {
         mult = 10
     }},
+    attributes = {"mult", "editions", "space"},
     loc_vars = function(self,info_queue,center)
         return {vars = {center.ability.extra.mult}}
     end,
@@ -233,6 +238,7 @@ SMODS.Joker {
     config = { extra = {
         discount = 2
     }},
+    attributes = {"economy", "passive", "space"},
     ppu_artist = {'hellboydante'},
     ppu_coder = {'professorrenderer'},
     ppu_team = {'Hedonia'},
