@@ -107,17 +107,17 @@ return {
                 j_worm_thorn_binary = {
                     name = "Binary Stars",
                     text = {
-                        "{C:planet}Planet{} cards have a",
-                        "{C:green}#1# in #2#{} chance to",
-                        "level up hand {C:attention}extra time{},",
-                        "otherwise level it {C:red}down{}",
+                        "{C:planet}Planet{} cards have",
+                        "a {C:green}#1# in #2#{} chance to",
+                        "level up hand by one {C:attention}extra level{},",
+                        "otherwise level it {C:red}down{} by one level",
                         "{C:inactive}(Won't go below lvl.1)"
                     }
                 },
                 j_worm_thorn_derse = {
                     name = "Derse Joker",
                     text = {
-                        "Gains {C:white,X:mult}X#1#{} Mult per every",
+                        "Gains {C:white,X:mult}X#1#{} Mult per",
                         "percent of {C:spades}Dark Suits{}",
                         "in deck above {C:attention}#3#%{}",
                         "{C:inactive}(Currently: {C:white,X:mult}X#2#{}{C:inactive} Mult, {C:attention}#4#%{}{C:inactive})"
@@ -126,7 +126,7 @@ return {
                 j_worm_thorn_derse_collection = {
                     name = "Derse Joker",
                     text = {
-                        "Gains {C:white,X:mult}X#1#{} Mult per every",
+                        "Gains {C:white,X:mult}X#1#{} Mult per",
                         "percent of {C:spades}Dark Suits{}",
                         "in deck above {C:attention}#3#%{}",
                         "{C:inactive}(Currently: {C:white,X:mult}X#2#{}{C:inactive} Mult)"
