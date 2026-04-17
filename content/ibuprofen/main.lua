@@ -319,6 +319,8 @@ SMODS.Joker {
   pos = { x = 1, y = 1 },
   config = { extra = { xmult = 3 } },
 
+  attributes = {"xmult", "space"},
+
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.xmult } }
   end,
@@ -363,6 +365,8 @@ SMODS.Joker{
     pos = {x = 1, y = 0},
     config = {extra = {xmult = 2}},
 
+    attributes = {"xmult", "tarot", "space"},
+
     calculate = function(self, card, context) -- scores chips
         if context.other_consumeable and (context.other_consumeable.ability.name == 'The Sun' or context.other_consumeable.ability.name == 'The Star') then
             return {
@@ -394,9 +398,12 @@ SMODS.Joker{
     perishable_compat = true, --can it be perishable
     pos = {x = 2, y = 0},
     config = {extra = {xmult = 3, current = 0}},
+
+    attributes = {"xmult", "space"},
+
     loc_vars = function(self, info_queue, center)
       return {vars = {center.ability.extra.current}}
-                end,
+    end,
 
     calculate = function(self, card, context)
         local level = math.huge
@@ -436,6 +443,8 @@ SMODS.Joker {
   pos = { x = 3, y = 1 },
   config = { extra = { } },
 
+  attributes = {"enhancements", "passive", "space"},
+
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = G.P_CENTERS['m_mult']
     return { vars = {} }
@@ -466,6 +475,8 @@ SMODS.Joker {
   perishable_compat = true,
   pos = { x = 4, y = 0 },
   config = { extra = { xmult = 3 } },
+
+  attributes = {"enhancements", "passive", "space"},
 
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = G.P_CENTERS['m_worm_frozen']
@@ -506,6 +517,8 @@ SMODS.Joker {
   perishable_compat = true,
   pos = { x = 5, y = 0 },
   config = { extra = { money = 0 } },
+
+  attributes = {"economy", "hand_type", "space"},
 
   loc_vars = function(self, info_queue, center)
     return {  vars = { center.ability.extra.money } }
@@ -555,6 +568,8 @@ SMODS.Joker {
   pos = { x = 4, y = 1 },
   config = { extra = { money = 0, active = true } },
 
+  attributes = {"economy", "passive", "space"},
+
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.money, center.ability.extra.active } }
   end,
@@ -592,6 +607,8 @@ SMODS.Joker {
   perishable_compat = true,
   pos = { x = 6, y = 1 },
   config = { extra = {  planetchoice = 'Mars' } },
+
+  attributes = {"generation", "planet", "space"},
 
   loc_vars = function(self, info_queue, center)
     return { vars = {center.ability.extra.planetchoice } }
@@ -647,6 +664,7 @@ SMODS.Joker{
   pos = { x = 0, y = 2 },   --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
   config = { extra = { rank = 0, suit = 0 } },
 
+  attributes = {"enhancements", "discard", "space"},
 
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_worm_frozen
@@ -691,6 +709,8 @@ SMODS.Joker {
   pos = { x = 3, y = 0 },
   config = { extra = { money = 0, active = true } },
 
+  attributes = {"destroy_card", "generation", "rank", "queen", "space"},
+
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.money, center.ability.extra.death_card } }
   end,
@@ -733,6 +753,8 @@ key = 'warpgate',
   perishable_compat = true,
   pos = { x = 5, y = 1 },
   config = { extra = { currounds = 0, maxrounds = 1 } },
+
+  attributes = {"joker", "on_sell", "space"},
 
   loc_vars = function(self, info_queue, center)
     return { vars = { center.ability.extra.currounds, center.ability.extra.maxrounds,} }
@@ -787,6 +809,8 @@ SMODS.Joker {
   pos = { x = 0, y = 1 },
   soul_pos = { x = 6, y = 0 },   --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
   config = { extra = { xmult = 1, multmod = .33 } },
+
+  attributes = {"enhancements", "xmult", "scaling", "space"},
 
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_worm_frozen
@@ -846,6 +870,8 @@ SMODS.Joker {
   soul_pos = { x = 1, y = 2 },   --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
   config = { extra = { } },
 
+  attributes = {"economy", "enhancements", "space"},
+
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_worm_frozen
     return { vars = { } }
@@ -892,6 +918,8 @@ SMODS.Joker {
   perishable_compat = true,
   pos = { x = 2, y = 1 },
   config = { extra = { retriggers = 5 } },
+
+  attributes = {"hand_type", "suit", "diamonds", "retrigger", "space"},
 
   loc_vars = function(self, info_queue, center)
     return {  vars = { center.ability.extra.retriggers } }
