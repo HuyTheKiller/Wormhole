@@ -18,7 +18,7 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
-
+    attributes = {"hand_type", "scaling", "xmult", "space"},
 
     config = {
         extra = {
@@ -80,7 +80,7 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
-
+    attributes = {"mult", "prevents_death", "xmult", "scaling", "space"},
 
     config = {
         extra = {
@@ -185,6 +185,8 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
+    attributes = {"hands", "destroy_card", "generation", "space"},
+
     calculate = function(self, card, context)
         if context.before
             and G.GAME.current_round
@@ -245,6 +247,8 @@ SMODS.Joker({
     ppu_coder = { "FALATRO" },
     ppu_artist = { "DanielDeisar" },
     ppu_team = { "Stargaze" },
+
+    attributes = {"chips", "scaling", "hand_type", "hands", "joker_slot", "space"},
 
     config = {
         extra = {
@@ -316,6 +320,8 @@ SMODS.Joker({
     ppu_artist = { "DanielDeisar" },
     ppu_team = { "Stargaze" },
 
+    attributes = {"scaling", "xchips", "hand_type", "hands", "joker_slot", "space"},
+
     config = {
         extra = {
             xchips = 1,
@@ -385,6 +391,8 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
+    attributes = {"economy", "joker", "space"},
+
     config = {
         extra = {
             sold = 0
@@ -433,6 +441,8 @@ SMODS.Joker({
     atlas = "stargaze_jokers",
     ppu_coder = { "FALATRO" },
     ppu_team = { "Stargaze" },
+
+    attributes = {"planet", "prevents_death", "space"},
 
     config = {
         extra = {
