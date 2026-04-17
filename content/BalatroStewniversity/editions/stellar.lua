@@ -14,11 +14,11 @@ SMODS.Edition {
 
     sound = { sound = "foil1", per = 1.2, vol = 0.4 },
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.edition.odds, 'worm_stellar')
-        return { vars = { numerator, denominator, card.edition.odds } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, self.config.odds, 'worm_stellar')
+        return { vars = { numerator, denominator, self.config.odds } }
     end,
     calculate = function(self, card, context)
-        if context.before and SMODS.pseudorandom_probability(card, 'worm_stellar', 1, card.edition.odds) then
+        if context.before and SMODS.pseudorandom_probability(card, 'worm_stellar', 1, self.config.odds) then
             return {
                 level_up = true,
                 message = localize('k_level_up_ex')

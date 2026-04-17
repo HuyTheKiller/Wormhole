@@ -36,7 +36,7 @@ SMODS.Shader {
     -- card can be nil if sprite.role.major is not Card
     send_vars = function (sprite, card)
         return {
-            lines_offset = card and card.edition.example_gold_seed or 0
+            lines_offset = card and card.edition and card.edition.example_gold_seed or 0
         }
     end,
 }
@@ -61,7 +61,7 @@ SMODS.Edition {
 	never_scores = true,
     sound = { sound = "negative", per = 1.5, vol = 0.1 },
     loc_vars = function(self, info_queue, card)
-		return { vars = { card.edition.chips } }
+		return { vars = { self.config.chips } }
     end,
     get_weight = function(self)
         return self.weight
