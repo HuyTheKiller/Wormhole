@@ -1542,6 +1542,11 @@ end
 ---@param game table
 function JtemTGM.HandleDraw(canvas, game)
 	if not game.board then return end
+	if not game.grade_quad then
+		game.grade_quad = love.graphics.newQuad(0, 0, 20, 20,
+			JtemTGM.grades_graph:getWidth(),
+			JtemTGM.grades_graph:getHeight())
+	end
 	local oldcanvas = love.graphics.getCanvas()
 	love.graphics.push()
 	love.graphics.origin()
