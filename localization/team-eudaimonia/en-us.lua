@@ -92,11 +92,13 @@ return {
             },
             j_worm_euda_wowsignal = {
                 name = "Wow! Signal",
-                text = {
-                    "{C:green}#1# in #2#{} chance to give ",
-                    "{X:chips,C:white}X#3#-#4#{} Chips otherwise,",
-                    "give {C:chips}#5#-#6#{} Chips",
-                },
+                text = {{
+                    "{C:green}#1# in #2#{} chance to give",
+                    "between {X:chips,C:white}X#3#{} and {X:chips,C:white}X#4#{} Chips"
+                },{
+                    "Otherwise, gives between",
+                    "{C:chips}+#5#{} and {C:chips}+#6#{} Chips"
+                }},
                 
             },
             j_worm_euda_jokecolony = {
@@ -131,9 +133,10 @@ return {
             j_worm_euda_extraevidence = {
                 name = "Extraterrestrial Evidence",
                 text = {
-                    "Debuffs all scoring cards except the {C:attention}first{} one",
-                    "Retrigger the first card for",
-                    "every other {C:attention}unique{} rank scored"
+                    "{C:red}Debuffs{} all scoring cards",
+                    "except the {C:attention}first{} one",
+                    "{C:attention}Retriggers{} the first card for",
+                    "every {C:attention}unique{} rank {C:red}debuffed"
                 }
             },
             j_worm_euda_ton618 = {
@@ -155,12 +158,11 @@ return {
                 name = "Cosmic Bitflip",
                 text = {
                     {
-                        "Gives either {C:chips}#4# Chips{} or",
-                        "{C:mult}#5#-#6# Mult{} depending on",
-                        "if the bit is flipped.",
+                        "Gives either {C:chips}+#4#{} Chips or",
+                        "between {C:mult}+#5#{} and {C:mult}+#6#{} Mult",
+                        "depending on if the bit is flipped.",
                         "{C:green}#1# in #2#{} chance to flip bits"
-                    },
-                    {
+                    },{
                         "Bit.Flipped() == {C:attention}#3#;{}"
                     }
                 }
@@ -170,19 +172,21 @@ return {
                 text = {
                     "{C:white,X:red}X#2#{} Mult",
                     "At end of {C:attention}ante{},",
-                    "{C:attention}destroy{} a random joker",
+                    "{C:red}destroy{} a random Joker",
                     "and gain {C:money}5${} {C:attention}sell value{}"
                 },
                 
             },
             j_worm_LittleLight = {
                 name = "Little Light",
-                text = {
-                   "This Joker Gains {X:mult,C:white}X0.2{} Mult{} per {C:tarot}Death Tarot Card{} Used.",
+                text = {{
+                    "This Joker gains {X:mult,C:white}X0.2{} Mult{} per {C:tarot}Death Tarot card{} used.",
+                    "{C:inactive}[Currently {}{C:mult}+#1#{}{C:inactive} Mult]{}",
+                },{
                     "Additionally prevents Death if chips scored are ",
-                    "at least {C:attention}25%{} of required chips, then {C:red,E:2}self destructs{}",
-                    "{C:inactive}[Currently {}{C:mult}+#1#{}{C:inactive} Mult]{}"
-                },
+                    "at least {C:attention}25%{} of {C:purple}Blind Requirement{},",
+                    "then {C:red,E:2}self destructs{}"
+                }},
 
             }, 
             j_worm_euda_roadsidepicnic = {
@@ -190,7 +194,7 @@ return {
                 text = {
                     "{C:green}Rerolls{} cost {C:money}$#1#{} more",
                     "Shop cards cost {C:money}$#1#{} less",
-                    "Increase both values by 1 per {C:green}reroll"
+                    "Increase both values by {C:money}$1{} per {C:green}reroll"
                 }
             },
             j_worm_euda_csaber = {
