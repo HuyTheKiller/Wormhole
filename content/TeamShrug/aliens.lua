@@ -29,7 +29,7 @@ SMODS.Atlas{
 }
 -- ALIEN PACKS
 local alien_booster = SMODS.Booster:extend{
-    group_key = "shrug_alien_pack",
+    group_key = "k_shrug_alien_pack",
     kind = "shrug_alien_pack",
     draw_hand = true,
     loc_vars = function(self, info_queue, center)
