@@ -274,7 +274,7 @@ SMODS.Enhancement {
     loc_txt = {
     name = 'Frozen Card',
     text = {
-      "{C:attention}Returns to hand{}","if played or discarded","{C:attention}once{} per round"
+      "{C:attention}Once{} per round,", "{C:attention}returns to hand{}","if played or discarded",
     }
   },
     atlas = "Consumables",

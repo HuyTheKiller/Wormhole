@@ -204,9 +204,9 @@ return {
 			m_worm_jtem2_neutron_card = {
 				name = "Neutron Card",
 				text = {
-					"When {C:attention}scored{}",
+					"When {C:attention}scored{},",
 					"{X:mult,C:white}X#1#{} Mult if hand score is on fire",
-					"{X:purple,C:white}X#2#{} Score otherwise",
+					"{X:purple,C:white}X#2#{} Score if hand score is not on fire",
 				},
 			},
 		},
