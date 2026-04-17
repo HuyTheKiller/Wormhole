@@ -73,15 +73,6 @@ SMODS.Atlas{
 --Jokers
 SMODS.Joker{
 	key = "orbit",
-	loc_txt = {
-		name = "Orbit",
-		text = {
-			"Gains {C:mult}+#1#{} Mult when",
-			"scoring a {C:attention}#2#",
-			"Rank decreases after scoring",
-			"{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
-		}
-	},
 	attibutes = {"mult", "scaling", "rank", "space"},
 	config = { extra = { gain = 1, rank = 14, current = 0}},
 	loc_vars = function(self, info_queue, card)
@@ -134,15 +125,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "spaghettification",
-	loc_txt = {
-		name = "Spaghettification",
-		text = {
-			"{C:green}#1# in #2#{} chance to {C:attention}downgrade",
-			"level of played {C:attention}poker hand",
-			"Gains {C:attention}double{} the Mult lost",
-			"{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
-		}
-	},
 	attibutes = {"mult", "scaling", "hand_type", "chance", "space"},
 	config = { extra = { odds = 4, current = 0 }},
 	loc_vars = function(self, info_queue, card)
@@ -191,15 +173,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "hubble",
-	loc_txt = {
-		name = "Hubble Space Telescope",
-		text = {
-			"{C:attention}+#2#{} hand size",
-			"Gains {C:attention}+#1#{} hand size for",
-			"every {C:attention}#4#{} {C:planet}Planet{} cards used",
-			"{C:attention}#3#{} {C:inactive}Planet cards left"
-		}
-	},
 	attibutes = {"scaling", "hand_size", "planet", "space"},
 	config = { extra = { h_size = 1, h_size_gain = 1, counter = 3, max = 3 }},
 	loc_vars = function(self, info_queue, card)
@@ -240,15 +213,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "gravity_assist",
-	loc_txt = {
-		name = "Gravity Assist",
-		text = {
-			"{C:green}#1# in #2#{} chance to create an",
-			"{C:attention}inferior{} {C:planet}Planet{} card",
-			"when a {C:planet}Planet{} card is used",
-			"{C:inactive}(Must have room)"
-		}
-	},
 	attibutes = {"chance", "planet", "space"},
 	config = { extra = { odds = 2 }},
 	loc_vars = function(self, info_queue, card)
@@ -314,14 +278,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "astronaut",
-	loc_txt = {
-		name = "Astronaut",
-		text = {
-			"Earn {C:money}$#1#{} at end of",
-			"round per level of the final",
-			"played {C:attention}poker hand"
-		}
-	},
 	attibutes = {"hand_type", "economy", "space"},
 	config = { hand = nil, extra = { dollars = 1 }},
 	loc_vars = function(self, info_queue, card)
@@ -350,14 +306,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "chthonian",
-	loc_txt = {
-		name = "Chthonian Planet",
-		text = {
-			"If {C:attention}first discard{} of",
-			"round is {C:attention}#1#{} cards, make",
-			"{C:attention}both{} cards {C:attention}Stone{}"
-		}
-	},
 	attibutes = {"discard", "enhancements", "space"},
 	config = { extra = { size = 2 }},
 	loc_vars = function(self, info_queue, card)
@@ -395,15 +343,6 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "goldielocks",
-    loc_txt = {
-        name = "Goldielocks",
-        text = {
-            "Retriggers middle card in",
-			"hand {C:attention}#2#{} times or",
-			"Retriggers both middle cards in",
-			"hand {C:attention}#1#{} time each"
-        }
-    },
 	attibutes = {"retrigger", "space"},
     config = { extra = { repetitions = 1, repetitions_odd = 2 }},
     loc_vars = function(self, info_queue, card)
@@ -534,26 +473,12 @@ space_roulette = function(card, time, index)
 	return true
 end
 
-spacerouletteinfo = {
-	key = "SpaceRoulette",
-	set = "Other"
-}
-
 SMODS.Joker{
 	key = "vegas",
-	loc_txt = {
-		name = "Space Vegas",
-		text = {
-			"At the start of the",
-			"round, play {C:attention}space roulette",
-			"If {C:attention}this{} Joker lands face up,",
-			"gain {C:money}$#1#{} for each {C:attention}Joker{}"
-		}
-	},
 	attibutes = {"economy", "chance", "joker_slot", "joker", "space"},
 	config = { gain = 6},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = spacerouletteinfo
+		info_queue[#info_queue + 1] = {key = "SpaceRoulette", set = "Other"}
 		return { vars = { card.ability.gain }}
 	end,
 	atlas = "vegas_jokers",
@@ -606,14 +531,6 @@ SMODS.Joker{
 local wormhole_joker
 wormhole_joker = SMODS.Joker{
 	key = "wormhole",
-	loc_txt = {
-		name = "Wormhole",
-		text = {
-			"Adds a {C:dark_edition}Negative{} copy of any",
-			"{C:attention}Consumable{} to the bottom of",
-			"your {C:attention}deck{} when it is used"
-		}
-	},
 	attibutes = {"generation", "tarot", "planet", "spectral", "space"},
 	config = { extra = { sets = { "Tarot", "Planet", "Spectral" }}},
 	loc_vars = function(self, info_queue, card)
@@ -682,13 +599,6 @@ end
 
 SMODS.Joker{
 	key = "inthesky",
-	loc_txt = {
-		name = "Diamonds in the Sky",
-		text = {
-			"First {C:attention}#1#{} scored {V:1}Diamond{} cards",
-			"in {C:attention}first{} played hand become {C:dark_edition}Negative{}"
-		}
-	},
 	attibutes = {"suit", "diamonds", "hands", "editions", "space"},
 	config = { extra = { cards = 2, suit = 'Diamonds' }},
 	loc_vars = function(self, info_queue, card)
@@ -723,13 +633,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "observable",
-	loc_txt = {
-		name = "Observable Universe",
-		text = {
-			"{C:dark_edition}Negative{} playing cards held",
-			"in hand give {X:red,C:white}X#1#{} Mult"
-		}
-	},
 	attibutes = {"xmult", "editions", "space"},
 	config = { extra = { xmult = 1.5 }},
 	loc_vars = function(self, info_queue, card)
@@ -792,15 +695,7 @@ CRT_shutoff = SMODS.ScreenShader{
 }
 
 SMODS.Joker{
-	key = "Big Bounce",
-	loc_txt = {
-		name = "The Big Bounce",
-		text = {
-			"When {C:attention}Blind {C:red}failed{}",
-			"restart your run with",
-			"the same {C:green}Seed{}"
-		}
-	},
+	key = "Big_Bounce",
 	attibutes = {"passive", "prevents_death", "space"},
 	config = { extra = {  }},
 	loc_vars = function(self, info_queue, card)
@@ -863,14 +758,6 @@ SMODS.Joker{
 
 SMODS.Joker{
 	key = "bigbang",
-	loc_txt = {
-		name = "The Big Bang Theory",
-		text = {
-			"Sell {C:attention}#1#{} Jokers to store",
-			"enough compacted energy to",
-			"create a {V:1}Legendary{} Joker"
-		}
-	},
 	attibutes = {"generation", "joker", "on_sell", "space"},
 	config = { extra = {JokerCount = 0, JokerNeed = 15}},
 	loc_vars = function(self, info_queue, card)
@@ -915,15 +802,6 @@ SMODS.Joker{
 --Blinds
 SMODS.Blind{
 	key = "whitehole",
-	loc_txt = {
-		name = "White Hole",
-		text = {
-			"Decrease level of {C:red}all{}",
-			"poker hands by 1 when played",
-			"{s:0.8}Created by team {s:0.8,V:1}People Found In Vegas{}",
-			"{s:0.8}Code & Art by {s:0.8,C:chips}Ben Roffey{}"
-		}
-	},
 	atlas = "vegas_blinds",
 	pos = {x = 0, y = 0},
 	discovered = true,
@@ -1362,14 +1240,6 @@ SMODS.Sound{
 local hd
 hd = SMODS.Blind{ --unfortunately isn't perfect when returning from save, but should be fine in normal play. Give losing a go!
 	key = "heatdeath",
-	loc_txt = {
-		name = "Heat Death",
-		text = {
-			"{E:worm_vegas_timer}#1#:#2#",
-			"{s:0.8}Created by team {s:0.8,V:1}People Found In Vegas{}",
-			"{s:0.8}Code & Art by {s:0.8,C:chips}Ben Roffey{}"
-		}
-	},
 	config = {time = 2*60, timing = false, gamespeed_factor = 1.5, game_over_override = false, base_speed = 4, extra = {gamespeed = 4, current = 2*60}},
 	loc_vars = function(self)
 		adjust_time(self)
@@ -1409,7 +1279,7 @@ hd = SMODS.Blind{ --unfortunately isn't perfect when returning from save, but sh
 	atlas = "vegas_blinds",
 	pos = {x = 0, y = 1},
 	discovered = true,
-	boss = {min = 1},
+	boss = {min = 4}, --adjusted to 4 due to playtesting feedback
 	dollars = 5,
     mult = 2,
 	boss_colour = HEX("000000"),
@@ -1469,13 +1339,6 @@ end
 SMODS.Consumable {
     key = 'expanse',
     set = 'Spectral',
-	loc_txt = {
-		name = "Expanse",
-		text = {
-			"Add {C:dark_edition}Negative{} to up",
-			"to {C:attention}#1#{} selected playing cards"
-		}
-	},
 	atlas = "vegas_jokers",
     pos = { x = 4, y = 3 },
 	pixel_size = { w = 69 },
@@ -1537,13 +1400,6 @@ SMODS.PokerHand{
 SMODS.Consumable {
     key = 'kepler',
     set = 'Planet',
-	loc_txt = {
-		name = "Kepler-186 f",
-		text = {
-			"Permanently adds {C:white,X:mult}X#1#{} Mult",
-			"to {C:attention}#2#{} selected cards in hand"
-		}
-	},
 	atlas = "vegas_exoplanets",
 	set_card_type_badge = function(self, card, badges)
  		badges[#badges] = create_badge("Exoplanet", G.C.SECONDARY_SET.Planet, G.C.WHITE, 1 )
@@ -1609,14 +1465,6 @@ SMODS.PokerHand{
 SMODS.Consumable {
     key = 'gj',
     set = 'Planet',
-	loc_txt = {
-		name = "GJ 504 b",
-		label = "Exoplanet",
-		text = {
-			"Permanently adds {C:mult}+#1#{} Mult",
-			"to {C:attention}#2#{} selected cards in hand"
-		}
-	},
 	atlas = "vegas_exoplanets",
 	set_card_type_badge = function(self, card, badges)
  		badges[#badges] = create_badge("Exoplanet", G.C.SECONDARY_SET.Planet, G.C.WHITE, 1 )
@@ -1682,14 +1530,6 @@ SMODS.PokerHand{
 SMODS.Consumable {
     key = 'wasp',
     set = 'Planet',
-	loc_txt = {
-		name = "Wasp J1407b",
-		label = "Exoplanet",
-		text = {
-			"Permanently adds {C:chips}+#1#{} Chips",
-			"to {C:attention}#2#{} selected cards in hand"
-		}
-	},
 	atlas = "vegas_exoplanets",
 	set_card_type_badge = function(self, card, badges)
  		badges[#badges] = create_badge("Exoplanet", G.C.SECONDARY_SET.Planet, G.C.WHITE, 1 )
