@@ -1473,7 +1473,7 @@ SMODS.Tag {
     ppu_artist = {'ice'},
     pos = { x = 0, y = 0 },
     loc_vars = function(self, info_queue, tag)
-        info_queue[#info_queue + 1] = G.P_CENTERS.p_worm_tbp_module_mega_1
+        info_queue[#info_queue + 1] = G.P_CENTERS.p_worm_module_mega_1
     end,
     apply = function(self, tag, context)
         if context.type == 'new_blind_choice' then

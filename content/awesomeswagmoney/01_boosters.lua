@@ -91,6 +91,9 @@ return {
         in_pool = function()
 		    return (G.GAME.round_resets.ante > 1)
 	    end,
+        loc_vars = function(self, info_queue, card)
+            info_queue[#info_queue+1] = G.P_CENTERS.p_worm_wormhole_mega_1
+        end,
         apply = function(self, tag, context)
               if context.type == "new_blind_choice" then
                   tag:yep("+", G.C.ATTENTION, function()

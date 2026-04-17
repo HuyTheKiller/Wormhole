@@ -123,7 +123,9 @@ SMODS.Tag {
     atlas = 'util_tag',
     pos = { x = 0, y = 0 },
     ppu_team = {"util-modders"},
-
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.p_worm_util_spaces_mega
+    end,
     apply = function (self, tag, context)
         if context.type == 'new_blind_choice' then
             local lock = tag.ID
