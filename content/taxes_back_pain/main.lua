@@ -354,6 +354,7 @@ SMODS.Joker({
 	blueprint_compat = false,
 	eternal_compat = false,
 	perishable_compat = false,
+    attributes = {"generation", "space"},
     ppu_team = {'tbp'},
     ppu_artist = {'ice'},
     module_types = {'core', 'weapons', 'utility', 'thrusters'},
