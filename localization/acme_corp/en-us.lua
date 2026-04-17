@@ -87,7 +87,7 @@ return {
                 name = 'ACME Instant Tunnel Apparatus',
                 text = {
                     '{X:attention,C:white}After{} scoring a Hand containing {C:attention}#3#{} Suits,',
-                    '{X:attention,C:white}Use{} for a {C:green}#1# in #2# chance{} to turn',
+                    '{X:attention,C:white}Use{} for a {C:green}#1# in #2#{} chance to turn',
                     'each card {C:attention}held in hand',
                     "to {C:attention}1{} selected Card's {C:attention}Suit"
                 }
@@ -95,7 +95,7 @@ return {
             c_worm_acme_brush_alt = {
                 name = 'ACME Instant Tunnel Apparatus',
                 text = {
-                    '{X:attention,C:white}Use{} for a {C:green}#1# in #2# chance{} to turn',
+                    '{X:attention,C:white}Use{} for a {C:green}#1# in #2#{} chance to turn',
                     'each card {C:attention}held in hand',
                     "to {C:attention}1{} selected Card's {C:attention}Suit"
                 }
