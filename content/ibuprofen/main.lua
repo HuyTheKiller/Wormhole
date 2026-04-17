@@ -430,28 +430,29 @@ SMODS.Joker {
   ppu_team = { 'Team Ibuprofen' },
   loc_txt = {
     name = 'Red Shift',
-    text = { "{C:attention}Enhanced Cards{} are {C:attention}Mult Cards{}" }
+    text = { "Played {C:attention}Enhanced{} Cards give", "{C:mult}+#1#{} Mult when scored" }
   },
   atlas = "Jokers",
   rarity = 1,
   cost = 4,
   unlocked = true,
   discovered = true,
-  blueprint_compat = false,
+  blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
   pos = { x = 3, y = 1 },
-  config = { extra = { } },
+  config = { extra = { mult = 4} },
 
-  attributes = {"enhancements", "passive", "space"},
+  attributes = {"enhancements", "mult", "space"},
 
   loc_vars = function(self, info_queue, center)
-    info_queue[#info_queue + 1] = G.P_CENTERS['m_mult']
-    return { vars = {} }
+    return { vars = { center.ability.extra.mult} }
   end,
 
   calculate = function(self, card, context)
-    if context.check_enhancement and context.other_card.config.center.key == "c_base" then return else return {m_mult = true } end
+    if context.cardarea == G.play and context.individual and context.other_card and next(SMODS.get_enhancements(context.other_card)) then
+      return {mult = card.ability.extra.mult}
+    end
   end
 }
 
