@@ -405,6 +405,8 @@ SMODS.Joker {
 		}
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = G.P_CENTERS.c_moon
+		info_queue[#info_queue+1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
 		return { vars = {} }
 	end,
 	calculate = function(self, card, context)

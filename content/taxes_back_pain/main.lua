@@ -487,7 +487,7 @@ SMODS.Joker({
 function Wormhole.tbp.change_durability(ship, module_type, change, abs, silent)
     ship = ship or SMODS.find_card("j_worm_tbp_spaceship")[1]
     if ship and ship.ability.extra.modules[module_type] and ship.ability.extra.modules[module_type].durability then
-        local flags = SMODS.calculate_context({ wormhome_tbp_module_change_durability = true, amount = change, module = module_type, card = ship })
+        local flags = SMODS.calculate_context({ wormhome_tbp_module_change_durability = true, amount = change, module = module_type, card = ship, during_uninstall = G.GAME.tbp_during_uninstall })
         change = flags.modify or change
         
         ship.ability.extra.modules[module_type].durability = ship.ability.extra.modules[module_type].durability + change
@@ -550,7 +550,9 @@ function Wormhole.tbp.uninstall_module(ship, module, uninstall_type, silent)
     if ship.ability.extra.modules[module] then
 
         if not silent then
+            G.GAME.tbp_during_uninstall = true
             SMODS.calculate_context({wormhome_tbp_module_uninstall = true, card = ship, module = module, type = uninstall_type})
+            G.GAME.tbp_during_uninstall = false
         end
 
         if uninstall_type == 'failed' then
@@ -1027,11 +1029,13 @@ Wormhole.tbp.Module({
     end,
     module_calculate = function (self, module, context, card)
         if context.wormhome_tbp_module_change_durability and context.card == card and context.module ~= self.slot then
-            if context.amount < 0 then
-                Wormhole.tbp.change_durability(card, self.slot, -module.depletes)
-                return {
-                    modify = 0
-                }
+            if not context.during_uninstall then
+                if context.amount < 0 then
+                    Wormhole.tbp.change_durability(card, self.slot, -module.depletes)
+                    return {
+                        modify = 0
+                    }
+                end
             end
         end
     end
