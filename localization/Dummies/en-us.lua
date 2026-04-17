@@ -220,6 +220,7 @@ return {    -- yo it's GHOSTSALT here look at me TYPING before i SUBMIT THIS THI
                     "Multiply {C:chips}Chips{} and {C:mult}Mult{} by",
                     "half of your current {C:spectral}Oxygen{}",
                     "{C:inactive,s:0.8}(ex. {C:attention,s:0.8}2:53{C:inactive,s:0.8} -> {X:purple,C:white,s:0.8}X1.27{C:inactive,s:0.8} Mult and Chips){}",
+                    "{C:inactive,s:0.8}(Multiplier cannot go below {X:purple,C:white,s:0.8}X1{C:inactive,s:0.8}){}",
                 } }
             },
             v_worm_dum_oxygentank = {

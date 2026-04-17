@@ -125,8 +125,8 @@ return {
                 name = "First Contact",
                 text = {
                     "{C:dark_edition}Alien{} cards may",
-                    "appear in any of",
-                    "the {C:attention}Planet Packs{}"
+                    "appear in any",
+                    "{C:planet}Celestial Pack{}"
                 }
             },
 

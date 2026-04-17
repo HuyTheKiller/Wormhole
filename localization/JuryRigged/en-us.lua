@@ -187,7 +187,7 @@ return {
         name = 'Launch pad',
         text = {
           "Adds {C:attention}#1#{} {C:worm_jr_satellite}Satellite{} card",
-          "to opened {C:planet}Celestial{} packs"
+          "to {C:planet}Celestial{} packs"
         }
       },
       v_worm_jr_flyby = {
