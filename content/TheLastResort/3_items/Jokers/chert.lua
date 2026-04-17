@@ -7,6 +7,8 @@ SMODS.Joker {
     blueprint_compat = true,
     perishable_compat = true,
 
+    attributes = {"generation", "space"},
+
     calculate = function(self, card, context)
         if context.setting_blind and not card.getting_sliced and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
             G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1

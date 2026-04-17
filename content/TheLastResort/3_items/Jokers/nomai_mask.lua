@@ -6,6 +6,7 @@ SMODS.Joker{
 	cost = 8,
 	blueprint_compat = false,
 	perishable_compat = false,
+	attributes = {"passive", "space"},
 	loc_vars = function (self, info_queue, card)
 		return {vars = {colours = {SMODS.ConsumableTypes.worm_tlr_constellation.secondary_colour}}}
 	end,
