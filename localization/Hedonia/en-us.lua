@@ -15,7 +15,7 @@ return {
                 name = 'Casino Bartender',
                 text = {
                     'Add {C:edition}{E:1}Drunk{} to scored',
-                    '{C:attention}Lucky Cards{}, create a Menu Item',
+                    '{C:attention}Lucky Cards{}, create a {C:worm_hedonia_menu}Menu Item{}',
                     'when a {C:attention}Lucky Card{} triggers',
                     '{C:inactive}(Must have room)',
                 }
@@ -46,7 +46,7 @@ return {
             j_worm_hedonia_speed = {
                 name = 'Sous Chef',
                 text = {
-                    'Creates a {C:attention}Food{} Menu Item when scoring',
+                    'Creates a {C:attention}Food{} {C:worm_hedonia_menu}Menu Item{} when scoring',
                     'based on number of held {C:attention}Jokers{}',
                     '{C:inactive}(Currently {C:green}#1# in #2#{C:inactive} chance){}',
                     '{C:inactive}(Must have room)',
@@ -55,7 +55,7 @@ return {
             j_worm_hedonia_bar_mitzvah = {
                 name = 'Bar Mitzvah',
                 text = {
-                    'Creates a Menu Item',
+                    'Creates a {C:worm_hedonia_menu}Menu Item{}',
                     'after {C:attention}#1#{} played hands',
                     '{C:inactive}(currently {C:attention}#2#{C:inactive} hands left){}',
                     '{C:inactive,s:0.8}(put Aliyah reading here){}'
@@ -94,7 +94,7 @@ return {
             c_worm_hedonia_jawbreaker = {
                 name = 'Jawbreaker',
                 text = {
-                    'Add {C:chips}#1#{} bonus Chips to a',
+                    'Add {C:chips}+#1#{} bonus Chips to a',
                     'random card held in hand'
                 }
             },
@@ -102,7 +102,7 @@ return {
                 name = 'Satonion Rings',
                 text = {
                     'All cards held in hand sober up',
-                    'if any {C:red}OR{} gain {C:money}$#1#{} if there are',
+                    '{C:red}OR{} gain {C:money}$#1#{} if there are',
                     'no drunk cards in hand'
                 }
             },
@@ -126,7 +126,7 @@ return {
                 name = "#3#",
                 text = {
                     "Order {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{} Menu items to",
+                    "{C:attention}#2#{} {C:worm_hedonia_menu}Menu items{} to",
                     "be used immediately"
                 }
             },
