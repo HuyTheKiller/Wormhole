@@ -10,7 +10,7 @@ SMODS.Joker({
     ppu_artist = { "fooping" },
     ppu_coder = { "fooping" },
     ppu_team = { "riverboat" },
-    attributes = { "xmult" },
+    attributes = { "xmult" , "joker", "hands", "space"},
     loc_vars = function(self, info_queue, card)
         local hands = G.GAME and G.GAME.hands_played or 0
         local bought = G.GAME and G.GAME.worm_jokers_bought or 0

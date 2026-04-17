@@ -18,7 +18,7 @@ SMODS.Joker {
     ppu_coder = { "blamperer" },
     ppu_artist = { "fooping" },
     ppu_team = { "riverboat" },
-    attributes = { "chips", "chance", "unscored", "destroy_card" },
+    attributes = { "chips", "chance", "unscored", "destroy_card", "space"},
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "worm_riverboat_worm_hole")
         return {

@@ -28,7 +28,7 @@ SMODS.Joker {
     ppu_coder = { "blamperer" },
     ppu_artist = { "camo" },
     ppu_team = { "riverboat" },
-    attributes = { "xmult", "planet", "space" },
+    attributes = { "xmult", "planet", "space", "hand_type"},
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
