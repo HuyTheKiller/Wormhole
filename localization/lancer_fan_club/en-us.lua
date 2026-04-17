@@ -343,7 +343,8 @@ return {
             worm_lfc_meteor_seal = {
                 name = "Meteor Seal",
                 text = {
-                    "Creates a {C:attention}clickable",
+                    "When scored,",
+                    "creates a {C:attention}clickable",
                     "{C:lfc_meteor}falling meteor{} that",
                     "gives {C:money}$#1#{} on hit"
                 }

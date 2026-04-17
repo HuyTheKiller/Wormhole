@@ -325,7 +325,7 @@ local Other = {
 			'Create a tier {C:attention}2{}',
 			'{C:worm_tlr_constellation}Constellation{} when scored',
 			'if chips scored exceeds',
-			'{C:attention}#1#%{} of required chips',
+			'{C:attention}#1#%{} of {C:purple}Blind Requirement',
 			'{C:inactive}(Must have room)'
 		}
 	},
