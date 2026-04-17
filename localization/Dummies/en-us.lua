@@ -165,7 +165,7 @@ return {    -- yo it's GHOSTSALT here look at me TYPING before i SUBMIT THIS THI
             j_worm_dum_mouthwash = {
                 name = "Mouthwash",
                 text = {
-                    "When Blind is selected,",
+                    "When {C:attention}Blind{} is selected,",
                     "{C:attention}downgrade{} a random",
 					"poker hand, then",
                     "gain {X:mult,C:white}X#1#{} Mult",
