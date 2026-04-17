@@ -16,6 +16,7 @@ SMODS.Joker({
     ppu_artist = {"comykel"},
     ppu_coder = { "mariofan" },
     ppu_team = { "polar_skull" },
+    attributes = {"hand_type", "generation", "spectral", "space"},
     config = { extra = { poker_hand = "High Card", cards_created = 2, still_successful = true } },
     loc_vars = function(self, info_queue, card)
         return { vars = { 
@@ -109,6 +110,8 @@ SMODS.Joker {
     ppu_coder = { "cloudzxiii" },
     ppu_team = { "polar_skull" },
 
+    attributes = {"boss_blind", "hand_type", "space"},
+
     config = {},
 
     calculate = function(self, card, context)
@@ -163,6 +166,8 @@ SMODS.Joker {
     ppu_artist = {"comykel", "jade"},
     ppu_coder = { "cloudzxiii", "noodlemire" },
     ppu_team = { "polar_skull" },
+
+    attributes = {"xmult", "hand_type", "space"},
 
     config = {
         extra = {
@@ -220,6 +225,8 @@ SMODS.Joker {
     ppu_artist = {"mariofan","comykel"},
     ppu_coder = { "cloudzxiii" },
     ppu_team = { "polar_skull" },
+
+    attributes = {"editions", "passive", "space"},
 
     config = {},
 
