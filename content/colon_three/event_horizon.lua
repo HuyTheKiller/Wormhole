@@ -9,7 +9,7 @@ SMODS.Joker {
     ppu_coder = { "meta" },
     ppu_artist = { "notmario", "lordruby" },
     ppu_team = { ":3" },
-    rarity = 1,
+    rarity = 2,
     cost = 5,
 
     loc_vars = function(self, info_queue, card)
