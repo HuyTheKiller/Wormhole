@@ -117,7 +117,7 @@ PotatoPatchUtils.CREDITS.register_page = function(mod)
 		return tt
 	end
 	table.insert(tt, {
-		label = "Jtem 2 config",
+		label = "Keybinds",
 		tab_definition_function = function()
 			return {
 				n = G.UIT.ROOT,
@@ -128,20 +128,6 @@ PotatoPatchUtils.CREDITS.register_page = function(mod)
 					align = "cm",
 				},
 				nodes = {
-					{
-						n = G.UIT.R,
-						config = {
-							align = "cm",
-							padding = 0.05,
-						},
-						nodes = {
-							create_toggle({
-								label = "Quantum Rock",
-								ref_table = WORM_JTEM.quantum_rock,
-								ref_value = "enabled",
-							}),
-						},
-					},
 					{
 						n = G.UIT.R,
 						config = {

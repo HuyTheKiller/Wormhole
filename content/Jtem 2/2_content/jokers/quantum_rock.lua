@@ -71,13 +71,13 @@ local rock = SMODS.Joker({
 
 local function is_rock_present()
 	return G.worm_quantum_rock
-			and not G.worm_quantum_rock.REMOVED
-			and not G.worm_quantum_rock.worm_delay_quantum_rock_remove
-			and true
+		and not G.worm_quantum_rock.REMOVED
+		and not G.worm_quantum_rock.worm_delay_quantum_rock_remove
+		and true
 		or false
 end
 local function is_rock(card)
-    return card and (card.worm_was_quantum_rock or (card.config.center and card.config.center.key == rock.key))
+	return card and (card.worm_was_quantum_rock or (card.config.center and card.config.center.key == rock.key))
 end
 local function emplace_and_shuffle_in_area(card, area)
 	if not area.cards then
@@ -339,6 +339,7 @@ function G.FUNCS.overlay_menu(...)
 							end
 							return e
 						end
+
 						local parent = crawl(G.worm_quantum_rock)
 						if parent ~= G.OVERLAY_MENU then
 							destroy_rock(true)
@@ -493,7 +494,7 @@ local function calculate_rock(context)
 end
 
 WORM_JTEM.quantum_rock = {
-	enabled = true,
+	enabled = Wormhole.config.quantum_rock,
 	center = rock,
 	calculate = calculate_rock,
 }

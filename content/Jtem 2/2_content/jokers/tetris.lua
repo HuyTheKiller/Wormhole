@@ -42,7 +42,8 @@ end
 function JtemTGM.UI.InitBind(button)
 	button.config.button = nil
 	JtemTGM.UI.bind_button = button
-	JtemTGM.UI.bind_key = button.config.ref_table.key
+	JtemTGM.UI.bind_key = button.config.ref_table.bind
+	JtemTGM.UI.bind_real = button.config.ref_table.key
 	JtemTGM.UI.UpdateBindButtonText("[ " .. "WAITING" .. " ]")
 end
 
@@ -53,6 +54,7 @@ function love.keypressed(key, scancode, isrepeat)
 	end
 	if not JtemTGM.UI.bind_button then return end
 	JtemTGM.UI.CompleteBind(scancode)
+	SMODS.save_mod_config(Wormhole)
 end
 
 local non_safe_keys_table = {
@@ -76,7 +78,7 @@ function JtemTGM.UI.CompleteBind(key)
 	JtemTGM.UI.UpdateBindButtonText(JtemTGM.UI.LocalizeKeybind(key) or "None")
 	if JtemTGM.UI.bind_button then
 		JtemTGM.UI.bind_button.config.button = "jtem2_tetris_start_bind"
-		JtemTGM.UI.bind_button.config.ref_table.bind = key
+		JtemTGM.UI.bind_button.config.ref_table.key = key
 	end
 	JtemTGM.UI.bind_button = nil
 	JtemTGM.UI.bind_key = nil
@@ -84,7 +86,7 @@ end
 
 function JtemTGM.UI.CancelBind()
 	if not JtemTGM.UI.bind_button then return end
-	JtemTGM.UI.UpdateBindButtonText(JtemTGM.UI.LocalizeKeybind(JtemTGM.UI.bind_key) or "None")
+	JtemTGM.UI.UpdateBindButtonText(JtemTGM.UI.LocalizeKeybind(JtemTGM.UI.bind_real) or "None")
 	if JtemTGM.UI.bind_button then
 		JtemTGM.UI.bind_button.config.button = "jtem2_tetris_start_bind"
 	end
@@ -138,7 +140,7 @@ function JtemTGM.UI.CreateKeybindUI(key, bind)
 				minh = 0.4,
 				maxh = 0.4,
 				ref_table = {
-					key = key,
+					key = Wormhole.config.jtem2_tetris_controls[bind],
 					bind = bind,
 				},
 				focus_args = { nav = "wide" },
