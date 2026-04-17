@@ -177,28 +177,28 @@ local CONSTELLATIONS = {
 	c_worm_tlr_const_pictor_t1 = {
 		name = "Pictor",
 		text = {
-			"{C:attention}+1{} Hand size for",
+			"{C:attention}+1{} hand size for",
 			"the next {C:attention}Blind"
 		}
 	},
 	c_worm_tlr_const_pictor_t2 = {
 		name = "Pictor",
 		text = {
-			"{C:attention}+2{} Hand size for",
+			"{C:attention}+2{} hand size for",
 			"the next {C:attention}Blind"
 		}
 	},
 	c_worm_tlr_const_pictor_t3 = {
 		name = "Pictor",
 		text = {
-			"{C:attention}+3{} Hand size for",
+			"{C:attention}+3{} hand size for",
 			"the next {C:attention}Blind"
 		}
 	},
 	c_worm_tlr_const_pictor_t4 = {
 	name = "Pictor",
 		text = {
-			"{C:attention}+4{} Hand size for",
+			"{C:attention}+4{} hand size for",
 			"the next {C:attention}Blind"
 		}
 	},
@@ -208,9 +208,9 @@ local CONSTELLATIONS = {
 		text = {
 			"Creates the last",
 			"{V:1}Constellation{} card",
-			"used during this run",
-			"as a Noticeable",
-			"{V:1, s:0.8}Canis Minor{s:0.8} excluded"
+			"used during this run as",
+			"a {V:1}Noticeable Constellation",
+			"{V:1,s:0.8}Canis Minor{s:0.8} excluded"
 		}
 	},
 	c_worm_tlr_const_canis_minor_t2 = {
@@ -218,9 +218,9 @@ local CONSTELLATIONS = {
 		text = {
 			"Creates the last",
 			"{V:1}Constellation{} card",
-			"used during this run",
-			"as a Bright",
-			"{V:1, s:0.8}Canis Minor{s:0.8} excluded"
+			"used during this run as",
+			"a {V:1}Bright Constellation",
+			"{V:1,s:0.8}Canis Minor{s:0.8} excluded"
 		}
 	},
 	c_worm_tlr_const_canis_minor_t3 = {
@@ -228,8 +228,8 @@ local CONSTELLATIONS = {
 		text = {
 			"Creates the last",
 			"{V:1}Constellation{} card",
-			"used during this run",
-			"as a {C:dark_edition}Negative{} Bright",
+			"used during this run as",
+			"a {C:dark_edition}Negative{} {V:1}Bright Constellation",
 			"{s:0.8,V:1}Canis Minor{s:0.8} excluded"
 		}
 	},
@@ -238,9 +238,9 @@ local CONSTELLATIONS = {
 		text = {
 			"Creates the last",
 			"{V:1}Constellation{} card",
-			"used during this run",
-			"as 2 {C:dark_edition}Negative{} Shining",
-			"{V:1, s:0.8}Canis Minor{s:0.8} excluded"
+			"used during this run as",
+			"2 {C:dark_edition}Negative{} {V:1}Shining Constellations",
+			"{V:1,s:0.8}Canis Minor{s:0.8} excluded"
 		}
 	},
 	c_worm_tlr_const_draco_t1 = {
