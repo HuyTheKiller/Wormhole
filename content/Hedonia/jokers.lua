@@ -124,12 +124,14 @@ SMODS.Joker {
             local can_spawn = can_spawn and SMODS.pseudorandom_probability(card, 'rings', #G.jokers.cards, G.jokers.config.card_limit)
             if can_spawn then
                 G.GAME.consumeable_buffer = (G.GAME.consumeable_buffer or 0) + 1
-                local candidates = {'c_worm_hedonia_jawbreaker','c_worm_hedonia_rings','c_worm_hedonia_debbie','c_worm_hedonia_jam'}
+                local spawn_key = SMODS.poll_object({ attributes = {'hedonia_menu_food'} })
+                if spawn_key == 'j_joker' then spawn_key = 'c_worm_hedonia_rings' end
 
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         play_sound('timpani')
-                        SMODS.add_card({area = G.consumeables, key_append = 'speed', key = pseudorandom_element(candidates)})
+                        SMODS.add_card({area = G.consumeables, key_append = 'speed', key = spawn_key})
+                        card:juice_up()
                         G.GAME.consumeable_buffer = 0
                         return true
                     end

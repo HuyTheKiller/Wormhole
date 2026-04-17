@@ -21,6 +21,10 @@ SMODS.Atlas {
     path = "Hedonia/boosters.png"
 }
 
+SMODS.Attribute {
+    key = 'hedonia_menu_food'
+}
+
 SMODS.Consumable {
     key = "hedonia_hadron",
     set = "worm_hedonia_menu",
@@ -115,6 +119,7 @@ SMODS.Consumable {
     ppu_artist = {'hellboydante', 'qunumeru'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
     use = function(self, card, area, copier)
         local card_to_bonus = pseudorandom_element(G.hand.cards, 'alcohol') --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/spectrals.lua#L26
         card_to_bonus.ability.perma_bonus = (card_to_bonus.ability.perma_bonus or 0) + card.ability.extra.bonus --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/jokers.lua#L1442
@@ -145,6 +150,7 @@ SMODS.Consumable {
     ppu_artist = {'qunumeru'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
     use = function(self, card, area, copier)
         local sober = true
         for i, v in pairs(G.hand.cards) do
@@ -208,6 +214,7 @@ SMODS.Consumable {
     ppu_artist = {'hellboydante', 'qunumeru'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
     use = function(self, card, area, copier)
         local rank = pseudorandom_element(SMODS.Ranks, 'debbie').key
         --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/tarots.lua#L695-L732
@@ -267,6 +274,7 @@ SMODS.Consumable {
     ppu_artist = {'qunumeru'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
     use = function(self, card, area, copier)
         local suit = pseudorandom_element(SMODS.Suits, 'space_jam').key
         --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/tarots.lua#L695-L732
