@@ -2,7 +2,7 @@ local rocket_text = {
 	"All played hands score as",
 	"{C:attention}#1#{}, while also",
 	"gaining the original hand's",
-	"{C:mult}Mult{} and {C:chips}Chips{} for {C:attention}#2#{} #4#",
+	"{C:chips}Chips{} and {C:mult}Mult{} for {C:attention}#2#{} #4#",
 	"{B:1,C:white}#3#",
 }
 
@@ -124,7 +124,7 @@ return {
 				text = {
 					"All played hands contain every",
 					"{C:legendary,E:1}Poker Hand{} for {C:attention}#2#{} #4#,",
-					"combining all base {C:mult}Mult{} and {C:chips}Chips{} values",
+					"combining all base {C:chips}Chips{} and {C:mult}Mult{} values",
 					"{B:1,C:white}#3#",
 				},
 			},
@@ -133,7 +133,7 @@ return {
 				text = {
 					"All played hands contain every",
 					"{C:legendary,E:1}Poker Hand{} for {C:attention}#2#{} #4#,",
-					"combining all base {C:mult}Mult{} and {C:chips}Chips{} values",
+					"combining all base {C:chips}Chips{} and {C:mult}Mult{} values",
 					"{C:inactive}(Not affected by {C:attention}Perpetual Motion Machine{C:inactive})",
 					"{B:1,C:white}#3#",
 				},
