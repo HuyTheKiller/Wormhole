@@ -23,6 +23,9 @@ SMODS.Joker({
 			do_it_once = 0,
 		},
 	},
+
+	attributes = {"destroy_card", "planet", "space"},
+
 	loc_vars = function(self, info_queue, card) end,
 	calculate = function(self, card, context)
 		if context.hand_drawn then

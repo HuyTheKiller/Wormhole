@@ -1715,6 +1715,7 @@ SMODS.Joker {
 	attributes = {
 		'xmult',
 		'scaling',
+		"space"
 	},
 
 	config = { extra = { game_state = {} } },

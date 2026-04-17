@@ -493,6 +493,7 @@ SMODS.Joker({
 		"chips",
 		"xmult",
 		"xchips",
+		"suit",
 		"diamonds",
 		"economy",
 		"generation",

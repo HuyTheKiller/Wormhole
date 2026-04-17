@@ -28,6 +28,8 @@ SMODS.Joker({
 		},
 	},
 
+	attributes = {"hand_type", "chance", "rank", "king", "generation", "planet", "space"},
+
 	loc_vars = function(self, info_queue, card)
 		local nominator, denominator =
 			SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "jtem2_egogeocentrism")

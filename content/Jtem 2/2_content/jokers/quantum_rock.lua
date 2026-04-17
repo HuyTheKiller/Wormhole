@@ -45,6 +45,8 @@ local rock = SMODS.Joker({
 		Xmult = 3,
 	},
 
+	attributes = {"xmult", "space"},
+
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {

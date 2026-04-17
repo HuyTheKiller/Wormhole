@@ -36,6 +36,8 @@ SMODS.Joker({
 		extra = {},
 	},
 
+	attributes = {"mult", "chips", "hand_type", "space"},
+
 	set_ability = function(self, card)
 		if card.ability.extra.use_chips == nil then
 			card.ability.extra.use_chips = pseudorandom("worm_jtem2_stair") < 0.5

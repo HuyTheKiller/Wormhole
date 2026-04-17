@@ -24,6 +24,7 @@ SMODS.Joker({
 	attributes = {
 		"space",
 		"scaling",
+		"passive"
 	},
 	config = {
 		extra = {

@@ -2,7 +2,7 @@ if not to_big then to_big = function(val) return val end end
 
 SMODS.Joker({
     key = 'dum_mouthwash',
-    attributes = {"xmult", "scaling"}
+    attributes = {"xmult", "scaling"},
     config = { extra = { xmult_gain = 0.15, xmult = 1 } },
     unlocked = true,
     rarity = 2,

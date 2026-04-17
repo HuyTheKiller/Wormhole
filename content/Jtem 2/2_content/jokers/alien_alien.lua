@@ -23,6 +23,8 @@ SMODS.Joker({
 	eternal_compat = true,
 	rental_compat = true,
 
+	attributes = {"chance", "generation", "tarot", "planet", "space", "alien"},
+
 	config = {
 		extras = {
 			n = 1,

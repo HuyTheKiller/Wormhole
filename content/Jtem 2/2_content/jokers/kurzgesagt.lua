@@ -15,6 +15,7 @@ SMODS.Joker({
 	rarity = 3,
 	blueprint_compat = false,
 	config = {},
+	attributes = {"enhancements", "modify_card", "space"},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_gold

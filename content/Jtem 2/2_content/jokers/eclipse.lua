@@ -148,6 +148,8 @@ SMODS.Joker({
 	rental_compat = true,
 	perishable_compat = false,
 
+	attributes = {"tarot", "planet", "discards", "hands", "space"},
+
 	config = {
 		extras = {
 			has_sun = false,

@@ -136,7 +136,7 @@ return {
 					{
 						"{X:purple,C:white,s:0.9}usable{}",
 						"Cause an {C:attention,E:worm_jtem2_snaking}Eclipse{} {C:inactive}(Solar or Lunar){}",
-						" by using respective {C:tarot}Tarots{} and {C:planet}Planets{} in order",
+						"by using respective {C:tarot}Tarots{} and {C:planet}Planets{} in order",
 						"Use {C:tarot}Sun{}, {C:tarot}Moon{}, {C:planet}Earth{} for {C:red}Solar{} Eclipse",
 						"Use {C:tarot}Sun{}, {C:planet}Earth{}, {C:tarot}Moon{} for {C:blue}Lunar{} Eclipse",
 						"{C:inactive}(Currently {V:1}#1#{C:inactive})",

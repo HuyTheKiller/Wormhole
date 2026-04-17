@@ -26,6 +26,7 @@ SMODS.Joker({
 		"modify_card",
 		"enhancements",
 		"space",
+		"planet"
 	},
 
 	loc_vars = function(self, info_queue, card)
