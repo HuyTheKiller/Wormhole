@@ -157,7 +157,7 @@ return {
                 text = {
                     "This Joker gains {X:mult,C:white} X#2# {} Mult",
                     "if the {C:attention}first hand{} of the round",
-                    "scores more than {C:attention}100%{} of the Blind",
+                    "scores more than {C:attention}100%{} of the {C:attention}Blind{}",
                     "Resets if score is less",
                     "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"
                 }

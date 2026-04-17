@@ -489,7 +489,7 @@ return {
 			exc_worm_meow_dread = {
 				name = "Dread",
 				text = {
-					"{C:attention}Replace{} this Boss Blind",
+					"{C:attention}Replace{} this {C:attention}Boss Blind{}",
 					"with a {C:red}Showdown Blind{}",
 				},
 			},

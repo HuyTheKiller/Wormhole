@@ -796,7 +796,7 @@ SMODS.Joker{
 	loc_txt = {
 		name = "The Big Bounce",
 		text = {
-			"When Blind {C:red}failed{}",
+			"When {C:attention}Blind {C:red}failed{}",
 			"restart your run with",
 			"the same {C:green}Seed{}"
 		}

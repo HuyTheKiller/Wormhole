@@ -6,7 +6,7 @@ return {
                 text = {
                     {
                         "When {C:attention}primed{}, {C:red}+#1#{} Discard",
-                        "for this Blind, then is {C:abs_drinks}drank{}"
+                        "for this {C:attention}Blind{}, then is {C:abs_drinks}drank{}"
                     },
                     {
                         "{C:abs_drinks}Refill{} by playing a",
@@ -25,7 +25,7 @@ return {
                     {
                         "{C:inactive,s:0.8}After being Refilled:{}",
                         "When {C:attention}primed,{} {C:red}+#1#{} Discard",
-                        "for this Blind, then is {C:abs_drinks}drank{}"
+                        "for this {C:attention}Blind{}, then is {C:abs_drinks}drank{}"
                     }
                 }
             },

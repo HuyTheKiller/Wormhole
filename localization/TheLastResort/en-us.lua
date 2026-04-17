@@ -3,20 +3,20 @@ local CONSTELLATIONS = {
 	c_worm_tlr_const_orion_t1 = {
 		name = "Orion",
 		text = {
-			"Reroll the Boss Blind"
+			"Reroll the {C:attention}Boss Blind{}"
 		}
 	},
 	c_worm_tlr_const_orion_t2 = {
 		name = "Orion",
 		text = {
-			"Set Boss Blind to",
+			"Set {C:attention}Boss Blind{} to",
 			"{C:attention}1{} of {C:attention}2{} choices"
 		}
 	},
 	c_worm_tlr_const_orion_t3 = {
 		name = "Orion",
 		text = {
-			"Set Boss Blind to",
+			"Set {C:attention}Boss Blind{} to",
 			"{C:attention}1{} of {C:attention}2{} choices",
 			"Reroll choices up to {C:attention}#1#{} time"
 		}
@@ -24,7 +24,7 @@ local CONSTELLATIONS = {
 	c_worm_tlr_const_orion_t4 = {
 		name = "Orion",
 		text = {
-			"Set Boss Blind to",
+			"Set {C:attention}Boss Blind{} to",
 			"{C:attention}1{} of {C:attention}2{} choices",
 			"Reroll choices up to {C:attention}#1#{} times",
 			"{C:inactive}Choices may include blinds{}",
@@ -64,27 +64,27 @@ local CONSTELLATIONS = {
 		name = "Perseus",
 		text = {
 			"{C:green}#1# in #2#{} chance to",
-			"disable current boss blind"
+			"disable current {C:attention}Boss Blind{}"
 		}
 	},
 	c_worm_tlr_const_perseus_t2 = {
 		name = "Perseus",
 		text = {
 			"{C:green}#1# in #2#{} chance to",
-			"disable current boss blind"
+			"disable current {C:attention}Boss Blind{}"
 		}
 	},
 	c_worm_tlr_const_perseus_t3 = {
 		name = "Perseus",
 		text = {
 			"{C:green}#1# in #2#{} chance to",
-			"disable current boss blind"
+			"disable current {C:attention}Boss Blind{}"
 		}
 	},
 	c_worm_tlr_const_perseus_t4 = {
 		name = "Perseus",
 		text = {
-			"Disable current boss blind",
+			"Disable current {C:attention}Boss Blind{}",
 		}
 	},
 	c_worm_tlr_const_serpens_t1 = {
@@ -247,21 +247,21 @@ local CONSTELLATIONS = {
 		name = "Draco",
 		text = {
 			"Create current",
-			"blind's {C:attention}Tag{}"
+			"{C:attention}Blind's{} {C:attention}Tag{}"
 		}
 	},
 	c_worm_tlr_const_draco_t2 = {
 		name = "Draco",
 		text = {
 			"Create this ante's",
-			"blind's {C:attention}Tags{}"
+			"{C:attention}Blind's{} {C:attention}Tags{}"
 		}
 	},
 	c_worm_tlr_const_draco_t3 = {
 		name = "Draco",
 		text = {
 			"Create this ante's",
-			"blind's {C:attention}Tags{} and",
+			"{C:attention}Blind's{} {C:attention}Tags{} and",
 			"select up to {C:attention}#1#{}",
 			"out of {C:attention}#2#{} additional {C:attention}Tag{}"
 		}
@@ -334,7 +334,7 @@ local Other = {
 		text = {
 			"This card will",
 			"be upgraded when",
-			"defeating boss blind"
+			"defeating {C:attention}Boss Blind{}"
 		}
 	},
 	worm_tlr_const_info_mask = {
@@ -342,7 +342,7 @@ local Other = {
 		text = {
 			"This card will",
 			"be upgraded twice when",
-			"defeating boss blind"
+			"defeating {C:attention}Boss Blind{}"
 		}
 	},
 	worm_tlr_const_max_level = {
@@ -445,7 +445,7 @@ return {
 				name = "Nomai Mask",
 				text = {
 					"{V:1}Constellation{} cards are upgraded",
-					"twice when {C:attention}boss blind",
+					"twice when {C:attention}Boss Blind{}",
 					"is defeated",
 					"{C:inactive}And may reach {C:edition}???"
 				}

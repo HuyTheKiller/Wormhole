@@ -238,7 +238,7 @@ return {
 		        name = "Big Joker",
 		        text = {
 			        'Draw {C:attention}#1#{} cards at the',
-			        'start of the {C:attention}blind{}',
+			        'start of the {C:attention}Blind{}',
 			        'Set {C:blue}hand size{} to {C:attention}0{}', 
 			        'after first hand is drawn'
 		        },	
