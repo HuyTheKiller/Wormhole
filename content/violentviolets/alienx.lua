@@ -15,7 +15,6 @@ SMODS.Joker {
     ppu_artist = { "FirstTry" },
     ppu_coder = { "FirstTry" },
     loc_vars = function(self,info_queue,card)
-        info_queue[#info_queue+1] = G.P_CENTERS.c_black_hole
         local oddwin, oddnope = SMODS.get_probability_vars(card, 1, card.ability.extra.denom, self.key)
         return {
             vars = {
