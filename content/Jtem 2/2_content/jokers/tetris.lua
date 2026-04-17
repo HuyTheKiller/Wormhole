@@ -563,11 +563,11 @@ JtemTGM.PieceSpeedDefinitions = {
 	{ minimum_level = 247, speed = 0.875 },
 	{ minimum_level = 251, speed = 1 },
 	{ minimum_level = 300, speed = 2 },
-	{ minimum_level = 330, speed = 3 },
-	{ minimum_level = 360, speed = 4 },
-	{ minimum_level = 400, speed = 5 },
-	{ minimum_level = 420, speed = 4 },
-	{ minimum_level = 450, speed = 3 },
+	{ minimum_level = 330, speed = 2.5 },
+	{ minimum_level = 360, speed = 3 },
+	{ minimum_level = 400, speed = 2.75 },
+	{ minimum_level = 420, speed = 2.5 },
+	{ minimum_level = 450, speed = 2 },
 	{ minimum_level = 500, speed = 20 },
 }
 
