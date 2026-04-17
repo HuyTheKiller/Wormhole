@@ -18,7 +18,8 @@ SMODS.Atlas{ key = 'shrug_alien_cards',
 SMODS.UndiscoveredSprite{
     key = 'shrug_alien',
     atlas = 'shrug_alien_cards',
-    pos = {x = 0, y = 0}
+    pos = {x = 0, y = 0},
+    no_overlay = true
 }
 
 SMODS.Atlas{

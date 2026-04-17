@@ -168,15 +168,17 @@ local function initSpace(self, card)
 end
 
 local function setSprites(self, card, front)
-    local cs = SMODS.CanvasSprite {
-	canvasScale = 2,
-    }
-    cs.center_ref = card.children.center
-    card.children.center = cs
-    cs:set_role({major = card, role_type = 'Glued', draw_major = card})
-    cs.parent = card
-    cs.ds_ref = cs.draw_self
-    cs.draw_self = newDrawSelf
+	if card.config.center.discovered or card.bypass_discovery_center then
+		local cs = SMODS.CanvasSprite {
+		canvasScale = 2,
+		}
+		cs.center_ref = card.children.center
+		card.children.center = cs
+		cs:set_role({major = card, role_type = 'Glued', draw_major = card})
+		cs.parent = card
+		cs.ds_ref = cs.draw_self
+		cs.draw_self = newDrawSelf
+	end
 end
 
 local function isMatch(context, card)

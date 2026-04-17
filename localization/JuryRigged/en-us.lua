@@ -272,6 +272,15 @@ return {
           "to be used immediately"
         }
       },
+      undiscovered_worm_jr_satellite = {
+        name = "Not Discovered",
+        text = {
+          "Purchase this",
+          "card in an",
+          "unseeded run to",
+          "learn what it does",
+        },
+      },
     },
     Tag = {
       tag_worm_jr_planetarium = {
@@ -288,7 +297,7 @@ return {
       PotatoPatchDev_Maelmc = { name = "Maelmc", text = { "Play {C:attention}The Binding of Jimbo{} :)" } },
       PotatoPatchDev_Inky = { name = "Inky", text = { { "Did most of the satellite art and drew some joker art" }, { "(...yes, the Square Joker guy. That's him.)" } } },
       PotatoPatchDev_DoggFly = { name = "Dogg-Fly", text = { "i love yuri, yuri is my life" } },
-      PotatoPatchDev_AbelSketch = { name = "AbelSketch", text = { { "{C:attention}Fun Fact:{} Theres a reason to not share water bottles!" }, { "I got Salmonela from one... 3:" } }},
+      PotatoPatchDev_AbelSketch = { name = "AbelSketch", text = { { "{C:attention}Fun Fact:{} Theres a reason to not share water bottles!" }, { "I got Salmonela from one... 3:" } } },
       PotatoPatchDev_Blanthos = { name = "Blanthos", text = { "First we Gneep, then we Gnarp. Lets Gneep Gnarp." } },
       PotatoPatchDev_NinjaBanana = { name = "NinjaBanana", text = { "GUYS I'M NOT THE IMPOSTOR PLEASE DON'T EJECT ME" } },
     }

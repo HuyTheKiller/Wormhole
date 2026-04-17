@@ -129,7 +129,16 @@ return {
                     "{C:attention}#2#{} Menu items to",
                     "be used immediately"
                 }
-            }
+            },
+            undiscovered_worm_hedonia_menu = {
+                name = "Not Discovered",
+                text = {
+                    "Purchase this",
+                    "card in an",
+                    "unseeded run to",
+                    "learn what it does",
+                },
+            },
         },
         PotatoPatch = {
             PotatoPatchTeam_Hedonia = {

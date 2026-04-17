@@ -355,6 +355,16 @@ return {
                     "cards on {C:attention}Junk Cards{}"
                 }
             },
+
+            undiscovered_junkset = {
+                name = "Not Discovered",
+                text = {
+                "Purchase this",
+                "card in an",
+                "unseeded run to",
+                "learn what it does",
+                },
+            },
         },
         PotatoPatch = {
             PotatoPatchTeam_colon_three = {

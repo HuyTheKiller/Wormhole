@@ -150,6 +150,15 @@ return {
 		    "{C:attention}#2#{C:util_spaces} Space Pods",
 		},
 	    },
+      	undiscovered_util_spaces = {
+        name = "Not Discovered",
+        text = {
+          "Purchase this",
+          "card in an",
+          "unseeded run to",
+          "learn what it does",
+        },
+      	},
 	},
 	Joker = {
 	    j_worm_util_cargo_space = {
