@@ -16,7 +16,7 @@ SMODS.Joker({
             max_foil = 3
         }
     },
-    attributes = { "cat", "space", "spacetart" },
+    attributes = { "cat", "space", "spacetart", "passive"},
     loc_vars = function(self,info_queue,card)
         return{vars={card.ability.extra.max_foil}}
     end,
@@ -72,7 +72,7 @@ SMODS.Joker({
     atlas = "meow_jokers",
     pos = {x = 3, y = 0},
     cost = 7,
-    attributes = {"cat", "space", "spacetart"},
+    attributes = {"cat", "space", "spacetart", "passive"},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.level } }
     end,
@@ -96,7 +96,7 @@ SMODS.Joker({
         return { vars = { card.ability.extra.mult } }
     end,
     blueprint_compat = false,
-    attributes = {"cat", "mult", "space"},
+    attributes = {"cat", "mult", "space", "joker"},
     calculate = function(self, card, context)
         if context.other_joker and (context.other_joker:has_attribute("cat")) then
             return {
