@@ -13,7 +13,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    attributes = {'cat', 'space', "chance", "rank", "three", "planet", "generation"},
+    attributes = {'cat', 'space', "chance", "rank", "three", "planet", "generation", "alien"},
     config = {
         extra = {
             odds = 3,

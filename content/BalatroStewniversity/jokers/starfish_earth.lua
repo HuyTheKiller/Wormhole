@@ -13,7 +13,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
 
-    attributes = {"economy", "passive", "space"},
+    attributes = {"economy", "passive", "space", "fish"},
 
     fish_sprite = nil,
 

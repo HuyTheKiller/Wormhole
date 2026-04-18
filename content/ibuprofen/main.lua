@@ -628,7 +628,7 @@ SMODS.Joker {
   pos = { x = 3, y = 0 },
   config = { extra = { money = 0, active = true } },
 
-  attributes = { "destroy_card", "generation", "rank", "queen", "space" },
+  attributes = { "destroy_card", "generation", "rank", "queen", "space", "alien"},
 
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.money, card.ability.extra.death_card } }

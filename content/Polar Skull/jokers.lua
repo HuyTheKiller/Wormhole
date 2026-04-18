@@ -16,7 +16,7 @@ SMODS.Joker({
     ppu_artist = {"comykel"},
     ppu_coder = { "mariofan" },
     ppu_team = { "polar_skull" },
-    attributes = {"hand_type", "generation", "spectral", "space"},
+    attributes = {"hand_type", "generation", "spectral", "space", "alien"},
     config = { extra = { poker_hand = "High Card", cards_created = 2, still_successful = true } },
     loc_vars = function(self, info_queue, card)
         return { vars = { 

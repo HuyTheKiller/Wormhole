@@ -17,7 +17,7 @@ SMODS.Joker {
 			mult = 2
 		},
 	},
-	attributes = {"xmult", "space"},
+	attributes = {"xmult", "space", "alien"},
 	loc_vars = function(self, info_queue, center)
 		return { vars = { center.ability.extra.level, center.ability.extra.mult } }
 	end,
