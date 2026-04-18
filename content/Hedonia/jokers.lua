@@ -22,10 +22,10 @@ SMODS.Joker {
     ppu_artist = {'qunumeru'},
     ppu_coder = {'axyraandas', 'professorrenderer'},
     ppu_team = {'Hedonia'},
-    loc_vars = function(self,info_queue,center)
+    loc_vars = function(self,info_queue,card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
         info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_drunk
-        return {vars = {center.ability.extra.items}}
+        return {vars = {card.ability.extra.items}}
     end,
     calculate = function(self, card, context)
         --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/jokers.lua#L2586
@@ -66,8 +66,8 @@ SMODS.Joker {
         threshold = 13
     }},
     attributes = {"generation", "hands", "space"},
-    loc_vars = function(self,info_queue,center)
-        return {vars = {center.ability.extra.threshold, center.ability.extra.threshold - center.ability.extra.current}}
+    loc_vars = function(self,info_queue,card)
+        return {vars = {card.ability.extra.threshold, card.ability.extra.threshold - card.ability.extra.current}}
     end,
     ppu_artist = {'hellboydante'},
     ppu_coder = {'wombatcountry'},
@@ -92,7 +92,7 @@ SMODS.Joker {
             else
                 card.ability.extra.current = card.ability.extra.current + 1
                 return {
-                    message = 'Upgrade!'
+                    message = tostring(card.ability.extra.threshold - card.ability.extra.current)
                 }
             end
         end
@@ -113,7 +113,7 @@ SMODS.Joker {
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
     attributes = {"generation", "joker", "chance", "space"},
-    loc_vars = function(self,info_queue,center)
+    loc_vars = function(self,info_queue,card)
         local num = 1
         local denom = 5
         if G.jokers and G.jokers.cards then
@@ -158,8 +158,8 @@ SMODS.Joker {
     ppu_artist = {'alxndr2000'},
     ppu_coder = {'wombatcountry', 'axyraandas'},
     ppu_team = {'Hedonia'},
-    loc_vars = function(self,info_queue,center)
-        return {vars = {center.ability.extra.chips}}
+    loc_vars = function(self,info_queue,card)
+        return {vars = {card.ability.extra.chips}}
     end,
     calculate = function(self, card, context)
         if context.remove_playing_cards then
@@ -200,8 +200,8 @@ SMODS.Joker {
         mult = 10
     }},
     attributes = {"mult", "editions", "space"},
-    loc_vars = function(self,info_queue,center)
-        return {vars = {center.ability.extra.mult}}
+    loc_vars = function(self,info_queue,card)
+        return {vars = {card.ability.extra.mult}}
     end,
     ppu_artist = {'hellboydante'},
     ppu_coder = {'axyraandas'},
@@ -242,8 +242,8 @@ SMODS.Joker {
     ppu_artist = {'hellboydante'},
     ppu_coder = {'professorrenderer'},
     ppu_team = {'Hedonia'},
-    loc_vars = function(self,info_queue,center)
-        return {vars = {center.ability.extra.discount}}
+    loc_vars = function(self,info_queue,card)
+        return {vars = {card.ability.extra.discount}}
     end,
     add_to_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({
