@@ -542,9 +542,6 @@ SpaceTart({
 		boosted = 10,
 		boostinc = 2.5,
 	},
-	credits = {
-		coder = { "corobo" },
-	},
 
 	calculates = {
 		-- Default ability
@@ -817,9 +814,6 @@ SpaceTart({
 	config = {
 		reg = 1,
 	},
-	credits = {
-		coder = { "corobo" },
-	},
 
 	calculates = {
 		-- Default ability
@@ -854,9 +848,6 @@ SpaceTart({
 		reg = 25,
 		boosted = 65,
 		boostinc = 30,
-	},
-	credits = {
-		coder = { "corobo" },
 	},
 
 	calculates = {
@@ -909,9 +900,6 @@ SpaceTart({
 	config = {
 		reg = 0.15,
 		boost_increment = 0.05,
-	},
-	credits = {
-		coder = { "corobo" },
 	},
 
 	calculates = {
