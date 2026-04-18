@@ -212,7 +212,8 @@ return {
     misc = {
         dictionary = {
             k_revolve_ex = "Revolve!",
-            k_disintegrated_ex = "Disintegrated!"
+            k_disintegrated_ex = "Disintegrated!",
+            k_worm_riverboat_cosmic = 'Cosmic'
         },
         achievement_names = {
             ach_worm_riverboat_instaplanet = "Clear Sky Tonight"

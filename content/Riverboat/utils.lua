@@ -2,8 +2,7 @@ Wormhole.Riverboat = {}
 
 -- Define the Cosmic rarity tier (Step above Legendary)
 SMODS.Rarity({
-    key = 'cosmic',
-    loc_txt = { name = 'Cosmic' },
+    key = 'riverboat_cosmic',
     badge_colour = HEX('011638'),
     default_weight = 0.005,
     pools = { ["Joker"] = true }
