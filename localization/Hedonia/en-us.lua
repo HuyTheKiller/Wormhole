@@ -27,7 +27,7 @@ return {
                     'cards\' {C:chips}Chips{} until',
                     'the start of the next {C:attention}Ante{}',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)'
-                }                
+                }
             },
             j_worm_hedonia_patron = {
                 name = 'Drunken Patron',
@@ -62,7 +62,7 @@ return {
                 }
             }
         },
-        worm_hedonia_menu={
+        worm_hedonia_menu = {
             c_worm_hedonia_hadron = {
                 name = 'Hadron Colada',
                 text = {
@@ -140,6 +140,43 @@ return {
                 },
             },
         },
+        Edition = {
+            e_worm_hedonia_tipsy = {
+                name = 'Tipsy',
+                text = {
+                    '{C:green}#1# in #2#{} chance to {C:attention}sober up{},',
+                    '{C:green}#3# in #4#{} chance to {C:attention}get drunker{},',
+                    'Randomize rank when played',
+                    '{C:inactive}(max rank variance: {C:attention}#5#{C:inactive})' },
+                label = 'Tipsy'
+            },
+            e_worm_hedonia_drunk = {
+                name = 'Drunk',
+                text = {
+                    '{C:green}#1# in #2#{} chance to {C:attention}sober up{},',
+                    '{C:green}#3# in #4#{} chance to {C:attention}get drunker{},',
+                    'Randomize rank when played',
+                    '{C:inactive}(max rank variance: {C:attention}#5#{C:inactive})' },
+                label = 'Drunk'
+            },
+            e_worm_hedonia_very_drunk = {
+                name = 'Very Drunk',
+                text = {
+                    '{C:green}#1# in #2#{} chance to {C:attention}sober up{},',
+                    '{C:green}#3# in #4#{} chance to {C:attention}get drunker{},',
+                    'Randomize rank when played',
+                    '{C:inactive}(max rank variance: {C:attention}#5#{C:inactive})' },
+                label = 'Very Drunk'
+            },
+            e_worm_hedonia_blackout = {
+                name = 'Blackout',
+                text = {
+                    '{C:green}#1# in #2#{} chance to {C:attention}sober up{},',
+                    '{C:green}#3# in #4#{} chance to {C:red,E:2}self destruct{}',
+                },
+                label = 'Blackout'
+            },
+        },
         PotatoPatch = {
             PotatoPatchTeam_Hedonia = {
                 name = "Hedonia"
@@ -211,7 +248,7 @@ return {
         }
     },
     misc = {
-        dictionary={
+        dictionary = {
             b_worm_hedonia_menu_cards = "Tonight's Menu",
             k_worm_hedonia_menu = "Menu Item",
             hedonia_menu = "Tonight's Menu",
