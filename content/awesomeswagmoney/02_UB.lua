@@ -634,7 +634,9 @@ SMODS.Joker {
         }
     end,
     set_ability = function(self, card)
-        card:set_edition('e_negative', true, true)
+        if card.config.center.discovered or card.bypass_discovery_center then
+            card:set_edition('e_negative', true, true)
+        end
     end,
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and context.beat_boss then
