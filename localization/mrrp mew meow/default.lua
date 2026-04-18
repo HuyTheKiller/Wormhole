@@ -110,9 +110,10 @@ descriptions={
 					"{C:dark_edition}#1#{} hand size",
 				},
 				{
+					"When Blind is selected,",
 					"{X:blind,C:white}X#2#{} Blind size per",
 					"empty {C:attention}Joker{} slot and",
-					"empty {C:attention}consumable{} slot"
+					"empty {C:attention}consumable{} slot",
 				}
 			}
 		},
