@@ -23,6 +23,7 @@ SMODS.Joker({
     config = {
         extra = {
             xmult = 1,
+            xmult_mod = 0.2,
             target_hand = "High Card"
         }
     },
@@ -30,8 +31,9 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                string.format("%.1f", card.ability.extra.xmult),
-                card.ability.extra.target_hand
+                card.ability.extra.xmult,
+                card.ability.extra.target_hand,
+                card.ability.extra.xmult_mod,
             }
         }
     end,
@@ -49,16 +51,17 @@ SMODS.Joker({
             end
         end
 
-        if context.joker_main then
+        if context.before and not context.blueprint then
             if context.scoring_name == card.ability.extra.target_hand then
-                card.ability.extra.xmult = card.ability.extra.xmult + 0.2
-
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
                 return {
-                    message = "Upgrade!",
+                    message = localize('k_upgrade_ex'),
                     colour = G.C.MULT
                 }
             end
-
+        end
+        
+        if context.joker_main then
             return {
                 x_mult = card.ability.extra.xmult
             }
@@ -253,6 +256,8 @@ SMODS.Joker({
     config = {
         extra = {
             chips = 0,
+            chips_mod = 10,
+            chips_mod_bonus = 2,
             last_hand = nil,
             last_round = -1
         }
@@ -261,7 +266,7 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.chips
+                card.ability.extra.chips, card.ability.extra.chips_mod, card.ability.extra.chips_mod * card.ability.extra.chips_mod_bonus
             }
         }
     end,
@@ -281,10 +286,10 @@ SMODS.Joker({
             end
 
             if card.ability.extra.last_hand == current_hand then
-                local gain = 10
+                local gain = card.ability.extra.chips_mod
 
                 if #G.jokers.cards >= G.jokers.config.card_limit then
-                    gain = gain * 2
+                    gain = gain * card.ability.extra.chips_mod_bonus
                 end
 
                 card.ability.extra.chips =
@@ -325,6 +330,8 @@ SMODS.Joker({
     config = {
         extra = {
             xchips = 1,
+            xchips_mod = 0.05,
+            xchips_mod_bonus = 2,
             played_hands = {},
             last_round = -1
         }
@@ -333,7 +340,7 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.xchips
+                card.ability.extra.xchips, card.ability.extra.xchips_mod, card.ability.extra.xchips_mod * card.ability.extra.xchips_mod_bonus 
             }
         }
     end,
@@ -354,10 +361,10 @@ SMODS.Joker({
             if not card.ability.extra.played_hands[current_hand] then
                 card.ability.extra.played_hands[current_hand] = true
 
-                local gain = 0.05
+                local gain = card.ability.extra.xchips_mod
 
                 if #G.jokers.cards >= G.jokers.config.card_limit then
-                    gain = gain * 2
+                    gain = gain * card.ability.extra.xchips_mod_bonus
                 end
 
                 card.ability.extra.xchips =
@@ -395,14 +402,16 @@ SMODS.Joker({
 
     config = {
         extra = {
-            sold = 0
+            sold = 0,
+            goal = 3,
+            money = 5,
         }
     },
 
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.sold % 3
+                card.ability.extra.sold % card.ability.extra.goal, card.ability.extra.goal, card.ability.extra.money
             }
         }
     end,
@@ -416,13 +425,13 @@ SMODS.Joker({
             card.ability.extra.sold =
                 card.ability.extra.sold + 1
 
-            if card.ability.extra.sold % 3 == 0 then
+            if card.ability.extra.sold % card.ability.extra.goal == 0 then
                 return {
-                    dollars = 5,
+                    dollars = card.ability.extra.money,
                 }
             else
                 return {
-                    message = card.ability.extra.sold % 3 .. "/3",
+                    message = card.ability.extra.sold % card.ability.extra.goal .. "/3",
                     colour = G.C.FILTER
                 }
             end

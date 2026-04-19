@@ -30,10 +30,10 @@ return {
 			j_worm_typhoon = {
 				name = "Humanoid Typhoon",
 				text = {
-					"If played hand is a {C:attention}#2#{},",
-					"gain {X:mult,C:white}X0.2{} Mult",
-					"{C:inactive}(Changes each round){}",
-					"{C:inactive}(Current: {X:mult,C:white}X#1#{C:inactive}){}"
+					"This Joker gains {X:mult,C:white}X#3#{} Mult if",
+					"played hand is a {C:attention}#2#{}",
+					"{s:0.8}poker hand changes each round",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive}){}",
 				},
 			},
 
@@ -50,27 +50,30 @@ return {
 				name = "Million Knives",
 				text = {
 					"On the {C:attention}final hand{} of round,",
-					"destroy lowest ranked card in hand, and",
-					"add a copy of the highest ranked card",
-					"in hand to your deck"
+					"{C:red}destroy{} {C:attention}lowest ranked{} card in hand,",
+					"and add a copy of the {C:attention}highest ranked{}",
+					"card in hand to your deck",
 				},
 			},
 
 			j_worm_journalist = {
 				name = "Journalist Stryfe",
 				text = {
-					"Gains {C:chips}+10{} chips if you repeat a hand",
-					"in a round, doubled if all joker slots are full",
-					"{C:inactive}(Currently: {C:chips}+#1#{} {C:inactive}Chips){}"
+					"This Joker gains {C:chips}+#2#{} Chips",
+					"({C:chips,s:0.8}+#3#{s:0.8} instead if all Joker slots filled)",
+					"if poker hand was played",
+					"also on {C:attention}previous{} hand",
+					"{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
 				},
 			},
 
 			j_worm_journalist2 = {
 				name = "Journalist Thompson",
 				text = {
-					"Gains {X:chips,C:white}X0.05{} Chips for every",
-					"unique hand played in a round, doubled if all",
-					"joker slots are full",
+					"This Joker gains {X:chips,C:white}X#2#{} Chips",
+					"{s:0.8}({X:chips,C:white,s:0.8}X#3#{s:0.8} instead if all Joker slots filled)",
+					"if poker hand has not",
+					"been played {C:attention}this round{}",
 					"{C:inactive}(Currently: {X:chips,C:white}X#1#{} {C:inactive}Chips){}"
 				},
 			},
@@ -78,9 +81,8 @@ return {
 			j_worm_nomanland = {
 				name = "People Of No Man's Land",
 				text = {
-					"For every {C:attention}3{} Jokers sold,",
-					"gain {C:money}$5{}",
-					"{C:inactive}(Progress: #1#/3){}"
+					"Earn {C:money}$#3#{} every {C:attention}#2#{} Jokers sold",
+					"{C:inactive}(#1#/#2#){}",
 				},
 			},
 
@@ -88,8 +90,7 @@ return {
 				name = "ABSOLUTE GOD OF THE UNIVERSE",
 				text = {
 					"Every {C:attention}10 {C:planet}Planet{} cards used,",
-					"gain one {C:attention,E:1}Revive{} that",
-					"prevents Death",
+					"gain one {C:attention,E:1}Revive{} that prevents Death",
 					"{C:inactive}(Total Revives: #1#){}"
 				},
 			},
@@ -99,7 +100,7 @@ return {
 			b_worm_cosmos = {
 				name = "Cosmos Deck",
 				text = {
-					"Start with a {C:dark_edition}Negative{} {C:attention}Space Joker{}",
+					"Start with a {C:dark_edition}Negative{} {C:attention,T:j_space}Space Joker{}",
 					"Planet cards have a {C:green}#1# in #2#{} chance",
 					"to create a {C:tarot}Tarot{} or {C:spectral}Spectral{} card",
 					"{C:inactive}(Ignores Consumable limit){}"
