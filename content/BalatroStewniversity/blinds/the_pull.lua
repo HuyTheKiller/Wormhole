@@ -29,7 +29,9 @@ SMODS.Blind {
         end
     end,
     disable = function(self)
-        G.GAME.blind.chips = G.GAME.blind.worm_original_size
+        if G.GAME.blind.worm_original_size then
+            G.GAME.blind.chips = G.GAME.blind.worm_original_size
+        end
         G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
     end,
 }
