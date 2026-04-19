@@ -16,7 +16,7 @@ function boot_timer(_label, _next, progress)
 		font = love.graphics.setNewFont("resources/fonts/m6x11plus.ttf", 20),
 		love.graphics.dis
 	}
-	if not wormholeimg then wormholeimg = love.graphics.newImage(love.filesystem.newFileData(b64.decode(wormhole_loadimg[math.random(1, 2) or 1]), 'welcometospacejam'), { mipmaps = true, linear = true }) end
+	if not wormholeimg then wormholeimg = love.graphics.newImage(love.data.decode("data", "base64", wormhole_loadimg[math.random(1, 2) or 1]), { mipmaps = true, linear = true }) end
 	if wormholeimg then
 		local realw, realh = love.window.getMode()
 		local pbarl, pbarh = 320, 30

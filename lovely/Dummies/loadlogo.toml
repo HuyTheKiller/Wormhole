@@ -7,12 +7,6 @@ priority = 5
 
 [[patches]]
 [patches.copy]
-target = '=[SMODS _ "src/utils.lua"]'
-position = "append"
-sources = ["base64.lua"]
-
-[[patches]]
-[patches.copy]
 target = "main.lua"
 position = "append"
 sources = ["content/Dummies/loadlogo.lua"]
