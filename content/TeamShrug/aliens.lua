@@ -172,10 +172,12 @@ end
 -- change suits in suit convert cardareas
 local function alien_suit_change(suit)
     for i, c in ipairs(G.worm_shrug_alien_suit_conv.cards) do
-        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() c:flip() return true end}))
+        local percent = 1.15 - (i - 0.999) / (#G.worm_shrug_alien_suit_conv.cards - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() c:flip(); play_sound('card1', percent) return true end}))
     end
     for i, c in ipairs(G.worm_shrug_alien_suit_conv2.cards) do
-        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() c:flip() return true end}))
+        local percent = 1.15 - (i + #G.worm_shrug_alien_suit_conv.cards  - 0.999) / (#G.worm_shrug_alien_suit_conv2.cards - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() c:flip(); play_sound('card1', percent) return true end}))
     end
     for i, c in ipairs(G.worm_shrug_alien_suit_conv.cards) do
         G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() SMODS.change_base(c, suit) return true end}))
@@ -184,10 +186,12 @@ local function alien_suit_change(suit)
         G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() SMODS.change_base(c, suit) return true end}))
     end
     for i, c in ipairs(G.worm_shrug_alien_suit_conv.cards) do
-        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() c:flip() return true end}))
+        local percent = 0.85 + (i-0.999)/(#G.worm_shrug_alien_suit_conv.cards-0.998)*0.3
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.05, func = function() c:flip(); play_sound('tarot2', percent) return true end}))
     end
     for i, c in ipairs(G.worm_shrug_alien_suit_conv2.cards) do
-        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.1, func = function() c:flip() return true end}))
+        local percent = 0.85 + (i + #G.worm_shrug_alien_suit_conv.cards -0.999)/(#G.worm_shrug_alien_suit_conv2.cards-0.998)*0.3
+        G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.1, func = function() c:flip(); play_sound('tarot2', percent) return true end}))
     end
     G.E_MANAGER:add_event(Event({trigger = 'before', delay = 0.4, func = function() return true end}))
 end
@@ -201,7 +205,7 @@ local function draw_card_back(from, to, percent, card, no_ui)
             from.T.w = from.T.w / (#from.cards + 1) * #from.cards
             card.no_ui = no_ui
             to:emplace(card, nil, stay_flipped)
-            play_sound('card1', 0.85 + percent*0.2/100, 0.6*(vol or 1))
+            play_sound('card1', 1.15 - percent*0.3/100, 0.6*(vol or 1))
             return true
         end
       }))
@@ -317,15 +321,15 @@ suit_alien{
 }
 
 -- for martian and ???
-local function flip_multiple(cards)
+local function flip_multiple(cards, side)
     for i, c in ipairs(cards) do
-        local percent = 1.15 - (i - 0.999) / (#cards - 0.998) * 0.3
+        local percent = side == 'back' and (1.15 - (i - 0.999) / (#cards - 0.998) * 0.3) or (0.85 + (i-0.999)/(#cards-0.998)*0.3)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.15,
             func = function()
+                play_sound(side == 'back' and 'card1' or 'tarot2', percent)
                 c:flip()
-                play_sound('card1', percent)
                 c:juice_up(0.3, 0.3)
                 return true
             end
@@ -356,7 +360,7 @@ SMODS.Consumable{
             end
         end
         local rank = leftmost.config.card.value
-        flip_multiple(G.hand.highlighted)
+        flip_multiple(G.hand.highlighted, 'back')
         for _, c in ipairs(G.hand.highlighted) do
             G.E_MANAGER:add_event(Event({
                 trigger = 'immediate',
@@ -367,7 +371,7 @@ SMODS.Consumable{
             }))
         end
         delay(0.4)
-        flip_multiple(G.hand.highlighted)
+        flip_multiple(G.hand.highlighted, 'front')
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.2,
@@ -393,25 +397,30 @@ SMODS.Consumable{
     config = {extra = {odds = 2}},
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.m_worm_shrug_nebulous
-        return {vars = {G.GAME.probabilities.normal, card.ability.extra.odds}}
+        local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds)
+        return {vars = {num, denom}}
     end,
     can_use = function(self, card)
         return G.hand and true
     end,
     use = function(self, card, area, copier)
-        flip_multiple(G.hand.cards)
-        for _, c in ipairs(G.hand.cards) do
+        local cards_to_flip = {}
+        for i, c in ipairs(G.hand.cards) do
+            if SMODS.pseudorandom_probability(card, '???_nebulous_' .. i, 1, card.ability.extra.odds) then
+                cards_to_flip[#cards_to_flip+1] = c
+            end
+        end
+        flip_multiple(cards_to_flip, 'back')
+        for _, c in ipairs(cards_to_flip) do
             G.E_MANAGER:add_event(Event({
                 trigger = 'immediate',
                 func = function()
-                    if pseudorandom('worm_shrug_alien_nebulous_') < G.GAME.probabilities.normal / card.ability.extra.odds then
-                        c:set_ability('m_worm_shrug_nebulous')
-                    end
+                    c:set_ability('m_worm_shrug_nebulous')
                     return true
                 end
             }))
         end
-        flip_multiple(G.hand.cards)
+        flip_multiple(cards_to_flip, 'front')
     end,
     ppu_coder = {"randomsongv2"},
     ppu_team = {"shrug"},
