@@ -170,9 +170,9 @@ return {
                 text = {
                     {
                         "{C:inactive,s:0.8}#3# Days since Impact",
-                        "This Joker gains {C:mult}+#1#{} Mult for every",
+                        "This Joker gains {C:chips}+#1#{} Chips for every",
                         "{C:attention}unique{} Joker obtained this run",
-                        "{C:inactive}(Currently {}{C:mult}+#2#{} {C:inactive}Mult){}",
+                        "{C:inactive}(Currently {}{C:chips}+#2#{} {C:inactive}Chips){}",
                     }
 
                 }

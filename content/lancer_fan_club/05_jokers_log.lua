@@ -13,11 +13,11 @@ SMODS.Joker({
     ppu_team = { "Lancer Fan Club" },
     config = {
         extra = {
-            scalar = 2,
+            scalar = 5,
         }
     },
     attributes = {
-        "mult",
+        "chips",
         "scaling",
         "joker",
         "space"
@@ -27,7 +27,7 @@ SMODS.Joker({
     end,
     calculate = function(self, card, context)
         if context.joker_main or context.forcetrigger then
-            return { mult = card.ability.extra.scalar * G.GAME.worm_log_count }
+            return { chips = card.ability.extra.scalar * G.GAME.worm_log_count }
         end
     end
 })
