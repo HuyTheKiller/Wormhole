@@ -46,9 +46,10 @@ return {
             j_worm_hedonia_speed = {
                 name = 'Sous Chef',
                 text = {
-                    'Creates a {C:attention}Food{} {C:worm_hedonia_menu}Menu Item{} when scoring',
-                    'based on number of held {C:attention}Jokers{}',
-                    '{C:inactive}(Currently {C:green}#1# in #2#{C:inactive} chance){}',
+                    "{C:green}#1# in #2#{} chance to create a",
+                    "{C:attention}Food{} {C:worm_hedonia_menu}Menu Item{} when scoring,",
+                    "{C:green}probability{} changes depending on",
+                    "number of {C:attention}Jokers{} and {C:attention}Joker Slots{}",
                     '{C:inactive}(Must have room)',
                 }
             },
@@ -251,6 +252,7 @@ return {
         dictionary = {
             b_worm_hedonia_menu_cards = "Tonight's Menu",
             k_worm_hedonia_menu = "Menu Item",
+            k_worm_hedonia_menu_plus = "+1 Menu Item",
             hedonia_menu = "Tonight's Menu",
         },
         labels = {

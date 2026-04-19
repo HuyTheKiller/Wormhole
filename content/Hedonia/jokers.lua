@@ -46,6 +46,9 @@ SMODS.Joker {
                         return true
                     end
                 }))
+                SMODS.calculate_effect(
+                    { message = localize('k_worm_hedonia_menu_plus'), colour = G.C.SECONDARY_SET.worm_hedonia_menu, },
+                    card)
             end
         end
     end
@@ -86,6 +89,9 @@ SMODS.Joker {
                                 return true
                             end
                         }))
+                        SMODS.calculate_effect(
+                            { message = localize('k_worm_hedonia_menu_plus'), colour = G.C.SECONDARY_SET.worm_hedonia_menu, },
+                            card)
                     end
                     card.ability.extra.current = 0
                 end
@@ -139,6 +145,9 @@ SMODS.Joker {
                         return true
                     end
                 }))
+                SMODS.calculate_effect(
+                    { message = localize('k_worm_hedonia_menu_plus'), colour = G.C.SECONDARY_SET.worm_hedonia_menu, },
+                    card)
             end
         end
     end
