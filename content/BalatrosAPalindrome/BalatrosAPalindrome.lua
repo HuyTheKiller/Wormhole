@@ -62,7 +62,7 @@ SMODS.Edition {
 		if love.system.getOS() ~= "Linux" then --											draw if discovered,				or bypass discovery,			or if showing in a menu (collection) and the card is a playing card (not a joker)
 			if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' and (card.config.center.discovered or card.bypass_discovery_center or (card.area.config.type == "title" and card.config.center == G.P_CENTERS.c_base)) then
 				card.children.center:draw_shader('worm_bap_shader_void', nil, card.ARGS.send_to_shader)
-				if card.children.front then
+				if card.children.front and card.config.center_key ~= "m_stone" then
 					card.children.front:draw_shader('worm_bap_shader_void', nil, card.ARGS.send_to_shader)
 				end
 				--card.children.center:draw_shader('negative_shine', nil, card.ARGS.send_to_shader)
