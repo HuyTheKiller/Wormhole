@@ -293,6 +293,31 @@ SMODS.ScreenShader{
     should_apply = function(self)
         return G.GAME and G.GAME.tbp_module_replace_active and G.GAME.tbp_module_replace_active > 0
     end,
+    draw = function(self, shader, canvas)
+        love.graphics.setShader(shader)
+        love.graphics.draw(canvas, 0, 0)
+        love.graphics.setCanvas({love.graphics.getCanvas(), stencil = true})
+        for k, v in ipairs(Wormhole.tbp.shader_draw_stuff) do
+            if v and v.translate_container then
+                love.graphics.push("all")
+                love.graphics.setShader()
+                G.OVERLAY_TUTORIAL = true
+                v:translate_container()
+                v:draw()
+                G.OVERLAY_TUTORIAL = nil
+                love.graphics.pop()
+            end
+        end
+        if G.GAME.module_replace_overlay and G.GAME.module_replace_overlay.translate_container then
+            love.graphics.push("all")
+            love.graphics.setShader()
+            G.OVERLAY_TUTORIAL = true
+            G.GAME.module_replace_overlay:translate_container()
+            G.GAME.module_replace_overlay:draw()
+            G.OVERLAY_TUTORIAL = nil
+            love.graphics.pop()
+        end
+    end,
     send_vars = function(self)
         return {
             time = G.TIMERS and G.TIMERS.REAL or 0,
@@ -319,11 +344,11 @@ function G.UIDEF.card_h_popup(card)
         if AUT.info then
             for k, v in ipairs(AUT.info) do
                 info_boxes[#info_boxes+1] =
-                    {n=G.UIT.R, config={align = "cm"}, nodes={
-                        {n=G.UIT.R, config={align = "cm", colour = lighten(G.C.JOKER_GREY, 0.5), r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
-                            info_tip_from_rows(v, v.name),
-                        }}
+                {n=G.UIT.R, config={align = "cm"}, nodes={
+                    {n=G.UIT.R, config={align = "cm", colour = lighten(G.C.JOKER_GREY, 0.5), r = 0.1, padding = 0.05, emboss = 0.05}, nodes={
+                        info_tip_from_rows(v, v.name),
                     }}
+                }}
             end
             local cols
             if #info_boxes <= 3 then
@@ -399,7 +424,7 @@ end
 local show_infotip_hook = G.FUNCS.show_infotip
 G.FUNCS.show_infotip = function(e)
     if e.config.ref_table and e.config.ref_table[1].config.tbp_spaceship then
-        
+
         local config = {offset = {x=-0.03,y=0}, align = 'cl', parent = e}
         if e.config.ref_table[1].config.tbp_collection then
             if e.config.ref_table[1].config.card_pos < G.ROOM.T.w*0.4 then

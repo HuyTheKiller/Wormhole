@@ -11,7 +11,7 @@
 	"badge_text_colour": "73fdff",
 	"version": "0.0.2",
 	"dependencies": [
-		"Steamodded (>=1.0.0~BETA-1606b)",
+		"Steamodded (>=1.0.0~BETA-1620a)",
 		"Lovely (>=0.9)",
 		"PotatoPatchUtils (>=1.0.3)"
 	]

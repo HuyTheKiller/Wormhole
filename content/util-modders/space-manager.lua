@@ -238,6 +238,22 @@ SMODS.ScreenShader {
     should_apply = function()
         return manager.active
     end,
+    draw = function(self, shader, canvas)
+        love.graphics.setShader(shader)
+        love.graphics.draw(canvas, 0, 0)
+        if manager.overlay then
+            love.graphics.setCanvas({love.graphics.getCanvas(), stencil = true})
+            for k,v in ipairs(Wormhole.util_space_manager.overlay) do
+                love.graphics.push("all")
+                love.graphics.setShader()
+                G.OVERLAY_TUTORIAL = true
+                v:translate_container()
+                v:draw()
+                G.OVERLAY_TUTORIAL = nil
+                love.graphics.pop()
+            end
+        end
+    end,
     send_vars = function()
         local conf = manager.conf
         return {

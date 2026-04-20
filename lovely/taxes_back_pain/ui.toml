@@ -101,40 +101,6 @@ payload = '''
 if card.config.center_key == 'j_worm_tbp_spaceship' then info_boxes[1].config.tbp_spaceship = true; info_boxes[1].config.tbp_collection = card.area.config.collection end
 '''
 
-
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = "love.graphics.draw(last_canvas, 0, 0)"
-position = "after"
-payload = '''
-if shader.key == "worm_tbp_space_warp" then
-    love.graphics.setCanvas({current_canvas, stencil = true})
-    for k, v in ipairs(Wormhole.tbp.shader_draw_stuff) do
-        if v and v.translate_container then
-            love.graphics.push("all")
-            love.graphics.setShader()
-            G.OVERLAY_TUTORIAL = true
-            v:translate_container()
-            v:draw()
-            G.OVERLAY_TUTORIAL = nil
-            love.graphics.pop()
-        end
-    end
-    if G.GAME.module_replace_overlay and G.GAME.module_replace_overlay.translate_container then
-        love.graphics.push("all")
-        love.graphics.setShader()
-        G.OVERLAY_TUTORIAL = true
-        G.GAME.module_replace_overlay:translate_container()
-        G.GAME.module_replace_overlay:draw()
-        G.OVERLAY_TUTORIAL = nil
-        love.graphics.pop()
-    end
-end
-'''
-match_indent = true
-times = 1
-
 [[patches]]
 [patches.pattern]
 target = "game.lua"

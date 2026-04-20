@@ -5,28 +5,6 @@ priority = 1
 
 [[patches]]
 [patches.pattern]
-target = "game.lua"
-pattern = "love.graphics.draw(last_canvas, 0, 0)"
-position = "after"
-payload = '''
-if shader.key == "worm_util_space" and Wormhole.util_space_manager.overlay then
-	love.graphics.setCanvas({current_canvas, stencil = true})
-	for k,v in ipairs(Wormhole.util_space_manager.overlay) do
-		love.graphics.push("all")
-		love.graphics.setShader()
-		G.OVERLAY_TUTORIAL = true
-		v:translate_container()
-		v:draw()
-		G.OVERLAY_TUTORIAL = nil
-		love.graphics.pop()
-	end
-end
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
 target = 'game.lua'
 match_indent = true
 pattern = '''if not G.debug_UI_toggle then '''
