@@ -316,6 +316,8 @@ SMODS.Joker {
   config = { extra = { xmult = 2 } },
   attributes = { "xmult", "tarot", "space" },
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS.c_sun
+    info_queue[#info_queue + 1] = G.P_CENTERS.c_star
     return { vars = { card.ability.extra.xmult } }
   end,
   calculate = function(self, card, context) -- scores chips
@@ -546,6 +548,7 @@ SMODS.Joker {
   attributes = { "generation", "planet", "space" },
 
   loc_vars = function(self, info_queue, card)
+    info_queue[#info_queue + 1] = G.P_CENTERS['c_earth']
     return { vars = { card.ability.extra.planetchoice } }
   end,
 

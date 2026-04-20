@@ -16,6 +16,7 @@ SMODS.Joker {
     ppu_team = { "riverboat" },
     attributes = { "editions", "chance", "modify_card", "space"},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
         return {
             vars = { SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "worm_riverboat_fractal") }
         }

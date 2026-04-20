@@ -623,6 +623,7 @@ SMODS.Joker {
     config = {extra = {tag = "tag_worm_ub"}},
     attributes = {"generation", "tag", "boss_blind", "space"},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_TAGS.tag_worm_ub
         return {
             vars = {
                 localize {

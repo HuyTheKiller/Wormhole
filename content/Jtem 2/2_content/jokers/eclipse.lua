@@ -158,6 +158,9 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_sun
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_moon
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_earth
 		return {
 			vars = {
 				card.ability.extras.eclipse ~= "?" and localize("k_worm_jtem2_eclipse_" .. card.ability.extras.eclipse)

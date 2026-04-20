@@ -210,6 +210,10 @@ SMODS.Joker {
     }},
     attributes = {"mult", "editions", "space"},
     loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_tipsy
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_drunk
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_very_drunk
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_hedonia_blackout
         return {vars = {card.ability.extra.mult}}
     end,
     ppu_artist = {'hellboydante'},

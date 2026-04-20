@@ -77,6 +77,7 @@ SMODS.Joker({
         "space"
     },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement or 'm_bonus']
         local hint1, hint2 = "...", " "
         if card.ability.extra.secret == 1 then
             hint1, hint2 = localize("k_lfc_secret1"), localize("k_lfc_secret2")

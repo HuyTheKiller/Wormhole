@@ -40,7 +40,7 @@ return {
             j_worm_hedonia_happy_hour = {
                 name = 'Happy Hour',
                 text = {
-                    'Menu Packs cost {C:money}$#1#{} less'
+                    '{C:worm_hedonia_menu}Menu Packs{} cost {C:money}$#1#{} less'
                 }
             },
             j_worm_hedonia_speed = {

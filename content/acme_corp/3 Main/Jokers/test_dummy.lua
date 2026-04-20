@@ -11,6 +11,9 @@ SMODS.Joker{
     ppu_artist = {'FlameThrowerFIM'},
     ppu_team = { 'ACME' },
     attributes = {"editions", "space"},
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'e_negative_consumable', set = 'Edition', config = { extra = 1 } }
+    end,
     calculate = function(self, card, context)
         if (context.card_added or context.modify_shop_card) and (context.card and context.card.ability and context.card.ability.set and context.card.ability.set == 'ACME_Gadget' and not (context.card.edition and context.card.edition.negative)) then
             context.card:set_edition('e_negative')

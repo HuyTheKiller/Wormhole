@@ -148,7 +148,7 @@ return {
                 text = {
                     "Scored cards cause {C:lfc_meteor,E:1}meteors{}",
                     "to fall on screen that",
-                    "give {C:money}#1##2#{} when clicked"
+                    "give {C:money}#1##2#{} when {C:attention}clicked{}"
                 }
             },
             j_worm_lfc_pissstream = {
@@ -244,7 +244,7 @@ return {
                 },
                 text = {
                     {
-                        "Scored {C:attention}#1#s{}",
+                        "Played {C:attention}#1#s{}",
                         "give {X:mult,C:white} X#2# {} Mult",
                         "when scored",
                     },

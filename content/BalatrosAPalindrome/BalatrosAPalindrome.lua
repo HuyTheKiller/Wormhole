@@ -387,6 +387,7 @@ SMODS.Joker {
 	config = { extra = { jokers = 5 } },
 	attributes = { "generation", "editions", "joker", "space" },
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.j_space
 		return { vars = { card.ability.extra.jokers } }
 	end,
 	calculate = function(self, card, context)
@@ -437,6 +438,7 @@ SMODS.Joker {
 	config = { extra = { x_mult = 2 } },
 	attributes = { "xmult", "editions", "space" },
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_bap_void
 		return { vars = {} }
 	end,
 	calculate = function(self, card, context)
@@ -533,6 +535,7 @@ SMODS.Joker {
 	config = { extra = { x_mult = 1.0, inc_x_mult = 0.10 } },
 	attributes = { "scaling", "xmult", "editions", "space" },
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_bap_void
 		return { vars = { card.ability.extra.inc_x_mult, card.ability.extra.x_mult } }
 	end,
 	calculate = function(self, card, context)

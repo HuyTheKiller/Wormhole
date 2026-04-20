@@ -164,6 +164,7 @@ return {
                         "When {C:attention}primed{}, {C:attention}setting Blind{},",
                         "creates a random card from",
                         "{V:1}#1#{}, then is {C:abs_drinks}drank{}",
+                        "{C:attention,s:0.8}team{C:inactive,s:0.8} changes after each {C:abs_drinks,s:0.8}refill",
                         "{C:inactive}(Must have space!)",
                     },
                     {
@@ -185,6 +186,7 @@ return {
                         "When {C:attention}primed{}, {C:attention}setting Blind{},",
                         "creates a random card from",
                         "{V:1}#1#{}, then is {C:abs_drinks}drank{}",
+                        "{C:attention,s:0.8}team{C:inactive,s:0.8} changes after each {C:abs_drinks,s:0.8}refill",
                         "{C:inactive}(Must have space!)",
                     }
                 }

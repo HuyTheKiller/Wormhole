@@ -180,10 +180,11 @@ return {
             j_worm_LittleLight = {
                 name = "Little Light",
                 text = {{
-                    "This Joker gains {X:mult,C:white}X0.2{} Mult{} per {C:tarot}Death Tarot{} card used.",
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult{}",
+                    "per {C:tarot}Death{} card used",
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
                 },{
-                    "Additionally prevents Death if chips scored are ",
+                    "Prevents {C:red}Death{} if chips scored are",
                     "at least {C:attention}25%{} of {C:purple}Blind Requirement{},",
                     "then {C:red,E:2}self destructs{}"
                 }},

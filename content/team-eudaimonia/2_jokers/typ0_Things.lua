@@ -212,6 +212,7 @@ SMODS.Joker {
     ppu_team = {"TeamEudaimonia"},
     attributes = {"scaling", "xmult", "tarot", "prevents_death", "space"},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_death
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain } }
     end,
     calculate = function(self, card, context)

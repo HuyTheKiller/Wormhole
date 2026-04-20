@@ -88,8 +88,10 @@ return {
             j_worm_ibu_dyson = {
                 name = 'Dyson Sphere',
                 text = {
-                    "{X:mult,C:white}X#1#{} Mult for each {C:hearts}Sun{} or {C:diamonds}Stars{}",
-                    "Tarot in your consumable area",
+                    "Each {C:tarot}The Sun{} or",
+                    "{C:tarot}The Stars{} cards in",
+                    "your {C:attention}consumables{} area",
+                    "give {X:mult,C:white}X#1#{} Mult",
                 },
             },
             j_worm_ibu_horizon = {
@@ -132,9 +134,9 @@ return {
             j_worm_ibu_terraforming = {
                 name = 'Terraforming',
                 text = {
-                    "Create an {C:Planet}Earth{} whenever",
-                    "a {C:attention}#1#{} is used",
-                    "{C:inactive}Used planet changes each round"
+                    "Create an {C:planet}Earth{} whenever",
+                    "a {C:planet}#1#{} is used",
+                    "{C:inactive,s:0.8}required planet changes each round",
                 }
             },
             j_worm_ibu_jettison = {
@@ -179,8 +181,8 @@ return {
                 name = 'Shining Star',
                 text = {
                     "If played hand is a",
-                    "{C:attention}Single {C:diamonds}Diamond{}",
-                    "Retrigger it #1# times"
+                    "{C:attention}Single {C:diamonds}Diamond{} card,",
+                    "retrigger it {C:attention}#1#{} times"
                 }
             }
         }
