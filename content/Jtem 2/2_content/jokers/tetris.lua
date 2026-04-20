@@ -40,6 +40,7 @@ function JtemTGM.UI.UpdateBindButtonText(text)
 end
 
 function JtemTGM.UI.InitBind(button)
+	if JtemTGM.UI.bind_button then JtemTGM.UI.CancelBind() end
 	button.config.button = nil
 	JtemTGM.UI.bind_button = button
 	JtemTGM.UI.bind_key = button.config.ref_table.bind
