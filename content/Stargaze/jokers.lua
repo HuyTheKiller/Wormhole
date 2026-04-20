@@ -24,7 +24,7 @@ SMODS.Joker({
         extra = {
             xmult = 1,
             xmult_mod = 0.2,
-            target_hand = "High Card"
+            poker_hand = "High Card"
         }
     },
 
@@ -32,27 +32,28 @@ SMODS.Joker({
         return {
             vars = {
                 card.ability.extra.xmult,
-                card.ability.extra.target_hand,
+                localize(card.ability.extra.poker_hand, 'poker_hands'),
                 card.ability.extra.xmult_mod,
             }
         }
     end,
 
     calculate = function(self, card, context)
-        if context.end_of_round then
-            local hands = {}
-            for k, v in pairs(G.GAME.hands) do
-                table.insert(hands, k)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            local _poker_hands = {}
+            for handname, _ in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.poker_hand then
+                    _poker_hands[#_poker_hands + 1] = handname
+                end
             end
-
-            if #hands > 0 then
-                card.ability.extra.target_hand =
-                    pseudorandom_element(hands, pseudoseed('vash'))
-            end
+            card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'vash')
+            return {
+                message = localize('k_reset')
+            }
         end
 
         if context.before and not context.blueprint then
-            if context.scoring_name == card.ability.extra.target_hand then
+            if context.scoring_name == card.ability.extra.poker_hand then
                 card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
                 return {
                     message = localize('k_upgrade_ex'),
@@ -66,6 +67,15 @@ SMODS.Joker({
                 x_mult = card.ability.extra.xmult
             }
         end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local _poker_hands = {}
+        for handname, _ in pairs(G.GAME.hands) do
+            if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.poker_hand then
+                _poker_hands[#_poker_hands + 1] = handname
+            end
+        end
+        card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'vash')
     end
 })
 
