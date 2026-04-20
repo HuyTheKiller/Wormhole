@@ -26,7 +26,7 @@ local function nope(back)
 end
 
 SMODS.Back({
-	key = "cosmos",
+	key = "sg_cosmos",
 	pos = { x = 0, y = 0 },
 	atlas = "stargaze_deck",
 	ppu_coder = { "FALATRO" },

@@ -27,7 +27,7 @@ return {
 		},
 
 		Joker = {
-			j_worm_typhoon = {
+			j_worm_sg_typhoon = {
 				name = "Humanoid Typhoon",
 				text = {
 					"This Joker gains {X:mult,C:white}X#3#{} Mult if",
@@ -37,16 +37,23 @@ return {
 				},
 			},
 
-			j_worm_punisher = {
+			j_worm_sg_punisher = {
 				name = "The Punisher",
 				text = {
 					{ "{C:mult}+15{} Mult if {C:attention}5 cards{} are played" },
-					{ "Prevents Death and has its final stand",
-					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X3{} per round" }
+					{ "Prevents Death and {C:attention}evolves" }
 				},
 			},
 
-			j_worm_knives = {
+			j_worm_sg_punisher2 = {
+				name = "The Punisher",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} per round",
+					"{C:red}Destroys{} self when depleted"
+				}
+			},
+
+			j_worm_sg_knives = {
 				name = "Million Knives",
 				text = {
 					"On the {C:attention}final hand{} of round,",
@@ -56,7 +63,7 @@ return {
 				},
 			},
 
-			j_worm_journalist = {
+			j_worm_sg_journalist = {
 				name = "Journalist Stryfe",
 				text = {
 					"This Joker gains {C:chips}+#2#{} Chips",
@@ -67,7 +74,7 @@ return {
 				},
 			},
 
-			j_worm_journalist2 = {
+			j_worm_sg_journalist2 = {
 				name = "Journalist Thompson",
 				text = {
 					"This Joker gains {X:chips,C:white}X#2#{} Chips",
@@ -78,7 +85,7 @@ return {
 				},
 			},
 
-			j_worm_nomanland = {
+			j_worm_sg_nomanland = {
 				name = "People Of No Man's Land",
 				text = {
 					"Earn {C:money}$#3#{} every {C:attention}#2#{} Jokers sold",
@@ -86,7 +93,7 @@ return {
 				},
 			},
 
-			j_worm_GOD = {
+			j_worm_sg_GOD = {
 				name = "ABSOLUTE GOD OF THE UNIVERSE",
 				text = {
 					"Every {C:attention}#3# {C:inactive}[#2#] {C:planet}Planet{} cards used,",
@@ -97,7 +104,7 @@ return {
 		},
 
 		Back = {
-			b_worm_cosmos = {
+			b_worm_sg_cosmos = {
 				name = "Cosmos Deck",
 				text = {
 					"Start with a {C:dark_edition}Negative{} {C:attention,T:j_space}Space Joker{}",

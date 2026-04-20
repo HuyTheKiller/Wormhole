@@ -6,7 +6,7 @@ SMODS.Atlas({
 })
 
 SMODS.Joker({
-    key = "typhoon",
+    key = "sg_typhoon",
     rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
@@ -18,7 +18,7 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"hand_type", "scaling", "xmult", "space"},
+    attributes = { "hand_type", "scaling", "xmult", "space" },
 
     config = {
         extra = {
@@ -60,7 +60,7 @@ SMODS.Joker({
                 }
             end
         end
-        
+
         if context.joker_main then
             return {
                 x_mult = card.ability.extra.xmult
@@ -71,7 +71,7 @@ SMODS.Joker({
 
 
 SMODS.Joker({
-    key = "punisher",
+    key = "sg_punisher",
     rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
@@ -83,17 +83,17 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"mult", "prevents_death", "xmult", "scaling", "space"},
+    attributes = { "mult", "prevents_death", "xmult", "scaling", "space" },
 
     config = {
         extra = {
-            evolved = false,
-            xmult = 15,
+            mult = 15,
             used_revive = false
         }
     },
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_worm_sg_punisher2
         return {
             vars = {
                 card.ability.extra.xmult
@@ -102,17 +102,10 @@ SMODS.Joker({
     end,
 
     calculate = function(self, card, context)
-        if context.game_over
-            and not card.ability.extra.used_revive then
-            card.ability.extra.used_revive = true
-            card.ability.extra.evolved = true
-
-            card.children.center:set_sprite_pos({ x = 3, y = 0 })
-            card.children.center:reset()
-
+        if context.game_over then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    card.ability.extra.xmult = 15
+                    card:set_ability('j_worm_sg_punisher2')
                     return true
                 end
             }))
@@ -123,60 +116,79 @@ SMODS.Joker({
                 saved = true
             }
         end
-        if context.end_of_round
-            and card.ability.extra.evolved then
-            if card.ability.extra.last_round ~= G.GAME.round then
-                card.ability.extra.last_round = G.GAME.round
 
-                card.ability.extra.xmult =
-                    math.max(1, card.ability.extra.xmult - 3)
-
-                if card.ability.extra.xmult <= 1 then
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            play_sound('tarot1')
-                            card:juice_up(0.8, 0.8)
-
-                            card:start_dissolve()
-                            return true
-                        end
-                    }))
-
-                    return {
-                        message = "Retired",
-                        colour = G.C.BLACK
-                    }
-                end
-
-                return {
-                    message = "-3X",
-                    colour = G.C.BLACK
-                }
-            end
-        end
-
-
-        if context.joker_main then
-            if not card.ability.extra.evolved then
-                if context.full_hand and #context.full_hand == 5 then
-                    return {
-                        mult = 15
-                    }
-                end
-            end
-
-            if card.ability.extra.evolved then
-                return {
-                    x_mult = card.ability.extra.xmult
-                }
-            end
+        if context.joker_main and context.full_hand and #context.full_hand == 5 then
+            return {
+                mult = card.ability.extra.mult
+            }
         end
     end
 })
 
 
 SMODS.Joker({
-    key = "knives",
+    key = "sg_punisher2",
+    rarity = 3,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    no_collection = true,
+    cost = 8,
+    pos = { x = 3, y = 0 },
+    atlas = "stargaze_jokers",
+    ppu_coder = { "FALATRO" },
+    ppu_artist = { "KaitlynTheStampede" },
+    ppu_team = { "Stargaze" },
+
+    attributes = { "mult", "prevents_death", "xmult", "scaling", "space" },
+
+    config = {
+        extra = {
+            xmult = 15,
+            deplete = 3
+        }
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult,
+                card.ability.extra.deplete
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.end_of_round and not context.individual and not context.repetition then
+            card.ability.extra.xmult = math.max(1, card.ability.extra.xmult - card.ability.extra.deplete)
+
+            if card.ability.extra.xmult <= 1 then
+                SMODS.destroy_cards(card)
+
+                return {
+                    message = "Retired",
+                    colour = G.C.BLACK
+                }
+            end
+
+            return {
+                message = "-3X",
+                colour = G.C.BLACK
+            }
+        end
+
+        if context.joker_main then
+            return { xmult = card.ability.extra.xmult }
+        end
+    end,
+    in_pool = function(self, args)
+        return false
+    end
+})
+
+
+SMODS.Joker({
+    key = "sg_knives",
     rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
@@ -188,7 +200,7 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"hands", "destroy_card", "generation", "space"},
+    attributes = { "hands", "destroy_card", "generation", "space" },
 
     calculate = function(self, card, context)
         if context.before
@@ -239,7 +251,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-    key = "journalist",
+    key = "sg_journalist",
     rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
@@ -251,7 +263,7 @@ SMODS.Joker({
     ppu_artist = { "DanielDeisar" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"chips", "scaling", "hand_type", "hands", "joker_slot", "space"},
+    attributes = { "chips", "scaling", "hand_type", "hands", "joker_slot", "space" },
 
     config = {
         extra = {
@@ -266,7 +278,8 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.chips, card.ability.extra.chips_mod, card.ability.extra.chips_mod * card.ability.extra.chips_mod_bonus
+                card.ability.extra.chips, card.ability.extra.chips_mod, card.ability.extra.chips_mod *
+            card.ability.extra.chips_mod_bonus
             }
         }
     end,
@@ -313,7 +326,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-    key = "journalist2",
+    key = "sg_journalist2",
     rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
@@ -325,7 +338,7 @@ SMODS.Joker({
     ppu_artist = { "DanielDeisar" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"scaling", "xchips", "hand_type", "hands", "joker_slot", "space"},
+    attributes = { "scaling", "xchips", "hand_type", "hands", "joker_slot", "space" },
 
     config = {
         extra = {
@@ -340,7 +353,8 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.xchips, card.ability.extra.xchips_mod, card.ability.extra.xchips_mod * card.ability.extra.xchips_mod_bonus 
+                card.ability.extra.xchips, card.ability.extra.xchips_mod, card.ability.extra.xchips_mod *
+            card.ability.extra.xchips_mod_bonus
             }
         }
     end,
@@ -386,7 +400,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-    key = "nomanland",
+    key = "sg_nomanland",
     rarity = 1,
     blueprint_compat = true,
     eternal_compat = true,
@@ -398,7 +412,7 @@ SMODS.Joker({
     ppu_artist = { "KaitlynTheStampede" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"economy", "joker", "space"},
+    attributes = { "economy", "joker", "space" },
 
     config = {
         extra = {
@@ -440,7 +454,7 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-    key = "GOD",
+    key = "sg_GOD",
     rarity = 4,
     blueprint_compat = false,
     eternal_compat = true,
@@ -451,7 +465,7 @@ SMODS.Joker({
     ppu_coder = { "FALATRO" },
     ppu_team = { "Stargaze" },
 
-    attributes = {"planet", "prevents_death", "space"},
+    attributes = { "planet", "prevents_death", "space" },
 
     config = {
         extra = {
@@ -464,8 +478,8 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                card.ability.extra.revives, 
-                card.ability.extra.planets_req - (card.ability.extra.planets_used % card.ability.extra.planets_req), 
+                card.ability.extra.revives,
+                card.ability.extra.planets_req - (card.ability.extra.planets_used % card.ability.extra.planets_req),
                 card.ability.extra.planets_req,
             }
         }
