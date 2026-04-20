@@ -25,6 +25,13 @@ SMODS.Atlas({
 	py = 95,
 })
 
+function Card.get_chip_x_mult(self, context)
+	if self.debuff then return 0 end
+    if self.ability.set == 'Joker' and self.config.center.key ~= "j_worm_jtem2_quantum_rock" then return 0 end --sneaky!
+    if self.ability.x_mult <= 1 then return 0 end
+    return self.ability.x_mult
+end
+
 local rock = SMODS.Joker({
 	key = "jtem2_quantum_rock",
 	discovered = true,
