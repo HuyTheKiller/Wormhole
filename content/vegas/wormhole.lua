@@ -246,7 +246,7 @@ SMODS.Joker{
 			local hands_lower_equal = {}
 			if hand_type then
 				for i = 1, #G.P_CENTER_POOLS.Planet do
-					if G.GAME.hands[G.P_CENTER_POOLS.Planet[i].config.hand_type].order > order then
+					if G.P_CENTER_POOLS.Planet[i].config.hand_type and G.GAME.hands[G.P_CENTER_POOLS.Planet[i].config.hand_type].order > order then
 						hands_lower_equal[#hands_lower_equal + 1] = G.GAME.hands[G.P_CENTER_POOLS.Planet[i].config.hand_type]
 					end
 				end
