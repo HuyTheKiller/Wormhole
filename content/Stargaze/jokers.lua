@@ -123,7 +123,7 @@ SMODS.Joker({
             return {
                 message = "Revived",
                 colour = G.C.BLACK,
-                saved = true
+                saved = localize("j_worm_sg_punisher", "dictionary")
             }
         end
 
@@ -520,7 +520,7 @@ SMODS.Joker({
             return {
                 message = "DIVINE INTERVENTION!",
                 colour = G.C.SECONDARY_SET.Planet,
-                saved = true
+                saved = localize("j_worm_sg_GOD", "dictionary")
             }
         end
     end

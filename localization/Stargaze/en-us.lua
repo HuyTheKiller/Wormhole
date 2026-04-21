@@ -68,8 +68,8 @@ return {
 				text = {
 					"This Joker gains {C:chips}+#2#{} Chips",
 					"({C:chips,s:0.8}+#3#{s:0.8} instead if all Joker slots filled)",
-					"if poker hand was played",
-					"also on {C:attention}previous{} hand",
+					"if played {C:attention}poker hand{} is",
+					"the {C:attention}previous{} played hand",
 					"{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
 				},
 			},
@@ -79,7 +79,7 @@ return {
 				text = {
 					"This Joker gains {X:chips,C:white}X#2#{} Chips",
 					"{s:0.8}({X:chips,C:white,s:0.8}X#3#{s:0.8} instead if all Joker slots filled)",
-					"if poker hand has not",
+					"if {C:attention}poker hand{} has not",
 					"been played {C:attention}this round{}",
 					"{C:inactive}(Currently: {X:chips,C:white}X#1#{} {C:inactive}Chips){}"
 				},
@@ -115,4 +115,10 @@ return {
 			},
 		},
 	},
+	misc = {
+		dictionary = {
+			j_worm_sg_punisher = "Saved by The Punisher",
+			j_worm_sg_GOD = "Saved by DIVINE INTERVENTION"
+		}
+	}
 }
