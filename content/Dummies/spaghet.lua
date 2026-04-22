@@ -4,7 +4,7 @@ SMODS.Joker {
 	key = 'dum_spaghet',
 	config = { extra = { chips = 0 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { SMODS.signed(card.ability.extra.chips) } }
+		return { vars = { card.ability.extra.chips } }
 	end,
 	unlocked = true,
 	rarity = 3,
