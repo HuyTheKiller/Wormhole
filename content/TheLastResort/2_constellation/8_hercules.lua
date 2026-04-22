@@ -13,11 +13,12 @@ SMODS.Consumable{
 			info_queue[#info_queue+1] = {set = "Blind", key = card.ability.blind, vars = G.P_BLINDS[card.ability.blind].vars}
 		elseif card.ability.tier == 4 then
 			self:reset_blind(card)
+			local key = card.ability.blind
 			info_queue[#info_queue+1] = {
 				set = "Blind", 
-				key = card.ability.blind, 
-				vars =	G.P_BLINDS[card.ability.blind].collection_loc_vars(G.P_BLINDS[card.ability.blind]).vars or --use collection_loc_vars if available
-						G.P_BLINDS[card.ability.blind].vars
+				key = key, 
+				vars =	G.P_BLINDS[key].collection_loc_vars and G.P_BLINDS[key].collection_loc_vars(G.P_BLINDS[key]).vars or --use collection_loc_vars if available
+						G.P_BLINDS[key].vars
 			} 
 		end
 		return {vars = {localize{set = "Blind", type = "name_text", key = card.ability.blind}}}
