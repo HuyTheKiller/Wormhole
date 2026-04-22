@@ -14,6 +14,7 @@ SMODS.Back {
     config = { },
     ppu_artist = { "notmario" },
     ppu_coder = { "notmario" },
+    ppu_team = { ":3" },
     apply = function(self, back)
         G.E_MANAGER:add_event(Event({
             func = function()
