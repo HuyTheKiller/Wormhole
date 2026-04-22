@@ -49,6 +49,12 @@ SMODS.Consumable{
 		}
 	end,
 	use = function (self, card, area, copier)
+		local constellations = {}
+		for _, _card in pairs(G.consumeables.cards) do
+			if _card.ability.set == 'worm_tlr_constellation' then
+				constellations[#constellations+1] = _card
+			end
+		end
 		G.E_MANAGER:add_event(Event({
 			trigger = 'after',
 			delay = 0.4,
@@ -58,20 +64,20 @@ SMODS.Consumable{
 				return true
 			end
 		}))
-		for _, _card in ipairs(G.consumeables.cards) do
+		for i, _card in ipairs(constellations) do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
 				delay = 0.15,
 				func = function()
 					_card:flip()
-					play_sound('card1')
+					play_sound('card1', 1.15 - (i - 0.999) / (#constellations - 0.998) * 0.3)
 					_card:juice_up(0.3, 0.3)
 					return true
 				end
 			}))
 		end
 		delay(0.2)
-		for _, _card in ipairs(G.consumeables.cards) do
+		for _, _card in ipairs(constellations) do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
 				delay = 0.1,
@@ -82,13 +88,13 @@ SMODS.Consumable{
 				end
 			}))
 		end
-		for _, _card in ipairs(G.consumeables.cards) do
+		for i, _card in ipairs(constellations) do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
 				delay = 0.15,
 				func = function()
 					_card:flip()
-					play_sound('tarot2', 1, 0.6)
+					play_sound('tarot2', 0.85 + (i-0.999)/(#constellations-0.998)*0.3)
 					_card:juice_up(0.3, 0.3)
 					return true
 				end
