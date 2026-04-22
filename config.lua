@@ -10,4 +10,5 @@ return {
 	},
 	menu = true,
 	quantum_rock = true,
+	family_friendly = false,
 }

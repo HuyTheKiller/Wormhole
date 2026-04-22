@@ -226,13 +226,15 @@ SMODS.Joker {
 	    local quip = {}
 	    localize{type = "descriptions", key = "thorn_piss_rant", set = "Joker", default_col = G.C.UI.TEXT_DARK, nodes = loc, vars = {colours = {G.C.RED}}, scale = 0.7}
 	    quip = {transparent_multiline_text(loc)}
-        return { vars = { localize(card.ability.extra.suit_old, 'suits_plural'), localize(card.ability.extra.suit_new, 'suits_plural'), card.ability.extra.chips }, main_end = {
-            {n=G.UIT.C, config = {align = "cm", minh = 1, minw = 5, r = 0.3, padding = 0.07, colour = G.C.JOKER_GREY, shadow = true}, nodes={
-				{n=G.UIT.R, config={align = "cm" , r = 0.2, padding = 0.1, colour = G.C.WHITE}, nodes=
-					quip
-				}
-			}},
-        } }
+        local rant
+        if not Wormhole.config.family_friendly then
+            rant = {n=G.UIT.C, config = {align = "cm", minh = 1, minw = 5, r = 0.3, padding = 0.07, colour = G.C.JOKER_GREY, shadow = true}, nodes={
+                {n=G.UIT.R, config={align = "cm" , r = 0.2, padding = 0.1, colour = G.C.WHITE}, nodes=
+                    quip
+                }
+            }}
+        end
+        return { key = self.key .. (Wormhole.config.family_friendly and "_alt" or ""), vars = { localize(card.ability.extra.suit_old, 'suits_plural'), localize(card.ability.extra.suit_new, 'suits_plural'), card.ability.extra.chips }, main_end = {rant} }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
