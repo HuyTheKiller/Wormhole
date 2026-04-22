@@ -205,10 +205,10 @@ local function register_rocket(args)
 			}
         end
 	end
-	args.update = args.update or function(self, card, dt)
+	args.update = args.update or function(self, card, dt) 
 		if not card.ability.extra.active then return end
-		active_sound_timer = active_sound_timer - dt
-		if active_sound_timer <= 0 then
+		active_sound_timer = active_sound_timer - dt /4 --for some reason, this is happening at ~4x the speed expected. So dividing by 4 to prevent overlap of sounds
+		if active_sound_timer <= 0.01 then --increased the threshold to avoid silences. Unfortunately not perfect because balatro doesn't keep track of audio
 			active_sound_timer = ACTIVE_SOUND_LENGTH
 			play_sound("worm_polarskull_rocketactive", nil, 0.5)
 		end
