@@ -24,8 +24,8 @@ end
 
 -- Helper to check if both cosmic jokers are held simultaneously
 function get_pair_status()
-    local past = SMODS.find_card('j_worm_the_past')
-    local future = SMODS.find_card('j_worm_the_future')
+    local past = SMODS.find_card('j_worm_riverboat_the_past')
+    local future = SMODS.find_card('j_worm_riverboat_the_future')
 
     if #past > 0 and #future > 0 then
         return true, past[1]

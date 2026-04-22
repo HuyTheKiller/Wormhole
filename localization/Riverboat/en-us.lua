@@ -56,7 +56,7 @@ return {
                     "When paired, gives {X:mult,C:white} XMult {}",
                     "equal to {C:attention}Hands played{} raised",
                     "to the power of {C:attention}1{} + {C:attention}0.1{} per {C:attention}Joker{} bought",
-                    "{C:inactive}(Currently {X:dark_edition,C:white} X#1#^#3# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white} X(#1#^#3#) {C:inactive} Mult)",
                     "{C:inactive}They were never apart. Only waiting."
                 }
             },
@@ -75,7 +75,7 @@ return {
                     "When paired, gives {X:mult,C:white} XMult {}",
                     "equal to {C:attention}Hands played{} raised",
                     "to the power of {C:attention}1{} + {C:attention}0.1{} per {C:attention}Joker{} bought",
-                    "{C:inactive}(Currently {X:dark_edition,C:white} X#1#^#3# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white} X(#1#^#3#) {C:inactive} Mult)",
                     "{C:inactive}They were never apart. Only waiting."
                 }
             },
