@@ -12,7 +12,7 @@ SMODS.Joker {
             x_mult = 2.25
         }
     },
-    ppu_team = { "VV" },
+    ppu_team = { "Violent Violets" },
     ppu_coder = { "Iso", "FireIce" },
     attributes = {"chance", "economy", "hands", "xmult", "retrigger", "space"},
     atlas = 'VVjokers',

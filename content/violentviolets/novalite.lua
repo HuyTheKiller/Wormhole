@@ -19,7 +19,7 @@ SMODS.Joker { -- :3
             vars = { card.ability.extra.multi, (planets_used) }, 
         }
     end,
-    ppu_team = { "VV" },
+    ppu_team = { "Violent Violets" },
     ppu_artist = { "FirstTry" },
     ppu_coder = { "Iso" },
     calculate = function(self, card, context)

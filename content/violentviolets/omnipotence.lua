@@ -8,7 +8,7 @@ SMODS.Consumable {
     soul_set = 'Spectral',
     soul_rate = 0.003,
     can_repeat_soul = true,
-    ppu_team = { "VV" },
+    ppu_team = { "Violent Violets" },
     
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({
