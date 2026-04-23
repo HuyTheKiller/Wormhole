@@ -1,7 +1,6 @@
 extern float screen_scale;
 extern float time;
 extern float seed;
-extern float transparency;
 
 extern vec3 nebula_color1;
 extern vec3 nebula_color2;
@@ -212,9 +211,5 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
         bg = shootingStars(coords, bg);
     }
 
-    if (transparency == 1.0) {
-        return bg;
-    }
-
-    return mix(Texel(texture, texture_coords), bg, transparency);
+    return bg;
 }

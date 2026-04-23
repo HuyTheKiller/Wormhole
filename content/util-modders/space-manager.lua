@@ -9,7 +9,7 @@ Wormhole.util_space_manager = manager
 function manager:update(dt)
     -- Manage State
     if G.STAGE ~= G.STAGES.RUN then
-        if self.active then
+        if self.active or self.bg_active then
             self:reset()
         end
         return
@@ -151,25 +151,23 @@ function manager:draw_background(title)
     end
 
     if not conf then return sendWarnMessage("BG Shader active but no conf??", "SpaceManager") end
-    local shader = self.manualSend(conf, nil, title and 1 or self.bg_transparency)
-    if title or self.bg_transparency == 1 then
-        local w, h = love.graphics.getDimensions()
-        love.graphics.setShader(shader)
-        love.graphics.rectangle("fill", 0, 0, w, h)
-        love.graphics.setShader()
-    else
-        love.graphics.push("all")
-        local canvas = love.graphics.getCanvas()
-        local tempCanvas = love.graphics.newCanvas(canvas:getWidth(), canvas:getHeight())
-        love.graphics.reset()
-        love.graphics.setCanvas(tempCanvas)
-        love.graphics.setShader(shader)
-        love.graphics.draw(canvas, 0, 0)
-        love.graphics.setShader()
-        love.graphics.setCanvas(canvas)
-        love.graphics.draw(tempCanvas, 0, 0)
-        love.graphics.pop()
+    local shader = self.manualSend(conf, 1)
+    local w, h = love.graphics.getDimensions()
+    local scale = G.TILESCALE*G.TILESIZE*G.CANV_SCALE / 15
+    local cw = math.ceil(w / scale)
+    local ch = math.ceil(h / scale)
+    if not manager.canvas then
+        manager.canvas = love.graphics.newCanvas(cw, ch)
     end
+    love.graphics.push("all")
+    love.graphics.setCanvas(manager.canvas)
+    love.graphics.setShader(shader)
+    love.graphics.rectangle("fill", 0, 0, cw, ch)
+    love.graphics.pop()
+    love.graphics.push()
+    love.graphics.setColor(1, 1, 1, title and 1 or self.bg_transparency)
+    love.graphics.draw(manager.canvas, 0, 0, 0, scale)
+    love.graphics.pop()
 
 end
 
@@ -190,13 +188,11 @@ function manager:reset()
     self.title_conf = nil
 end
 
-function manager.manualSend(conf, scale, transparency)
+function manager.manualSend(conf, scale)
     local shader = G.SHADERS.worm_util_space
     scale = scale or G.TILESCALE*G.TILESIZE*G.CANV_SCALE / 15
-    transparency = transparency or 1.0
     shader:send("screen_scale", scale)
     shader:send("time", G.TIMERS.REAL)
-    shader:send("transparency", transparency)
     shader:send("seed", conf.seed)
     shader:send("nebula_color1", conf.nebula1)
     shader:send("nebula_color2", conf.nebula2)
@@ -239,8 +235,27 @@ SMODS.ScreenShader {
         return manager.active
     end,
     draw = function(self, shader, canvas)
+        local w, h = love.graphics.getDimensions()
+        local scale = G.TILESCALE*G.TILESIZE*G.CANV_SCALE / 15
+        local cw = math.ceil(w / scale)
+        local ch = math.ceil(h / scale)
+        if not manager.canvas then
+            manager.canvas = love.graphics.newCanvas(cw, ch)
+        end
+        love.graphics.push("all")
+        love.graphics.setCanvas(manager.canvas)
         love.graphics.setShader(shader)
-        love.graphics.draw(canvas, 0, 0)
+        love.graphics.rectangle("fill", 0, 0, cw, ch)
+        love.graphics.pop()
+        love.graphics.setShader()
+        love.graphics.push("all")
+        if manager.transparency ~= 1 then
+            love.graphics.draw(canvas)
+            love.graphics.setColor(1, 1, 1, manager.transparency)
+        end
+        love.graphics.draw(manager.canvas, 0, 0, 0, scale)
+        love.graphics.pop()
+
         if manager.overlay then
             love.graphics.setCanvas({love.graphics.getCanvas(), stencil = true})
             for k,v in ipairs(Wormhole.util_space_manager.overlay) do
@@ -257,10 +272,9 @@ SMODS.ScreenShader {
     send_vars = function()
         local conf = manager.conf
         return {
-            screen_scale = G.TILESCALE*G.TILESIZE*G.CANV_SCALE / 15,
+            screen_scale = 1,
             time = G.TIMERS.REAL,
-            transparency = manager.transparency,
-            seed = manager.seed,
+            seed = conf.seed,
             nebula_color1 = conf.nebula1,
             nebula_color2 = conf.nebula2,
             nebula_color3 = conf.nebula3,
@@ -268,3 +282,9 @@ SMODS.ScreenShader {
         }
     end
 }
+
+local love_resize_ref = love.resize
+function love.resize(w, h)
+    love_resize_ref(w, h)
+    manager.canvas = nil
+end
