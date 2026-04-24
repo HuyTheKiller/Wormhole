@@ -122,14 +122,16 @@ SMODS.Joker {
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 if G.GAME.last_hand_played then
-                                    local _rocket = 0
+                                    local _rocket = nil
                                     for k, v in pairs(G.P_CENTER_POOLS.polarskull_rocket) do
                                         if v.config.extra.hand == G.GAME.last_hand_played then
                                             _rocket = v.key
                                         end
                                     end
-                                    SMODS.add_card({ key = _rocket, set = "polarskull_rocket" })
-                                    G.GAME.consumeable_buffer = 0
+                                    if _rocket then
+                                        SMODS.add_card({ key = _rocket, set = "polarskull_rocket" })
+                                        G.GAME.consumeable_buffer = 0
+                                    end
                                 end
                                 return true
                             end

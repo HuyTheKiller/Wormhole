@@ -130,7 +130,7 @@ local function register_rocket(args)
 		local key = self.key
 		if key == "c_worm_polarskull_ssdolphin" and ppm then
 			ppm = false
-			key = key.."_ppm"string.find(sound_code,'music')
+			key = key.."_ppm"
 			table.insert(info_queue, {key = "v_worm_polarskull_prepetual_motion_machine", set = "Voucher"})
 		end
 		return {
