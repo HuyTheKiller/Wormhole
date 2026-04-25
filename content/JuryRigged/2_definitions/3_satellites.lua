@@ -41,7 +41,6 @@ Wormhole.JR_UTILS.Satellite = SMODS.Consumable:extend {
   end
 }
 
-
 -- New Horizon
 Wormhole.JR_UTILS.Satellite {
   key = 'new_horizon',
@@ -50,14 +49,17 @@ Wormhole.JR_UTILS.Satellite {
   pos = { x = 0, y = 0 },
   soul_pos = { x = 0, y = 1, draw = Wormhole.JR_UTILS.draw_satellite_soul },
   jr_calculate = function(self, context, vars)
-    if context.drawing_cards and G.GAME.jr.curr_hand then
+    if context.drawing_cards then
+      print("cards being drawn:" .. context.amount)
+      print("cards being added:" .. Wormhole.JR_UTILS.get_level(vars.hand_type))
+      print("result:" .. Wormhole.JR_UTILS.get_level(vars.hand_type) + (math.max(context.amount, 0)))
       return {
         modify = Wormhole.JR_UTILS.get_level(vars.hand_type) + (math.max(context.amount, 0))
       }
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -105,7 +107,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.den, "worm_jr_messenger")
     return {
       vars = {
@@ -162,7 +164,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -226,7 +228,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.den, "venera_9")
     return {
       vars = {
@@ -283,7 +285,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -344,7 +346,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -390,7 +392,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -447,7 +449,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -476,7 +478,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -505,7 +507,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -537,7 +539,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,
@@ -586,7 +588,7 @@ Wormhole.JR_UTILS.Satellite {
     end
   end,
   loc_vars = function(self, info_queue, card)
-    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, card.fake_card)
+    local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
     return {
       vars = {
         _level,

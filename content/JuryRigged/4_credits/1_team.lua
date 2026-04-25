@@ -8,6 +8,8 @@ PotatoPatchUtils.Team({
       G.GAME.jr.curr_hand = context.scoring_name
     end
 
+    if context.pre_discard or context.open_booster or context.end_of_round then G.GAME.jr.curr_hand = nil end
+
     if G.GAME.jr and G.GAME.jr.curr_hand then
       for _, v in pairs(Wormhole.JR_UTILS.Satellites) do
         local _hand = Wormhole.JR_UTILS.get_hand(v.name)
@@ -18,7 +20,6 @@ PotatoPatchUtils.Team({
       end
     end
 
-    if context.end_of_round then G.GAME.jr.curr_hand = nil end
   end,
   credit_rows = {4,4},
 })
