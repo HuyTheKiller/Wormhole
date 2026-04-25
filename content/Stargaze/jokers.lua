@@ -395,7 +395,7 @@ SMODS.Joker({
                     card.ability.extra.xchips + gain
 
                 return {
-                    message = "X+" .. gain,
+                    message = "+X" .. gain,
                     colour = G.C.CHIPS
                 }
             end
