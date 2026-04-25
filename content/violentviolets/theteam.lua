@@ -10,7 +10,7 @@ PotatoPatchUtils.Developer {
   colour = HEX('AF00AF'),
   loc = true, -- Can also be `loc = 'k_doofus_name'` where the string is an arbitrary localization dictionary entry
   team = 'Violent Violets', -- Must match an already existing Team name
-  atlas = 'worm_devs',
+  atlas = 'worm_vv_devs',
   pos = {x = 1, y = 0},
   soul_pos = {x = 2, y = 0},
   calculate = function(self, context)
@@ -21,7 +21,7 @@ PotatoPatchUtils.Developer {
   colour = HEX('D781FF'),
   loc = true, -- Can also be `loc = 'k_doofus_name'` where the string is an arbitrary localization dictionary entry
   team = 'Violent Violets', -- Must match an already existing Team name
-  atlas = 'worm_devs',
+  atlas = 'worm_vv_devs',
   pos = { x = 3, y = 0 },
   calculate = function(self, context)
   end
@@ -31,7 +31,7 @@ PotatoPatchUtils.Developer {
   colour = HEX("BA89F9"),
   loc = true, -- Can also be `loc = 'k_doofus_name'` where the string is an arbitrary localization dictionary entry
   team = 'Violent Violets', -- Must match an already existing Team name
-  atlas = 'worm_devs',
+  atlas = 'worm_vv_devs',
   pos = { x = 4, y = 0 },
   calculate = function(self, context)
   end
@@ -41,7 +41,7 @@ PotatoPatchUtils.Developer {
   colour = HEX("FFFFFF"),
   loc = true, -- Can also be `loc = 'k_doofus_name'` where the string is an arbitrary localization dictionary entry
   team = 'Violent Violets',
-  atlas = 'worm_devs',
+  atlas = 'worm_vv_devs',
   pos = { x = 0, y = 0 },
   calculate = function(self, context)
   end
