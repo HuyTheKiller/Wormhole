@@ -69,7 +69,7 @@ return {
 					"This Joker gains {C:chips}+#2#{} Chips",
 					"({C:chips,s:0.8}+#3#{s:0.8} instead if all Joker slots filled)",
 					"if played {C:attention}poker hand{} is",
-					"the {C:attention}previous{} played hand",
+					"the same as {C:attention}previous{} hand",
 					"{C:inactive}(Currently {C:chips}+#1#{} {C:inactive}Chips){}",
 				},
 			},
