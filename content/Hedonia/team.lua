@@ -20,7 +20,8 @@ PotatoPatchUtils.Team {
   name = 'Hedonia',
   colour = HEX("deb009"),
   loc = true,
-  short_credit = true
+  short_credit = true,
+  credit_rows = {3,3}
 }
 
 PotatoPatchUtils.Developer {

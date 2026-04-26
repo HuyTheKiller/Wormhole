@@ -24,7 +24,8 @@ Wormhole.LancerFanClub = PotatoPatchUtils.Team {
         if #effects > 0 then return SMODS.merge_effects(effects) end
     end,
     short_credit = true,
-    click = function(self) dark_flip(self) end
+    click = function(self) dark_flip(self) end,
+    credit_rows = {4}
 }
 
 local was_on_lancer = false

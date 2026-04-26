@@ -2,7 +2,8 @@ PotatoPatchUtils.Team {
   name = 'Violent Violets',
   colour = HEX('A83EE7'),
   loc = "VV", -- Can also be `loc = 'k_exampleteam_name'` where the string is an arbitrary localization dictionary entry
-  short_credit = true
+  short_credit = true,
+  credit_rows = {4}
 }
 
 PotatoPatchUtils.Developer {

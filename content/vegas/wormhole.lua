@@ -11,7 +11,8 @@ Ben Roffey (Reson8r)
 --Potato Patch Credits
 PotatoPatchUtils.Team{
 	name = "People Found In Vegas",
-	colour = HEX("73fdff")
+	colour = HEX("73fdff"),
+	credit_rows = {3}
 }
 
 PotatoPatchUtils.Developer{

@@ -2,6 +2,7 @@ PotatoPatchUtils.Team {
     name = "riverboat",
     colour = HEX("ff8c69"),
     loc = true,
+    credit_rows = {4}
 }
 
 PotatoPatchUtils.Developer {

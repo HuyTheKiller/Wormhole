@@ -2,6 +2,7 @@ PotatoPatchUtils.Team {
   name = 'util-modders',
   colour = HEX"a3988a",
   loc = "t_util_modders",
+  credit_rows = {3}
 }
 
 local wilson_colour = SMODS.Gradient{

@@ -6,6 +6,7 @@ PotatoPatchUtils.Team {
   colour = HEX "e34244",
   loc = 'k_team_ibuprofen',
   short_credit = true,
+    credit_rows = {3}
 }
 
 PotatoPatchUtils.Developer {

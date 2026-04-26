@@ -9,6 +9,7 @@ PotatoPatchUtils.Team({
     name = "Stargaze", 
     loc = true,
     colour = HEX("B6334C"),
+    credit_rows = {3}
 })
 
 PotatoPatchUtils.Developer({

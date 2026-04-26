@@ -22,6 +22,7 @@ PotatoPatchUtils.Team({
     loc = true,
     colour = HEX("B6334C"),
     --colour = HEX("A65A60"), --low contrast variant
+    credit_rows = {5}
 })
 
 -- RandomsongV2
