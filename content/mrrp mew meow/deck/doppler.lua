@@ -29,7 +29,7 @@ SMODS.Back {
             if from_hand then
                 level_up_hand(from, from_hand, nil, back.effect.config.level_up)
             end
-            if most_played then
+            if most_played and G.GAME.hands[most_played].level > 1 then
                 level_up_hand(from, most_played, nil, back.effect.config.level_down)
             end
             return nil, true
