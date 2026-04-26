@@ -38,7 +38,6 @@ descriptions={
 				"and no scoring {C:attention}face{} cards",
 			}
 		},
-		--[[]]
 		j_worm_mrrp_felicette ={
 			name=
 				"Félicette"
@@ -251,12 +250,12 @@ descriptions={
 			name = 'Shinku',
 			text = {
 				{
-					"Hi. I'm {C:mrrp_pink}Shinku{}."
+					"Hi. I'm {C:mrrp_crimson}Shinku{}."
 				},
 				{
 					"I worked on/created",
 					"mods like {C:hearts}Ortalab{}",
-					"and {C:mrrp_pink}Parallel Update{}."
+					"and {C:mrrp_crimson}Parallel Update{}."
 				}
 			},
 		},
