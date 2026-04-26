@@ -21,7 +21,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         local _handname, _played = 'High Card', -1
         for hand_key, hand in pairs(G.GAME.hands) do
-            if hand.played > _played then
+            if hand.played > _played and SMODS.is_poker_hand_visible(hand_key) then
                 _played = hand.played
                 _handname = hand_key
             end
@@ -39,7 +39,7 @@ SMODS.Joker {
         local round_tally = 0
         local _handname, _played = 'High Card', -1
         for hand_key, hand in pairs(G.GAME.hands) do
-            if hand.played > _played then
+            if hand.played > _played and SMODS.is_poker_hand_visible(hand_key) then
                 _played = hand.played
                 _handname = hand_key
             end
