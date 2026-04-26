@@ -51,7 +51,7 @@ SMODS.Enhancement {
     no_rank = true,
     no_suit = true,
     always_scores = true,
-    config = { extra = { junk_mult = 1, } },
+    config = { extra = { junk_mult = 1, supergiant_chips_mult = 1, } },
     loc_vars = function(self, q, card)
         local key_append = ""
         if ((G.GAME.worm_c3_junk_stats or {}).mult or 0) ~= 0 then
@@ -63,7 +63,7 @@ SMODS.Enhancement {
         return {
             key = (key_append ~= "") and "m_worm_ct_junk_card"..key_append or nil,
             vars = {
-                ((G.GAME.worm_c3_junk_stats or {}).chips or 1) * card.ability.extra.junk_mult,
+                ((G.GAME.worm_c3_junk_stats or {}).chips or 1) * card.ability.extra.junk_mult * card.ability.extra.supergiant_chips_mult,
                 ((G.GAME.worm_c3_junk_stats or {}).mult or 0) * card.ability.extra.junk_mult,
                 (G.GAME.worm_c3_junk_stats or {}).retriggers or 1,
                 ((G.GAME.worm_c3_junk_stats or {}).retriggers or 1) == 1 and "" or "s",
@@ -80,7 +80,7 @@ SMODS.Enhancement {
         end
         if context.main_scoring and context.cardarea == G.play then
             local rets = {}
-            rets["chips"] = ((G.GAME.worm_c3_junk_stats or {}).chips or 1) * card.ability.extra.junk_mult
+            rets["chips"] = ((G.GAME.worm_c3_junk_stats or {}).chips or 1) * card.ability.extra.junk_mult * card.ability.extra.supergiant_chips_mult
             if ((G.GAME.worm_c3_junk_stats or {}).mult or 0) ~= 0 then
                 rets["mult"] = ((G.GAME.worm_c3_junk_stats or {}).mult or 0) * card.ability.extra.junk_mult
             end

@@ -202,6 +202,8 @@ SMODS.Consumable {
     local conv_card = G.hand.highlighted[1]
     if conv_card.ability.name == 'Stone Card' then
       conv_card.ability.perma_bonus = conv_card.ability.perma_bonus + (50 + conv_card.ability.perma_bonus) * 2
+    elseif SMODS.has_enhancement(conv_card, "m_worm_ct_junk_card") then
+      conv_card.ability.extra.supergiant_chips_mult = conv_card.ability.extra.supergiant_chips_mult * 3
     else
       conv_card.ability.perma_bonus = conv_card.ability.perma_bonus +
           (conv_card.base.nominal + conv_card.ability.perma_bonus) * 2
