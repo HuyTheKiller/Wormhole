@@ -1,6 +1,3 @@
-local jackpot_playing = false --ear protection
-local extrahand_playing = false
-local wormhole_playing = false
 local hyperspace_playing = false
 
 SMODS.Joker {
@@ -16,36 +13,27 @@ SMODS.Joker {
     },
     ppu_team = { "Violent Violets" },
     ppu_coder = { "Iso", "FireIce" },
-    attributes = {"chance", "economy", "hands", "xmult", "retrigger", "space"},
+    attributes = { "chance", "economy", "hands", "xmult", "retrigger", "space" },
     atlas = 'VVjokers',
-    pos = {x = 0, y = 2},
+    pos = { x = 0, y = 2 },
     blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, card.ability.extra.prob, card.ability.extra.odds)
         return {
-            vars = {
-                card.ability.extra.x_mult,
-            }
+            vars = { num, denom, card.ability.extra.x_mult, }
         }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             if SMODS.pseudorandom_probability(card, "c", card.ability.extra.prob, card.ability.extra.odds) then
-                if not hyperspace_playing then 
-                    play_sound('worm_hyperspace', 1, 1)
-                    hyperspace_playing = true
-                    G.E_MANAGER:add_event(Event({
-                        trigger = "after",
-                        delay = 1,
-                        blocking = false,
-                        blockable = false,
-                        func = function()
-                            hyperspace_playing = false
-                        end
-                    }))
-                end    
+                --[[ G.E_MANAGER:add_event(Event({
+                    func = function()
+                        play_sound('worm_hyperspace', 1, .7)
+                        return true;
+                    end
+                })) ]] -- Commented out because it's a very loud and long sound for scoring
                 return {
-                    xmult = card.ability.extra.xmult,
+                    xmult = card.ability.extra.x_mult
                 }
             end
         end

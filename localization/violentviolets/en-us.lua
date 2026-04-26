@@ -96,10 +96,9 @@ return {
             j_worm_spacecadet = {
                 name = "Space Cadet",
                 text = {
-                    {
-                        "{C:green}1 in 3{} chance to",
-                        "give {X:mult,C:white}X2.25{} Mult per card"
-                    }
+                    "{C:green}#1# in #2#{} chance for",
+                    "played cards to give",
+                    "{X:mult,C:white} X#3# {} Mult when scored",
                 }
             }
         },
