@@ -189,8 +189,10 @@ return {    -- yo it's GHOSTSALT here look at me TYPING before i SUBMIT THIS THI
                 name = "Pulsar",
                 text = {
                     "{C:attention}Doubles{} the per-level",
-                    "{C:chips}Chips{} & {C:mult}Mult{} of {C:attention}#1#{}",
-                    "and set its level to {C:attention}1"
+                    "{C:chips}Chips{} & {C:mult}Mult{} scaling of",
+                    "{C:attention}most played hand{}",
+                    "and set its level to {C:attention}1",
+                    "{C:inactive}(Currently {C:attention}#1#{C:inactive})"
                 }
             }
         },
