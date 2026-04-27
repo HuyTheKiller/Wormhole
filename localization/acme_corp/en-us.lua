@@ -292,24 +292,21 @@ return {
                 name = "Gadget Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:acme_gadget} Gadget{} cards to",
-                    "be held in consumable slots",
+                    "{C:attention}#2#{C:acme_gadget} Gadget{} cards"
                 },
             },
             p_worm_acme_gadget_jumbo = {
                 name = "Jumbo Gadget Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:acme_gadget} Gadget{} cards to",
-                    "be held in consumable slots",
+                    "{C:attention}#2#{C:acme_gadget} Gadget{} cards"
                 },
             },
             p_worm_acme_gadget_mega = {
                 name = "Mega Gadget Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:acme_gadget} Gadget{} cards to",
-                    "be held in consumable slots",
+                    "{C:attention}#2#{C:acme_gadget} Gadget{} cards"
                 },
             },
         },

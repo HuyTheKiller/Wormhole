@@ -153,8 +153,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -168,8 +167,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -183,8 +181,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -198,8 +195,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -213,8 +209,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -228,8 +223,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -243,8 +237,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",
@@ -258,8 +251,7 @@ local other_loc_table = {
                 text = {
                     {
                         "Choose {C:attention}#1#{} of up to",
-                        "{C:attention}#2#{C:tbp_module} Module{} cards to",
-                        "be used immediately",
+                        "{C:attention}#2#{C:tbp_module} Module{} cards"
                     },
                     {
                         "When opened,",

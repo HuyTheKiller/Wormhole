@@ -283,7 +283,7 @@ return {
                 name = "Avadon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:fate} Fate{} cards to",
+                    "{C:attention}#2#{C:euda_fate} Fate{} cards to",
                     "be used immediately"
                 },
             },
@@ -291,7 +291,7 @@ return {
                 name = "Jumbo Avadon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:fate} Fate{} cards to",
+                    "{C:attention}#2#{C:euda_fate} Fate{} cards to",
                     "be used immediately"
                 },
             },
@@ -299,7 +299,7 @@ return {
                 name = "Mega Avadon Pack",
                 text = {
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:fate} Fate{} cards to",
+                    "{C:attention}#2#{C:euda_fate} Fate{} cards to",
                     "be used immediately"
                 },
             },

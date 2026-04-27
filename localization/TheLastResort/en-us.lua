@@ -373,21 +373,21 @@ local Other = {
 		name = "Constellation Pack",
 		text = {
 			"Choose {C:attention}#1#{} of up to",
-			"{C:attention}#2#{V:1} Constellation{} cards to take",
+			"{C:attention}#2#{V:1} Constellation{} cards",
 		}
 	},
 	p_worm_tlr_const_jumbo = {
 		name = "Jumbo Constellation Pack",
 		text = {
 			"Choose {C:attention}#1#{} of up to",
-			"{C:attention}#2#{V:1} Constellation{} cards to take",
+			"{C:attention}#2#{V:1} Constellation{} cards",
 		}
 	},
 	p_worm_tlr_const_mega = {
 		name = "Mega Constellation Pack",
 		text = {
 			"Choose {C:attention}#1#{} of up to",
-			"{C:attention}#2#{V:1} Constellation{} cards to take",
+			"{C:attention}#2#{V:1} Constellation{} cards",
 		}
 	},
 }
