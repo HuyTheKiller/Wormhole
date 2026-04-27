@@ -542,6 +542,14 @@ SMODS.Joker {
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_worm_bap_void
 		return { vars = { card.ability.extra.inc_x_mult, card.ability.extra.x_mult } }
 	end,
+	in_pool = function(self, args)
+		for k,v in ipairs(G.playing_cards) do
+			if v.edition and v.edition == 'e_worm_bap_void' then
+				return true
+			end
+		end
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.before and not context.blueprint then
 			local voids = {}
