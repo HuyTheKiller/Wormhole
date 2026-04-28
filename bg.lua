@@ -18,7 +18,7 @@ function manager:draw()
             self.canvas_h = target_height
             self.tbp_canvas = love.graphics.newCanvas(self.canvas_w, self.canvas_h)
         end
-        
+
 	local shader = G.SHADERS.worm_tbp_space_warp
         love.graphics.push("all")
         love.graphics.setCanvas(self.tbp_canvas)
@@ -43,6 +43,9 @@ function manager:draw()
 end
 
 function manager:reset()
+    if self.chosen == "util" then
+        Wormhole.util_space_manager:reset()
+    end
     self.chosen = pseudorandom_element(effects)
 end
 
