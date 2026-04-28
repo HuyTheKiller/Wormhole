@@ -161,7 +161,7 @@ return {
                 name = 'Cosmospolitan',
                 text = {
                     {
-                        "When {C:attention}primed{}, {C:attention}setting Blind{},",
+                        "When {C:attention}primed{}, {C:attention}setting Blind{}",
                         "creates a random card from",
                         "{V:1}#1#{}, then is {C:abs_drinks}drank{}",
                         "{C:attention,s:0.8}Team{C:inactive,s:0.8} changes after each {C:abs_drinks,s:0.8}refill",
@@ -183,7 +183,7 @@ return {
                     },
                     {
                         "{C:inactive,s:0.8}After being Refilled:{}",
-                        "When {C:attention}primed{}, {C:attention}setting Blind{},",
+                        "When {C:attention}primed{}, {C:attention}setting Blind{}",
                         "creates a random card from",
                         "{V:1}#1#{}, then is {C:abs_drinks}drank{}",
                         "{C:attention,s:0.8}Team{C:inactive,s:0.8} changes after each {C:abs_drinks,s:0.8}refill",
