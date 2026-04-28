@@ -102,28 +102,23 @@ SMODS.Consumable{
         delay(0.5)
     end,
     calculate = function(self, card, context)
-        if context.joker_main then
+        if context.individual and context.cardarea == G.play and context.other_card and context.other_card.base.value == "Ace" then
             if card.ability.active then
                 return
             end
-
-            local any_ace_scored = false
-            for k, v in ipairs(context.scoring_hand) do
-                if v.base.value == 'Ace' and not SMODS.has_no_rank(v) then
-                    any_ace_scored = true
-                    card.ability.extra.aces_scored = card.ability.extra.aces_scored + 1
-                end
-            end
+            card.ability.extra.aces_scored = card.ability.extra.aces_scored + 1
             if card.ability.extra.aces_scored >= card.ability.extra.aces_required then
                 card.ability.active = true;
                 return{
                     message = localize('k_active_ex'),
+                    message_card = card,
                     colour = G.C.RED
                 }
             elseif any_ace_scored then
                 local remaining = card.ability.extra.aces_required - card.ability.extra.aces_scored
                 return {
                     message = remaining .. " " .. localize('k_remaining'),
+                    message_card = card,
                     colour = G.C.ORANGE
                 }
             end
