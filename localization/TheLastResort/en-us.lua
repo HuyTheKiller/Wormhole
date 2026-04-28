@@ -57,7 +57,7 @@ local CONSTELLATIONS = {
 		name = "Canis Major",
 		text = {
 			"Create up to {C:attention}#1#{} out of {C:attention}#2#{}",
-			"{C:dark_edition}negative {V:1}Constellation{} cards",
+			"{C:dark_edition}Negative {V:1}Constellation{} cards",
 		},
 	},
 	c_worm_tlr_const_perseus_t1 = {
@@ -262,8 +262,8 @@ local CONSTELLATIONS = {
 		text = {
 			"Create this ante's",
 			"{C:attention}Blind's{} {C:attention}Tags{} and",
-			"select up to {C:attention}#1#{}",
-			"out of {C:attention}#2#{} additional {C:attention}Tag{}"
+			"select up to {C:attention}#1#{} out of",
+			"{C:attention}#2#{} additional {C:attention}Tags{}"
 		}
 	},
 	c_worm_tlr_const_draco_t4 = {
