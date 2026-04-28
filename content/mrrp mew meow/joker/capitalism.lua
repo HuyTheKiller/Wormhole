@@ -17,7 +17,7 @@ SMODS.Joker {
 	config = {
         extra = {
             mult = 0,
-            mult_mod = 14,
+            mult_mod = 6,
         }
     },
 	loc_vars = function (self, info_queue, card)
@@ -32,9 +32,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if context.ending_shop and G.GAME.mrrp_capitalism_active and not context.blueprint then
 			SMODS.scale_card(card, {
-				ref_table = card.ability.extra,
 				ref_value = "mult",
-				scalar_table = card.ability.extra,
 				scalar_value = "mult_mod"
 			})
 			return nil, true

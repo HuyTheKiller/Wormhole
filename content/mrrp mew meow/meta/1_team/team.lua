@@ -9,7 +9,7 @@ PotatoPatchUtils.Team {
         if context.starting_shop then
             G.GAME.mrrp_capitalism_active = true
         end
-        if context.money_altered and (context.from_shop or G.shop) and context.amount < 0 then
+        if context.reroll_shop then
             G.GAME.mrrp_capitalism_active = false
         end
     end,

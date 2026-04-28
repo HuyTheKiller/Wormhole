@@ -1,4 +1,5 @@
 --[[ Shinku's original version ] ]
+
 SMODS.Joker{
 key = "orrery",
 atlas = "mrrp",
@@ -31,7 +32,8 @@ calculate = function(self, card, context)
     end
 end,
 }
---[[ Cyan's edit ]]
+
+--[[ Cyan's edit ] ]
 
 SMODS.Joker{
 ppu_team = {'Mrrp Mew Meow :3'},
@@ -175,6 +177,80 @@ calculate = function(self, card, context)
             }))
             -- this isn't perfect since it allows a post-trigger when nothing actually happened
             return nil, true
+        end
+    end
+end,
+}
+
+--[[ Cyan's playtesting revision ]]
+
+SMODS.Joker{
+ppu_team = {'Mrrp Mew Meow :3'},
+ppu_artist = {"SarcPot"},
+ppu_coder = {'Shinku','Cyan'},
+key = "mrrp_orrery",
+atlas = "mrrp",
+pos = {x = 3, y = 1},
+    config = { extra = { tarot = {"c_star", "c_moon", "c_sun", "c_world"} } },
+unlocked = true, 
+discovered = false, 
+rarity = 2,
+cost = 6,
+attributes = {"tarot", "generation", "space"},
+loc_vars = function(self, info_queue, card)
+    for k,v in ipairs(card.ability.extra.tarot) do
+        info_queue[#info_queue+1] = G.P_CENTERS[v]
+    end
+
+    local loc = function(table_of_keys)
+        local ret = {}
+        for k,v in ipairs(table_of_keys) do
+            ret[k] = localize{type="name_text", set=G.P_CENTERS[v].set, key=v}
+        end
+        return ret
+    end
+    local ret = loc(card.ability.extra.tarot)
+
+    return {
+        vars = ret
+    }
+end,
+calculate = function(self, card, context)
+    if context.poker_hand_changed and context.old_level and context.new_level then
+        if context.new_level > context.old_level then
+            local cards = {}
+            for k, v in ipairs(card.ability.extra.tarot) do
+                cards[k] = v
+            end
+            local card = context.blueprint and context.blueprint_card or card
+            if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                return {
+                    func = function()
+                        local cardstocreate = {}
+                        for i = 1, math.min(#cards, G.consumeables.config.card_limit-(#G.consumeables.cards+G.GAME.consumeable_buffer)) do
+                            local key, indx = pseudorandom_element(cards, pseudoseed("orrery"))
+                            cardstocreate[#cardstocreate+1] = key
+                            cards[indx] = nil
+                        end
+                        G.E_MANAGER:add_event(Event({
+                            trigger = "before",
+                            delay = 0.6,
+                            func = function()
+                                play_sound('timpani')
+                                for i = 1, #cardstocreate do
+                                    SMODS.add_card{ key = cardstocreate[i], area = G.consumeables }
+                                end
+                                SMODS.calculate_effect({
+                                    message = localize{type='variable',key='a_plus_tarot',vars={#cardstocreate}},
+                                    colour = G.C.SECONDARY_SET.Tarot,
+                                    instant = true,
+                                }, card)
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
         end
     end
 end,

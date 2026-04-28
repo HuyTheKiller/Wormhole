@@ -14,13 +14,6 @@ SMODS.Consumable {
             dollars = 3
         }
     },
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                SMODS.signed_dollars(card.ability.extra.dollars)
-            }
-        }
-    end,
     cost = 3,
     can_use = function(self, card)
         for i, v in ipairs(G.hand.highlighted) do

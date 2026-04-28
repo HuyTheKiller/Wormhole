@@ -80,14 +80,24 @@ descriptions={
 		j_worm_mrrp_orrery ={
 			name=
 				"Orrery"
+			--[[]]
 			, text={
-				"When upgrading level of any",
-				"{C:attention}poker hand{}, creates ",
+				"When a {C:attention}poker hand{} level is",
+				"upgraded, randomly create",
 				"{C:tarot}#1#{}, {C:tarot}#2#{},",
 				"{C:tarot}#3#{}, and {C:tarot}#4#{}",
-				"in a random order",
 				"{C:inactive}(Must have room){}"
 			}
+			--[[] ]
+			, text={
+				"When a {C:attention}poker hand{} level is",
+				"upgraded, create up to one",
+				"copy each in random order",
+				"of {C:tarot}#1#{}, {C:tarot}#2#{},",
+				"{C:tarot}#3#{}, and {C:tarot}#4#{}",
+				"{C:inactive}(Must have room){}"
+			}
+			--[[]]
 		},
 		j_worm_mrrp_capitalism ={
 			name={
@@ -96,8 +106,8 @@ descriptions={
 				"by Capitalism: {C:edition}SPACE{}!"
 			}, text={
 				"This Joker gains {C:mult}#1#{} Mult",
-				"when ending a {C:attention}shop{} with",
-				"no money being spent",
+				"when ending the {C:attention}shop{}",
+				"if it wasn't {C:attention}rerolled{}",
 				"{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult){}"
 			}
 		},
