@@ -34,6 +34,8 @@ SMODS.Consumable {
         return false
     end,
     use = function(self, card, area, copier)
+        local mods = 0
+
         for i, v in ipairs(G.hand.highlighted) do
             local percent = 1.15 - (i-0.999)/(#G.hand.highlighted-0.998)*0.3
             G.E_MANAGER:add_event(Event {
@@ -50,39 +52,85 @@ SMODS.Consumable {
                 G.E_MANAGER:add_event(Event {
                     func = function()
                         v:set_ability("c_base")
-                        v:juice_up()
-                        ease_dollars(card.ability.extra.dollars, true)
                         return true
-                    end, delay = 0.5, trigger = "after"
+                    end
                 })
+                mods = mods + 1
             end
-        end
-
-        for i, v in ipairs(G.hand.highlighted) do
             if v.edition then
                 G.E_MANAGER:add_event(Event {
                     func = function()
                         v:set_edition(nil, nil, true)
-                        v:juice_up()
-                        ease_dollars(card.ability.extra.dollars, true)
                         return true
-                    end, delay = 0.5, trigger = "after"
+                    end
                 })
+                mods = mods + 1
             end
-        end
-
-        for i, v in ipairs(G.hand.highlighted) do
             if v.seal then
                 G.E_MANAGER:add_event(Event {
                     func = function()
                         v:set_seal(nil, true)
-                        v:juice_up()
-                        ease_dollars(card.ability.extra.dollars, true)
                         return true
-                    end, delay = 0.5, trigger = "after"
+                    end
                 })
+                mods = mods + 1
             end
         end
+
+        -- All of this is from VanillaRemade's Black Hole card by nh6574
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            { handname = localize('k_random_hands'), chips = '...', mult = '...', level = '' })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.2,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = true
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { mult = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                return true
+            end
+        }))
+        update_hand_text({ delay = 0 }, { chips = '+', StatusText = true })
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.9,
+            func = function()
+                play_sound('tarot1')
+                card:juice_up(0.8, 0.5)
+                G.TAROT_INTERRUPT_PULSE = nil
+                return true
+            end
+        }))
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.9, delay = 0 }, { level = '+' })
+        delay(1.3)
+        -- end of referenced code
+
+        for i = 1, mods do
+            local _,hand = pseudorandom_element(G.GAME.hands, pseudoseed("reentry" .. i))
+            local j = 0
+            while not SMODS.is_poker_hand_visible(hand) do
+                j = j + 1
+                _,hand = pseudorandom_element(G.GAME.hands, pseudoseed("reentry" .. i .. j))
+            end
+            SMODS.upgrade_poker_hands({
+                hands = hand,
+                from = card,
+                instant = true,
+            })
+        end
+
+        update_hand_text({ sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' })
 
         for i, v in ipairs(G.hand.highlighted) do
             local percent = 0.85 + ( i - 0.999 ) / ( #G.hand.highlighted - 0.998 ) * 0.3

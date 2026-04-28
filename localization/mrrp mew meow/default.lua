@@ -156,11 +156,11 @@ descriptions={
 		c_worm_mrrp_reentry = {
 			name = "Reentry",
 			text = {
-				"Remove enhancements,",
-				"seals, and editions from",
+				"Remove {C:attention}modifiers{} from",
 				"selected playing cards,",
-				"then gain {C:money}#1#{} per",
-				"modification removed"
+				"then upgrade level of",
+				"a random {C:attention}poker hand{}",
+				"per {C:attention}modifier{} removed"
 			}
 		}
 	},
@@ -345,7 +345,8 @@ misc={
 	dictionary={
 	--	k_downgrade_ex = "Downgrade!",
 		k_make_a_wish_ex = "Make a wish!",
-		k_flaring = "Flaring..."
+		k_flaring = "Flaring...",
+		k_random_hands = "Random Hands"
 	},
 	quips = {
 
