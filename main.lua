@@ -223,8 +223,38 @@ Wormhole.config_tab = function()
 							},
 						},
 					},
+
+					{ n = G.UIT.R, config = { minh = 0.04, minw = 4, colour = G.C.L_BLACK } }, -- Line Break
+
+					-- Tetris Keybinds
+					{
+						n = G.UIT.R,
+						config = {
+							align = "cm",
+							padding = 0
+						},
+						nodes = {
+							{
+								n = G.UIT.C,
+								config = { align = 'cm', padding = 0.05 },
+								nodes = {
+									JtemTGM.UI.CreateSection("Tetris - Piece movement"),
+									JtemTGM.UI.CreateKeybindUI("Move piece left", "move_left"),
+									JtemTGM.UI.CreateKeybindUI("Move piece right", "move_right"),
+									JtemTGM.UI.CreateKeybindUI("Move piece down", "move_down"),
+									JtemTGM.UI.CreateKeybindUI("Sonic drop", "sonic_drop"),
+									JtemTGM.UI.CreateSection("Tetris - Piece manipulation"),
+									JtemTGM.UI.CreateKeybindUI("Rotate piece left", "rotate_left"),
+									JtemTGM.UI.CreateKeybindUI("Rotate piece right", "rotate_right"),
+									JtemTGM.UI.CreateKeybindUI("Hold piece", "hold"),
+								}
+							}
+						},
+					},
 				}
-			}
+			},
+
+			{ n = G.UIT.R, config = { align = "cl", padding = 0, minh = 0.1 }, nodes = {} },
 
 		}
 	}
