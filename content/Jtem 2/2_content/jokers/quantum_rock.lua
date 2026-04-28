@@ -25,6 +25,13 @@ SMODS.Atlas({
 	py = 95,
 })
 
+local gcm = Card.get_chip_mult
+function Card:get_chip_mult(context)
+	if self.debuff then return 0 end
+    if self.ability.set == 'Joker' and self.config.center.key == "j_worm_jtem2_quantum_rock" then return (self.ability.mult or 1) + (self.ability.perma_mult or 0) end --sneaky!
+    return gcm(self, context)
+end
+
 local gcxm = Card.get_chip_x_mult
 function Card:get_chip_x_mult(context)
 	if self.debuff then return 0 end
