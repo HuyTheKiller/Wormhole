@@ -37,9 +37,38 @@ function manager:update(dt)
             self:recalc_overlay()
         end
         local hand = nil
-        if G.hand and G.hand.highlighted then hand = G.FUNCS.get_poker_hand_info(G.hand.highlighted) end --returns actual hand index text rather than display text
-        if hand ~= self.handname then
-            self.targetHand = hand
+        if G.STATE == G.STATES.SELECTING_HAND then
+            self.in_hand = false
+            self.targetHand = nil
+            self.had_flipped = false
+            if G.hand and G.hand.highlighted and #G.hand.highlighted > 0 then
+                local any_flipped = false
+                for _, card in ipairs(G.hand.highlighted) do
+                    if card.facing == "back" then
+                        any_flipped = true
+                        self.had_flipped = true
+                        break
+                    end
+                end
+                if not any_flipped then
+                    hand = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+                    if hand and G.GAME.hands[hand] and (G.GAME.hands[hand].visible or SMODS.is_poker_hand_visible(hand)) then
+                        self.targetHand = hand
+                    end
+                end
+            end
+        elseif G.STATE == G.STATES.HAND_PLAYED then
+            self.in_hand = true
+            if self.had_flipped and G.play and G.play.cards and #G.play.cards > 0 then
+                hand = G.FUNCS.get_poker_hand_info(G.play.cards)
+                if hand and hand ~= '' and G.GAME.hands[hand] and (G.GAME.hands[hand].visible or SMODS.is_poker_hand_visible(hand)) then
+                    self.targetHand = hand
+                end
+            end
+        elseif self.in_hand then
+            self.targetHand = nil
+            self.had_flipped = false
+            self.in_hand = false
         end
     end
 

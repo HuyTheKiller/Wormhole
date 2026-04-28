@@ -399,7 +399,7 @@ SMODS.Joker({
         }
     end,
     modules_equipped = function(self, card)
-        return next(card.ability.extra.modules.core) or next(card.ability.extra.modules.weapons) or next(card.ability.extra.modules.thrusters)
+        return next(card.ability.extra.modules.core) or next(card.ability.extra.modules.weapons) or next(card.ability.extra.modules.thrusters) or next(card.ability.extra.modules.utility)
     end,
     modify_module_durability = function(self, card, change, modules)
         -- temporary code to test module destruction
