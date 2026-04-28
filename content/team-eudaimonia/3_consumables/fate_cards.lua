@@ -31,8 +31,19 @@ SMODS.Consumable{
     ppu_team = {"TeamEudaimonia"},
     use = function(self, card, area, copier)
         local suitOptions = {}
-        for i = 1, 2 do
-            suitOptions[i] = pseudorandom_element(SMODS.Suits, "euda_crunch")
+        suitOptions[1] = pseudorandom_element(SMODS.Suits, "euda_crunch")
+        local dupe_found = true
+        while dupe_found do
+            suitOptions[2] = pseudorandom_element(SMODS.Suits, "euda_crunch")
+
+            dupe_found = false
+            if suitOptions[1] == suitOptions[2] then
+                dupe_found = true
+            end
+
+            local suit_count = 0
+            for _ in pairs(SMODS.Suits) do suit_count = suit_count + 1 end
+            if suit_count < 2 then dupe_found = false end -- Turn a blind eye if there somehow aren't enough suits to go around.
         end
         for _, _card in ipairs(G.deck.cards) do
             local suit = pseudorandom_element(suitOptions, "euda_crunch")
@@ -55,8 +66,23 @@ SMODS.Consumable{
     ppu_team = {"TeamEudaimonia"},
     use = function(self, card, area, copier)
         local rankOptions = {}
-        for i = 1, 4 do
-            rankOptions[#rankOptions+1] = pseudorandom_element(SMODS.Ranks, "euda_freeze")
+        rankOptions[1] = pseudorandom_element(SMODS.Ranks, "euda_freeze")
+        for i = 2, 4 do
+            local dupe_found = true
+            while dupe_found do
+                rankOptions[i] = pseudorandom_element(SMODS.Ranks, "euda_freeze")
+
+                dupe_found = false
+                for j = 1, i - 1 do
+                    if rankOptions[i] == rankOptions[j] then
+                        dupe_found = true
+                    end
+                end
+
+                local rank_count = 0
+                for _ in pairs(SMODS.Ranks) do rank_count = rank_count + 1 end
+                if rank_count < 4 then dupe_found = false end -- Turn a blind eye if there somehow aren't enough ranks to go around.
+            end
         end
         for _, _card in ipairs(G.deck.cards) do
             local rank = pseudorandom_element(rankOptions, "euda_freeze")
