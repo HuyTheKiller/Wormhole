@@ -29,18 +29,6 @@ vec4 gold_color = vec4(86., 125., 137., 0.) / 255.;
 
 vec4 dissolve_mask(vec4 final_pixel, vec2 texture_coords, vec2 uv);
 
-bool line(vec2 uv, float offset, float width) {
-    uv.x = uv.x * texture_details.z / texture_details.w;
-
-    offset = offset + 0.35 * sin(bap_shader_void.x + TWO_PI * lines_offset);
-    width = width + 0.005 * sin(bap_shader_void.x);
-
-    float min_y = -uv.x + offset;
-    float max_y = -uv.x + offset + width;
-
-    return uv.y > min_y && uv.y < max_y;
-}
-
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
 {
 	vec2 uv = (((texture_coords)*(image_details)) - texture_details.xy*texture_details.zw)/texture_details.zw;
@@ -48,19 +36,12 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 
     vec4 tex = vec4(1., 1., 1., 0.1);
 
-    if (
-        lines_offset > 0 && (line(uv, 0.0, 0.07) || line(uv, 0.4, 0.1) || line(uv, 0.55, 0.1) || line(uv, 1.3, 0.05) || line(uv, 1.8, 0.1)) ||
-                            (line(uv, -0.1, 0.13) || line(uv, 0.3, 0.05) || line(uv, 0.8, 0.1) || line(uv, 1.3, 0.11) || line(uv, 1.7, 0.07))
-    ) {
-        tex.a = tex.a * 0.5;//2.;
-    } else {
-        tex.a = 0.05;
-    }
+    tex.a = tex.a * 2. - bap_shader_void.x * 0.02;//2.
     
     float avg = (pixel.r + pixel.g + pixel.b) / 3.;
     pixel = vec4(gold_color.rgb * avg + tex.rgb * tex.a, pixel.a);
 
-	return dissolve_mask(pixel, texture_coords, uv);
+    return dissolve_mask(pixel, texture_coords, uv);
 }
 
 vec4 dissolve_mask(vec4 final_pixel, vec2 texture_coords, vec2 uv)
