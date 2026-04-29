@@ -415,7 +415,7 @@ SMODS.Joker({
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-    cost = 5,
+    cost = 3,
     pos = { x = 5, y = 0 },
     atlas = "stargaze_jokers",
     ppu_coder = { "FALATRO" },
@@ -428,7 +428,7 @@ SMODS.Joker({
         extra = {
             sold = 0,
             goal = 3,
-            money = 5,
+            money = 6,
         }
     },
 
