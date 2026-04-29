@@ -27,7 +27,7 @@ SMODS.Joker {
         for _, shop_card in ipairs(G.shop_jokers and G.shop_jokers.cards or {}) do
             if (shop_card.cost < card.ability.extra.currval) then
                 shop_card.ability.worm_euda_deficit = shop_card.ability.worm_euda_deficit or 0
-                shop_card.ability.worm_euda_deficit = shop_card.ability.worm_euda_deficit + (context.card.cost - card.ability.extra.currval)
+                shop_card.ability.worm_euda_deficit = shop_card.ability.worm_euda_deficit + (shop_card.cost - card.ability.extra.currval)
             end
             shop_card.cost = math.max(0, shop_card.cost - card.ability.extra.currval)
         end
