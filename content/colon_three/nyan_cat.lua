@@ -4,7 +4,7 @@ SMODS.Joker {
     key = "ct_nyan_cat",
     atlas = "ct_nyan_cat",
     pos = { x = 0, y = 0 },
-    config = { extra = { chips = 0, chips_mod = 15 } },
+    config = { extra = { chips = 0, chips_mod = 8 } },
     rarity = 1,
     cost = 4,
     attributes = { "space", "suit", "chips", "scaling", "reset", "cat" },
