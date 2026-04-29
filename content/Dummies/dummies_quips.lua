@@ -43,7 +43,7 @@ SMODS.JimboQuip({
 	},
 	filter = function(self, type)
 		if next(SMODS.find_card('j_worm_dum_timcurry')) and type == 'loss' then
-			if to_number(G.GAME.round) < to_number(8) or not (G.GAME.blind and G.GAME.blind.boss and G.GAME.blind.boss.showdown) then return true end
+			if to_number(G.GAME.round) < to_number(8) or not (G.GAME.blind and G.GAME.blind.boss and type(G.GAME.blind.boss) == 'table' and G.GAME.blind.boss.showdown) then return true end
 		end
 	end
 })
@@ -60,7 +60,7 @@ SMODS.JimboQuip({
 	},
 	filter = function(self, type)
 		if next(SMODS.find_card('j_worm_dum_timcurry')) and type == 'loss' then
-			if to_number(G.GAME.round) >= to_number(8) or (G.GAME.blind and G.GAME.blind.boss and G.GAME.blind.boss.showdown) then return true end
+			if to_number(G.GAME.round) >= to_number(8) or (G.GAME.blind and G.GAME.blind.boss and type(G.GAME.blind.boss) == 'table' and G.GAME.blind.boss.showdown) then return true end
 		end
 	end
 })
