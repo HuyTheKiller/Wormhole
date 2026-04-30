@@ -77,10 +77,10 @@ SMODS.Joker {
     ppu_team = {'Hedonia'},
     calculate = function(self,card,context)
         if context.joker_main then
-            if card.ability.extra.current == card.ability.extra.threshold then
+            if card.ability.extra.current == card.ability.extra.threshold - 1 then
                 local empty_slots = G.consumeables.config.card_limit - (#G.consumeables.cards)
                 if empty_slots > 0 then
-                    for i=1,empty_slots do
+                    --for i=1,empty_slots do
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 play_sound('timpani')
@@ -92,7 +92,7 @@ SMODS.Joker {
                         SMODS.calculate_effect(
                             { message = localize('k_worm_hedonia_menu_plus'), colour = G.C.SECONDARY_SET.worm_hedonia_menu, },
                             card)
-                    end
+                    --end
                     card.ability.extra.current = 0
                 end
             else
