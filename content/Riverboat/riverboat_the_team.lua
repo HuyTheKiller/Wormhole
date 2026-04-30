@@ -30,6 +30,8 @@ PotatoPatchUtils.Developer {
 PotatoPatchUtils.Developer {
     name = "snipey",
     team = "riverboat",
+    atlas = "worm_jokers",
+    pos = { x = 6, y = 1 },
     loc = true
 }
 
