@@ -364,8 +364,8 @@ SMODS.Consumable {
             temp_hand[#temp_hand + 1] = playing_card
         end
         table.sort(temp_hand, function(a, b)
-            return not a.playing_card or not b.playing_card or a.playing_card <
-                       b.playing_card
+            return not a.unique_val or not b.unique_val or a.unique_val <
+                       b.unique_val
         end)
 
         pseudoshuffle(temp_hand, 'asm_guzzlord')
