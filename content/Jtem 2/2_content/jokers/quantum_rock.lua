@@ -423,7 +423,7 @@ local function spawn_new_rock(protect, whitelist)
 			return false
 		end
 		local card = Card(area.T.x + area.T.w / 2 - G.CARD_W / 2, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS["S_J"], rock)
-		card.ability = G.GAME.worm_jtem_rock_persist_ability or card.ability
+		--card.ability = G.GAME.worm_jtem_rock_persist_ability or card.ability
 		if real_emplace == true then
 			area:emplace(card)
 			shuffle_in_area(card, area)
@@ -476,7 +476,7 @@ local function destroy_rock(delay, no_replace, whitelist)
 	local card = G.worm_quantum_rock
 	if card then
 		card.states.visible = false
-		G.GAME.worm_jtem_rock_persist_ability = card.ability
+		--G.GAME.worm_jtem_rock_persist_ability = card.ability
 		if delay then
 			card.worm_delay_quantum_rock_remove = true
 			G.E_MANAGER:add_event(Event({
