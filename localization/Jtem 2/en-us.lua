@@ -35,7 +35,6 @@ return {
 						"Only one can be observed",
 						"{C:inactive}(Cannot be Enhanced or",
 						"{C:inactive}retain permanent effects){}"
-						--"{C:inactive}(Can be disabled in mod config){}",
 					},
 				},
 			},

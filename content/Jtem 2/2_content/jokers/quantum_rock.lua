@@ -19,10 +19,6 @@ SMODS.Atlas({
 local gcm = Card.get_chip_mult
 function Card:get_chip_mult(context)
 	if self.debuff then return 0 end
-	if self.ability.effect == "Mult Card" then		--If Enhancements allowed, remove these lines
-		self.ability.effect = nil					--
-		self.ability.mult = self.ability.mult - 4	--
-	end												--
     if self.config.center.key == "j_worm_jtem2_quantum_rock" then return (self.ability.mult or 0) + (self.ability.perma_mult or 0) end --sneaky!
     return gcm(self, context)
 end
@@ -32,28 +28,6 @@ function Card:get_chip_x_mult(context)
 	if self.debuff then return 0 end
     if self.config.center.key == "j_worm_jtem2_quantum_rock" then return (self.ability.x_mult or 1) + (self.ability.perma_x_mult or 0) end --sneaky!
     return gcxm(self, context)
-end
-
---If Enhancements are allowed, remove this. This removes bonus given from Bonus card enhancement
-local gcb = Card.get_chip_bonus
-function Card:get_chip_bonus(context)
-	if self.debuff then return 0 end
-	if self.config.center.key == "j_worm_jtem2_quantum_rock" and self.ability.effect == "Bonus Card" then 
-		self.ability.effect = nil
-		self.ability.bonus = self.ability.bonus - 30
-	end
-	return gcb(self, context)
-end
-
---If Enhancements are allowed, remove this. This removes h_x_mult given from Steel card enhancement
-local gchxm = Card.get_chip_h_x_mult
-function Card:get_chip_h_x_mult(context)
-	if self.debuff then return 0 end
-	if self.config.center.key == "j_worm_jtem2_quantum_rock" and self.ability.effect == "Steel Card" then 
-		self.ability.effect = nil
-		self.ability.h_x_mult = self.ability.h_x_mult - 1.5
-	end
-	return gchxm(self, context)
 end
 
 local convert_perma_to_bonus_vars = function(specific_vars) --card.ability has perma bonuses as perma_[bonus] whereas localize_perma_bonuses expects bonus_[bonus]
@@ -115,55 +89,6 @@ local convert_perma_to_bonus_vars = function(specific_vars) --card.ability has p
 	return ret
 end
 
---[[ --If Enhancements are allowed, use this to get the enhancement key from it's effect name
-local get_key_from_enhancement = function(name_string) --quick fix
-	if name_string == "Bonus Card"		then return "m_bonus" end
-	if name_string == "Mult Card"		then return "m_mult" end
-	if name_string == "Wild Card"		then return "m_wild" end
-	if name_string == "Glass Card"		then return "m_glass" end
-	if name_string == "Steel Card"		then return "m_steel" end
-	if name_string == "Stone Card"		then return "m_stone" end
-	if name_string == "Gold Card"		then return "m_gold" end
-	if name_string == "Lucky Card"		then return "m_lucky" end
-	if name_string == "Strange Card"	then return "m_worm_jtem2_strange_card" end
-	if name_string == "Gravacard"		then return "m_worm_jtem2_gravacard" end
-	if name_string == "Neutron Card"	then return "m_worm_jtem2_neutron_card" end
-	if name_string == "Stardust Card"	then return "m_worm_riverboat_stardust" end
-	if name_string == "Nebulous Card"	then return "m_worm_shrug_nebulous" end
-	if name_string == "Junk"			then return "m_worm_junk_card" end
-	if name_string == "Frozen Card"		then return "m_worm_ibu_frozen" end
-end
-]]
-
---[[ --If Enhancements are allowed, include this for wild cards
-function Card:is_suit(suit, bypass_debuff, flush_calc)	-- for SOME reason, redefining Card:is_suit allows the rock to make flushes when wild.
-	if flush_calc then									-- I have no idea why, because I can't find any hooks or patches to this in Wormhole or SMODS code.
-        if self.ability.effect == 'Stone Card' then		-- Potential causer of bugs if there is one that I didn't see
-            return false
-        end
-        if self.ability.name == "Wild Card" and not self.debuff then
-            return true
-        end
-        if next(find_joker('Smeared Joker')) and (self.base.suit == 'Hearts' or self.base.suit == 'Diamonds') == (suit == 'Hearts' or suit == 'Diamonds') then
-            return true
-        end
-        return self.base.suit == suit
-    else
-        if self.debuff and not bypass_debuff then return end
-        if self.ability.effect == 'Stone Card' then
-            return false
-        end
-        if self.ability.name == "Wild Card" then
-            return true
-        end
-        if next(find_joker('Smeared Joker')) and (self.base.suit == 'Hearts' or self.base.suit == 'Diamonds') == (suit == 'Hearts' or suit == 'Diamonds') then
-            return true
-        end
-        return self.base.suit == suit
-    end
-end
-]]
-
 local function checkShop(self, area)
     if G.GAME.worm_quantum_rock_spawned or area.config.type == "shop" then
 	self.set_card_area = nil
@@ -209,9 +134,6 @@ local rock = SMODS.Joker({
     end,
 
     generate_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
-
-		full_UI_table.card_type = "Joker"	--when enhanced, card_type changes to "Enhanced". Forcing it to be "Joker" so the UI doesn't break
-		full_UI_table.name = nil			--when enhanced, name = true. Forcing it to be nil so "Quantum Rock" gets displayed
 
 		if not card then					--see smods/src/game_object.lua - line 1232 - SMODS.Centers.generate_ui
 			card = self:create_fake_card()
@@ -265,32 +187,7 @@ local rock = SMODS.Joker({
 		end
 		desc_nodes.background_colour = res.background_colour
 
-		--ENHANCEMENTS
-		--If Enhancements actually worked, include this code to write the enhancement text into the description box
-		--[[
-		if card.ability.effect then
-			local key = get_key_from_enhancement(card.ability.effect)
-			local vars = {}
-			for i = 1, #G.P_CENTER_POOLS.Enhanced do
-				if G.P_CENTER_POOLS.Enhanced[i].key == key then 
-					vars = G.P_CENTER_POOLS.Enhanced[i].loc_vars and G.P_CENTER_POOLS.Enhanced[i]:loc_vars(info_queue, card) or G.P_CENTER_POOLS.Enhanced[i].vars or {}
-					if #vars == 0 then
-						for key, value in pairs(G.P_CENTER_POOLS.Enhanced[i].config) do
-							table.insert(vars, value)
-						end
-					end
-				end
-			end
-			localize{type = "descriptions", set = "Enhanced", key = get_key_from_enhancement(card.ability.effect), nodes = desc_nodes, vars = vars}
-		end
-		]]
-
-		--PERMA BONUSES
-		--[[ --if Enhancements are allowed, include this instead
-		if card.ability.perma_bonus and card.ability.perma_bonus ~= 0 or card.ability.effect == "Bonus Card" then
-			localize{type = 'other', key = 'card_extra_chips', nodes = desc_nodes, vars = {(card.ability.perma_bonus or 0) + (card.ability.bonus or 0)}}
-		end
-		]]
+		--PERMA BONUSES (show when applied, but aren't retained upon Rock respawn)
 		if card.ability.perma_bonus and card.ability.perma_bonus ~= 0 then
 			localize{type = 'other', key = 'card_extra_chips', nodes = desc_nodes, vars = {card.ability.perma_bonus}}
 		end
@@ -316,25 +213,6 @@ local rock = SMODS.Joker({
 			G.C.WHITE,
 			1.2
 		)
-		--[[-- If enhancements are allowed, include this for the badge to be generated
-		if card.ability.effect then
-			local key = get_key_from_enhancement(card.ability.effect)
-			local badge_colour = G.C.SECONDARY_SET.Enhanced
-			local badge_text_colour = G.C.WHITE
-			for i = 1, #G.P_CENTER_POOLS.Enhanced do
-				if G.P_CENTER_POOLS.Enhanced[i].key == key then 
-					badge_colour = G.P_CENTER_POOLS.Enhanced[i].badge_colour or G.C.SECONDARY_SET.Enhanced
-					badge_text_colour = G.P_CENTER_POOLS.Enhanced[i].badge_text_colour or G.C.WHITE
-				end
-			end
-			badges[#badges + 1] = create_badge(
-				localize{type = "name_text", set = "Enhanced", key = key},
-				badge_colour,
-				badge_text_colour,
-				1
-			)
-		end
-		]]
 	end,
 	set_ability = function(self, card, initial, delay_sprites)
 		if not G.GAME.worm_quantum_rock_spawned then
@@ -423,7 +301,6 @@ local function spawn_new_rock(protect, whitelist)
 			return false
 		end
 		local card = Card(area.T.x + area.T.w / 2 - G.CARD_W / 2, area.T.y, G.CARD_W, G.CARD_H, G.P_CARDS["S_J"], rock)
-		--card.ability = G.GAME.worm_jtem_rock_persist_ability or card.ability
 		if real_emplace == true then
 			area:emplace(card)
 			shuffle_in_area(card, area)
@@ -476,7 +353,6 @@ local function destroy_rock(delay, no_replace, whitelist)
 	local card = G.worm_quantum_rock
 	if card then
 		card.states.visible = false
-		--G.GAME.worm_jtem_rock_persist_ability = card.ability
 		if delay then
 			card.worm_delay_quantum_rock_remove = true
 			G.E_MANAGER:add_event(Event({
