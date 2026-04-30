@@ -89,7 +89,7 @@ return {
                 name = 'Dyson Sphere',
                 text = {
                     "Each {C:tarot}The Sun{} or",
-                    "{C:tarot}The Stars{} cards in",
+                    "{C:tarot}The Star{} cards in",
                     "your {C:attention}consumables{} area",
                     "give {X:mult,C:white}X#1#{} Mult",
                 },
