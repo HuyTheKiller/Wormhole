@@ -313,18 +313,16 @@ SMODS.Joker {
 		return { vars = {} }
 	end,
 	calculate = function(self, card, context)
+		ret = {}
 		if context.individual and context.cardarea == G.play and
 			context.other_card:is_suit(card.ability.extra.suitTwo) then
-			return {
-				mult = card.ability.extra.s_mult
-			}
+			ret.mult = card.ability.extra.s_mult
 		end
 		if context.individual and context.cardarea == G.play and
 			context.other_card:is_suit(card.ability.extra.suitOne) then
-			return {
-				chips = card.ability.extra.s_chips
-			}
+			ret.chips = card.ability.extra.s_chips
 		end
+		return ret
 	end
 }
 
@@ -506,7 +504,7 @@ SMODS.Joker {
 			else
 				if my_pos and G.jokers.cards[my_pos + 1] then
 					return {
-						message = { G.jokers.cards[my_pos + 1].config.center_key }
+						message = localize{ type = "name_text", set = "Joker", key = G.jokers.cards[my_pos + 1].config.center_key }
 					}
 				end
 			end

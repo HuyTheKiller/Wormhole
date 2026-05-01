@@ -88,7 +88,7 @@ return {
                 name = 'Space Walk',
                 text = {
                     "Create a {C:dark_edition}Negative{} {C:attention}Space Joker{}",
-                    "at the end of the",
+                    "at the start of the",
                     "next {C:attention}#1#{} rounds",
                     "{C:inactive}(Must have room)",
                     -- "When {C:attention}Blind{} is",
