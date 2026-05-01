@@ -5,8 +5,8 @@ return {
         name = "New Horizon",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "After playing a {C:attention}#2#{},",
@@ -18,8 +18,8 @@ return {
         name = "MESSENGER",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand is a {C:attention}#2#{},",
@@ -32,8 +32,8 @@ return {
         name = "Tianwen-4",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
@@ -48,8 +48,8 @@ return {
         name = "Venera 9",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
@@ -65,8 +65,8 @@ return {
         name = "Cassini-Huygens",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand is a",
@@ -80,8 +80,8 @@ return {
         name = "Galileo",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand is a",
@@ -95,8 +95,8 @@ return {
         name = "Sputnik 1",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
@@ -112,8 +112,8 @@ return {
         name = "Mariner 9",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand is a",
@@ -127,8 +127,8 @@ return {
         name = "Voyager 2",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
@@ -142,8 +142,8 @@ return {
         name = "Death Egg",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
@@ -156,8 +156,8 @@ return {
         name = "Dawn",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
@@ -171,8 +171,8 @@ return {
         name = "Manhole Cover",
         text = {
           {
-            "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Upgrade",
-            "{C:attention}#2#",
+            "Upgrades {C:attention}#2#{}'s",
+            "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
             "If played hand",
