@@ -5,7 +5,7 @@ local function drunk_level_chance(card, probability_numerator, probability_denom
 end
 
 local function drunk_change_rank(card, rank_range, msg_increase, msg_decrease)
-    local amount = pseudorandom("drunk_range", -rank_range, rank_range + 0.999)
+    local amount = pseudorandom("drunk_range", -rank_range, rank_range - 0.001)
     amount = math.floor(amount)
     if SMODS.pseudorandom_probability(card, "drunk_change", 1, 2, "", true) then
         G.E_MANAGER:add_event(Event({

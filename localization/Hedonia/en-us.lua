@@ -161,7 +161,7 @@ return {
                     '{C:green}#1# in #2#{} chance to {C:attention}sober up{}',
                     'whilst held in hand',
                     'Randomize rank and {C:green}#3# in #4#{} chance',
-                    'to {C:attention}get drunker{} when scored',
+                    'to {C:attention}get drunker{} after scoring',
                     '{C:inactive}(max rank variance: {C:attention}#5#{C:inactive})' },
                 label = 'Tipsy'
             },
@@ -171,7 +171,7 @@ return {
                     '{C:green}#1# in #2#{} chance to {C:attention}sober up{}',
                     'whilst held in hand',
                     'Randomize rank and {C:green}#3# in #4#{} chance',
-                    'to {C:attention}get drunker{} when scored',
+                    'to {C:attention}get drunker{} after scoring',
                     '{C:inactive}(max rank variance: {C:attention}#5#{C:inactive})' },
                 label = 'Drunk'
             },
@@ -181,7 +181,7 @@ return {
                     '{C:green}#1# in #2#{} chance to {C:attention}sober up{}',
                     'whilst held in hand',
                     'Randomize rank and {C:green}#3# in #4#{} chance',
-                    'to {C:attention}get drunker{} when scored',
+                    'to {C:attention}get drunker{} after scoring',
                     '{C:inactive}(max rank variance: {C:attention}#5#{C:inactive})' },
                 label = 'Very Drunk'
             },
@@ -191,7 +191,7 @@ return {
                     '{C:green}#1# in #2#{} chance to {C:attention}sober up{}',
                     'whilst held in hand',
                     '{C:green}#3# in #4#{} chance to {C:red,E:2}self destruct{}',
-                    'when scored',
+                    'after scoring',
                 },
                 label = 'Blackout'
             },
