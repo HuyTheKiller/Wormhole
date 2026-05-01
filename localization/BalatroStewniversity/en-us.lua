@@ -79,8 +79,8 @@ return {
             j_worm_stew_stargazer = {
                 name = 'Stargazer',
                 text = {
-                    'Gives {X:mult,C:white}X#1#{} Mult for each',
-                    '{C:planet}Planet{} or {C:attention}Star{} card held',
+                    'Gains {X:mult,C:white}X#1#{} Mult for each',
+                    'owned {C:tarot}The Star{} or {C:planet}Planet{} card',
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
                 }
             },
