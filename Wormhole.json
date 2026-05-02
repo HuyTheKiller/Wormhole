@@ -13,6 +13,6 @@
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-1620a)",
 		"Lovely (>=0.9)",
-		"PotatoPatchUtils (>=1.0.3)"
+		"PotatoPatchUtils (>=1.0.10)"
 	]
 }
