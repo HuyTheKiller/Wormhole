@@ -134,6 +134,7 @@ end
 
 function manager:calc_bg()
     if not self.handname then return end
+    if SMODS.is_active_blind("bl_worm_lfc_eigengrau", true) then return end
     local conf = {
         seed = 0,
         nebula1 = G.C.CLEAR,
