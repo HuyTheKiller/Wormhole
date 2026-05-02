@@ -106,7 +106,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.x_mult, card.ability.extra.cards } }
     end,
     calculate = function(self, card, context)
-        if context.before and #context.scoring_hand == card.ability.extra.cards then
+        if context.initial_scoring_step and #context.scoring_hand == card.ability.extra.cards then
             return {
                 x_mult = card.ability.extra.x_mult
             }
