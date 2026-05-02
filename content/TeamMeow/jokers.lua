@@ -52,7 +52,9 @@ SMODS.Joker({
                     set = card_set
                 }
             else
-                card_eval_status_text(self, 'extra', nil, nil, nil, {message = localize('k_no_room_ex')})
+                return {
+                    message = localize('k_no_room_ex')
+                }
             end
         end
     end,
