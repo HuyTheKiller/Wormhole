@@ -950,7 +950,7 @@ SMODS.Atlas({
 
 SMODS.DrawStep({
 	key = "tarts",
-	order = 100,
+	order = 101,
 	func = function(card)
 		local yshift = 0
 		local yinc = 0.2 / 3

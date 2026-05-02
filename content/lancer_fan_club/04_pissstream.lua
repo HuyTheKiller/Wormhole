@@ -195,5 +195,6 @@ SMODS.DrawStep {
             self.pisscanvas.role.draw_major = self
             self.pisscanvas:draw_shader("dissolve", nil, nil, nil, self.children.center)
         end
-    end
+    end,
+	conditions = { vortex = false, facing = "front" },
 }
