@@ -6,12 +6,12 @@ SMODS.Joker {
     ppu_coder = { "stupxd" },
 
     key = 'stew_chicken_egg',
-    config = {extra = { Xchips = 1.5, chicken = false }},
+    config = {extra = { Xchips = 3, chicken = false }},
     rarity = "Common",
     cost = 4,
     atlas = 'stewjokers',
     pos = { x=0, y=2 },
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = false,
     perishable_compat = true,
 
