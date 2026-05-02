@@ -1,0 +1,29 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# From GhostSalts BFDI mod
+# G.GAME.blind.config.blind.dummy_unkillable is used to check if blind is unkillable
+
+# Credit to NotJustYet for this scrumptious section of code!
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if G.GAME.chips - G.GAME.blind.chips >= 0 or G.GAME.current_round.hands_left < 1 then"
+position = "at"
+payload = '''
+if (G.GAME.chips - G.GAME.blind.chips >= 0 and not G.GAME.blind.config.blind.dummy_unkillable) or G.GAME.current_round.hands_left < 1 then
+    stop_use()
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if #G.hand.cards < 1 and #G.deck.cards < 1 and #G.play.cards < 1 then"
+position = "at"
+payload = '''
+if not true then
+'''
+match_indent = true

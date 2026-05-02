@@ -1,0 +1,127 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# Logo logo menu draw stuff
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if self.SPLASH_LOGO then self.SPLASH_LOGO:remove(); self.SPLASH_LOGO = nil end
+'''
+position = "after"
+payload = '''
+if self.SPLASH_WORMHOLE_LOGO then self.SPLASH_WORMHOLE_LOGO:remove(); self.SPLASH_WORMHOLE_LOGO = nil end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+if G.SPLASH_LOGO then
+    love.graphics.push()
+    G.SPLASH_LOGO:translate_container()
+    G.SPLASH_LOGO:draw()
+    love.graphics.pop()
+end
+'''
+position = "after"
+payload = '''
+
+if G.SPLASH_WORMHOLE_LOGO then
+    love.graphics.push()
+    G.SPLASH_WORMHOLE_LOGO:translate_container()
+
+    local rotate_mod = 0.1*1.219*G.TIMERS.REAL
+    G.SPLASH_WORMHOLE_LOGO.T.r = rotate_mod
+    if not G.SPLASH_WORMHOLE_LOGO.states.drag.is then
+        local scale_mod = 0.07 + 0.02*math.sin(1.8*G.TIMERS.REAL) + 0.00*math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL))*math.pi*14)*(1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL)))^3
+
+        G.SPLASH_WORMHOLE_LOGO:draw_shader('dissolve',0, nil, nil, G.SPLASH_WORMHOLE_LOGO,scale_mod, nil,nil, 0.1 + 0.03*math.sin(1.8*G.TIMERS.REAL),nil, 0.6)
+        G.SPLASH_WORMHOLE_LOGO:draw_shader('dissolve', nil, nil, nil, G.SPLASH_WORMHOLE_LOGO, scale_mod, nil)
+    end
+
+    add_to_drawhash(G.SPLASH_WORMHOLE_LOGO)
+
+    love.graphics.pop()
+end
+'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+        G.VIBRATION = G.VIBRATION + 1
+        return true
+end)}))
+'''
+position = 'after'
+payload = '''
+
+Wormhole.init_custom_menu(change_context)
+'''
+match_indent = true
+
+# Credits vortex
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+local card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/2,
+                    card_pos.y + G.ROOM.T.h/2 - G.CARD_H*card_size/2,
+                    card_size*G.CARD_W, card_size*G.CARD_H, pseudorandom_element(G.P_CARDS), G.P_CENTERS.c_base)
+'''
+position = "at"
+payload = '''
+local card
+if Wormhole and Wormhole.config.menu then
+    local dev = {}
+    while not dev.atlas or dev.mod_id ~= 'Wormhole' do
+        dev = pseudorandom_element(PotatoPatchUtils.Developers)
+    end
+
+    card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/2,
+                        card_pos.y + G.ROOM.T.h/2 - G.CARD_H*card_size/2,
+                        card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS.c_base)
+
+    card.children.center:remove()
+    card.children.center = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, dev.atlas, dev.pos or {x = 0, y = 0})
+    card.children.center:set_role({major = card, role_type = 'Glued', draw_major = card})
+
+    -- Check for card soul
+    if dev.soul_pos then
+        card.children.front = SMODS.create_sprite(card.T.x, card.T.y, card.T.w, card.T.h, dev.atlas, dev.soul_pos)
+        card.children.front.states.hover = card.states.hover
+        card.children.front.states.click = card.states.click
+        card.children.front.states.drag = card.states.drag
+        card.children.front.states.collide.can = false
+        card.children.front:set_role({major = card, role_type = 'Glued', draw_major = card})
+    end
+else
+    card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/2,
+                    card_pos.y + G.ROOM.T.h/2 - G.CARD_H*card_size/2,
+                    card_size*G.CARD_W, card_size*G.CARD_H, pseudorandom_element(G.P_CARDS), G.P_CENTERS.c_base)
+end
+'''
+match_indent = true
+
+# Background Fade from White
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''
+ease_value(splash_args, 'mid_flash', -(change_context == 'splash' and 1.6 or 0), nil, nil, nil, 4)
+'''
+position = "after"
+payload = '''
+if Wormhole and Wormhole.bg_manager then
+    Wormhole.bg_manager.splash_args = splash_args
+end
+'''
+match_indent = true

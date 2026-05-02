@@ -1,0 +1,47 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+match_indent = true
+pattern = '''if not G.debug_UI_toggle then '''
+position = 'before'
+payload = '''Wormhole.util_space_manager:draw_background()'''
+
+# G.FUNCS.can_select_from_booster
+# Fix booster selection with extra_slots_used
+# TODO: Remove me when depend on a smods version with https://github.com/Steamodded/smods/pull/1337 merged
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+match_indent = true
+pattern = '''local edition_card_limit = card.ability.card_limit'''
+position = 'at'
+payload = '''local edition_card_limit = card.ability.card_limit - card.ability.extra_slots_used'''
+
+
+    # Prevent "USE" button on Spaces in deck
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''
+end
+if card.ability.consumeable then
+'''
+position = "after"
+payload = '''
+    if card.ability.set == "util_Spaces" then
+        return {
+        n=G.UIT.ROOT, config = {padding = 0, colour = G.C.CLEAR}, nodes={
+            {n=G.UIT.C, config={padding = 0.15, align = 'cl'}, nodes={
+            {n=G.UIT.R, config={align = 'cl'}, nodes={
+                sell
+            }},
+            }},
+        }}
+    end
+'''
+match_indent = true

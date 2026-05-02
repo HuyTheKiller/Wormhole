@@ -1,0 +1,594 @@
+-- I (wombat) used a lot of VanillaRemade as reference throughout this entire file https://github.com/nh6574/VanillaRemade/tree/main/src
+
+SMODS.ConsumableType {
+    key = "worm_hedonia_menu",
+    collection_rows = { 4, 4 },
+    primary_colour = HEX("9b7abb"), --shoutout cryptid https://github.com/SpectralPack/Cryptid/blob/8e041f1b8b3c2f2c5379dabe55bdfb74d28dc08b/items/code.lua#L4
+    secondary_colour = HEX("503a66")
+}
+
+SMODS.Atlas {
+    key = "menu",
+    px = 71,
+    py = 95,
+    path = "Hedonia/menu.png"
+}
+
+SMODS.Atlas {
+    key = "booster_placeholder",
+    px = 71,
+    py = 95,
+    path = "Hedonia/boosters.png"
+}
+
+SMODS.Attribute {
+    key = 'hedonia_menu_food'
+}
+
+SMODS.Attribute {
+    key = 'hedonia_menu_drink'
+}
+
+SMODS.Consumable {
+    key = "hedonia_hadron",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 0, y = 0},
+    ppu_artist = {'qunumeru'},
+    ppu_coder = {'wombatcountry', 'professorrenderer'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_drink' },
+    config = { extra = { edition = 'e_worm_hedonia_tipsy' } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.edition]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = 1, #G.hand.highlighted do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            G.hand.highlighted[i]:set_edition(card.ability.extra.edition, true)
+                            card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
+                return true
+            end
+        }))
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.highlighted > 0
+    end
+}
+
+SMODS.Consumable {
+    key = "hedonia_cosmo",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 1, y = 0},
+    ppu_artist = {'hellboydante', 'qunumeru'},
+    ppu_coder = {'wombatcountry', 'professorrenderer'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_drink' },
+    config = { max_highlighted = 4, extra = { edition = 'e_worm_hedonia_drunk' } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.edition]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = 1, #G.hand.highlighted do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            G.hand.highlighted[i]:set_edition(card.ability.extra.edition, true)
+                            card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
+                return true
+            end
+        }))
+    end,
+}
+
+SMODS.Consumable {
+    key = "hedonia_mojitury",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 2, y = 0},
+    ppu_artist = {'qunumeru'},
+    ppu_coder = {'wombatcountry', 'professorrenderer'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_drink' },
+    config = { max_highlighted = 3, extra = { edition = 'e_worm_hedonia_very_drunk' } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.edition]
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = 1, #G.hand.highlighted do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            G.hand.highlighted[i]:set_edition(card.ability.extra.edition, true)
+                            card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
+                return true
+            end
+        }))
+    end,
+}
+
+SMODS.Consumable {
+    key = "hedonia_blackHoleBomb",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 3, y = 0},
+    ppu_artist = {'qunumeru'},
+    ppu_coder = {'wombatcountry', 'professorrenderer'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_drink' },
+    config = { extra = { num_cards = 3, edition = 'e_worm_hedonia_blackout' } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.edition]
+        return { vars = { card.ability.extra.num_cards } }
+    end,
+    use = function(self, card, area, copier)
+        local blackedout_cards = {}
+        local temp_hand = {}
+
+        for _, playing_card in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = playing_card end
+        table.sort(temp_hand,
+            function(a, b)
+                return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card
+            end
+        )
+
+        pseudoshuffle(temp_hand, 'hedonia_blackHoleBomb')
+
+        for i = 1, card.ability.extra.num_cards do blackedout_cards[#blackedout_cards + 1] = temp_hand[i] end
+
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = 1, #blackedout_cards do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            blackedout_cards[i]:set_edition(card.ability.extra.edition, true)
+                            card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
+                return true
+            end
+        }))
+    end,
+    can_use = function(self, card)
+        return G.hand and G.hand.cards and #G.hand.cards > 0
+    end,
+}
+
+SMODS.Consumable {
+    key = "hedonia_jawbreaker",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 0, y = 1},
+    config = { extra = {
+        bonus = 50
+    }},
+    loc_vars = function(self,info_queue,center)
+        return {vars = {center.ability.extra.bonus}}
+    end,
+    ppu_artist = {'hellboydante', 'qunumeru'},
+    ppu_coder = {'wombatcountry', 'axyraandas'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
+    use = function(self, card, area, copier)
+        local card_to_bonus = pseudorandom_element(G.hand.cards, 'alcohol') --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/spectrals.lua#L26
+        card_to_bonus.ability.perma_bonus = (card_to_bonus.ability.perma_bonus or 0) + card.ability.extra.bonus --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/jokers.lua#L1442
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            card_to_bonus:juice_up(0.3, 0.5)
+            return true end }))
+        delay(0.6)
+        return {
+            card = card_to_bonus,
+            message = 'Upgrade!'
+        }
+    end,
+    can_use = function(self, card)
+        return G.hand and G.hand.cards and #G.hand.cards > 0
+    end
+}
+
+SMODS.Consumable {
+    key = "hedonia_rings",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 1, y = 1},
+    config = {extra = { cash = 5}},
+    loc_vars = function(self,info_queue,center)
+        return {vars = {center.ability.extra.cash}}
+    end,
+    ppu_artist = {'qunumeru'},
+    ppu_coder = {'wombatcountry', 'axyraandas'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
+    use = function(self, card, area, copier)
+        local sober = true
+        local stages = {'e_worm_hedonia_tipsy', 'e_worm_hedonia_drunk', 'e_worm_hedonia_very_drunk', 'e_worm_hedonia_blackout'}
+        for i, v in pairs(G.hand.highlighted) do
+            local is_drunk = v.edition and v.edition.key
+            for i1,v1 in ipairs(stages) do
+                if is_drunk == v1 then
+                    if i1 == 1 then
+                        v:set_edition(nil, true)
+                    else
+                        local edition = SMODS.poll_edition({guaranteed = true, options = {{name = stages[i1 - 1], weight = 1}}})
+                        v:set_edition(edition, true)
+                    end
+                end
+            end
+        end
+        
+        for i, v in pairs(G.hand.cards) do
+            local is_drunk = v.edition and v.edition.key
+            for i1,v1 in ipairs(stages) do
+                if is_drunk == v1 then
+                    sober = false
+                    break
+                end
+            end
+        end
+
+        if sober then
+            G.E_MANAGER:add_event(Event({ --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/tarots.lua#L602-L611
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    card:juice_up(0.3, 0.5)
+                    ease_dollars(card.ability.extra.cash, true)
+                    return true
+                end
+            }))
+        end
+    end,
+    can_use = function(self, card)
+        -- local has_drunk = false
+        -- if G.hand and G.hand.cards then
+        --     for i,v in pairs(G.hand.cards) do
+        --         if has_drunk == true then break end
+        --         has_drunk = v.edition and (
+        --             v.edition.key == 'e_worm_hedonia_tipsy' or
+        --             v.edition.key == 'e_worm_hedonia_drunk' or
+        --             v.edition.key == 'e_worm_hedonia_very_drunk' or
+        --             v.edition.key == 'e_worm_hedonia_blackout'
+        --         )
+        --     end
+        -- end
+        -- return has_drunk
+        return G.hand and G.hand.cards and #G.hand.cards > 0
+    end
+}
+
+SMODS.Consumable {
+    key = "hedonia_debbie",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 2, y = 1},
+    config = { extra = {
+        cards = 3
+    }},
+    loc_vars = function(self,info_queue,center)
+        return {vars = {center.ability.extra.cards}}
+    end,
+    ppu_artist = {'hellboydante', 'qunumeru'},
+    ppu_coder = {'wombatcountry', 'axyraandas'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
+    use = function(self, card, area, copier)
+        local rank = pseudorandom_element(SMODS.Ranks, 'debbie').key
+        --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/tarots.lua#L695-L732
+        for i = 1, #G.hand.highlighted do 
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    assert(SMODS.change_base(G.hand.highlighted[i], nil, rank))
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('timpani')
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.cards
+    end
+}
+
+SMODS.Consumable {
+    key = "hedonia_jam",
+    set = "worm_hedonia_menu",
+    atlas = "menu",
+    pos = {x = 3, y = 1},
+    config = { extra = {
+        cards = 3
+    }},
+    loc_vars = function(self,info_queue,center)
+        return {vars = {center.ability.extra.cards}}
+    end,
+    ppu_artist = {'qunumeru'},
+    ppu_coder = {'wombatcountry', 'axyraandas'},
+    ppu_team = {'Hedonia'},
+    attributes = { 'hedonia_menu_food' },
+    use = function(self, card, area, copier)
+        local suit = pseudorandom_element(SMODS.Suits, 'space_jam').key
+        --https://github.com/nh6574/VanillaRemade/blob/369e7c28f3cf9a0c6976f84bacaf4a17cfe7c3aa/src/tarots.lua#L695-L732
+        for i = 1, #G.hand.highlighted do 
+            local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('card1', percent)
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+        delay(0.2)
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    assert(SMODS.change_base(G.hand.highlighted[i], suit))
+                    return true
+                end
+            }))
+        end
+        for i = 1, #G.hand.highlighted do
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    G.hand.highlighted[i]:flip()
+                    play_sound('timpani')
+                    G.hand.highlighted[i]:juice_up(0.3, 0.3)
+                    return true
+                end
+            }))
+        end
+    end,
+    can_use = function(self, card)
+        return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.cards
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_normal_1",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 4,
+    atlas = "booster_placeholder",
+    pos = { x = 0, y = 0 },
+    config = { extra = 3, choose = 1, name = "Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_normal_2",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 4,
+    atlas = "booster_placeholder",
+    pos = { x = 1, y = 0 },
+    config = { extra = 3, choose = 1, name = "Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_normal_3",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 4,
+    atlas = "booster_placeholder",
+    pos = { x = 2, y = 0 },
+    config = { extra = 3, choose = 1, name = "Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_normal_4",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 4,
+    atlas = "booster_placeholder",
+    pos = { x = 3, y = 0 },
+    config = { extra = 3, choose = 1, name = "Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_jumbo_1",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 6,
+    atlas = "booster_placeholder",
+    pos = { x = 0, y = 1 },
+    config = { extra = 4, choose = 1, name = "Jumbo Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_jumbo_2",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 6,
+    atlas = "booster_placeholder",
+    pos = { x = 1, y = 1 },
+    config = { extra = 4, choose = 1, name = "Jumbo Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_mega_1",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 8,
+    atlas = "booster_placeholder",
+    pos = { x = 2, y = 1 },
+    config = { extra = 4, choose = 2, name = "Mega Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
+
+SMODS.Booster {
+    key = "hedonia_menu_mega_2",
+    group_key = 'hedonia_menu',
+    kind = "hedonia_menu",
+    cost = 8,
+    atlas = "booster_placeholder",
+    pos = { x = 3, y = 1 },
+    config = { extra = 4, choose = 2, name = "Mega Menu Pack" },
+    draw_hand = true,
+    ppu_artist = {'hellboydante','qunumeru'},
+    ppu_coder = {'wombatcountry'},
+    ppu_team = {'Hedonia'},
+    create_card = function(self, card)
+        return {set = "worm_hedonia_menu", area = G.pack_cards, skip_materialize = true}
+    end,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {self.config.choose, self.config.extra, self.config.name},
+            key = "p_worm_hedonia_menu"
+        }
+    end
+}
