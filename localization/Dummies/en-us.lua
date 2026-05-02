@@ -157,9 +157,9 @@ return {    -- yo it's GHOSTSALT here look at me TYPING before i SUBMIT THIS THI
             j_worm_dum_pentapod = {
                 name = "Pentapod",
                 text = {
-                    "{X:mult,C:white}X#1#{} Mult if",
-                    "scoring exactly",
-                    "{C:attention}#2#{} cards"
+                    "{X:mult,C:white}X#1#{} Mult {C:attention}before{} scoring",
+                    "if {C:attention}scoring hand{} contains",
+                    "exactly {C:attention}#2#{} cards"
                 }
             },
             j_worm_dum_mouthwash = {
