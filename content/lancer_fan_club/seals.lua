@@ -8,14 +8,14 @@ SMODS.Seal {
 		}
 	end,
 	config = { extra = { dollars = 5 } },
-	ppu_coder = { "ellestuff." },
+	ppu_coder = { "ellestuff.", "InvalidOS" },
 	--ppu_artist = {"J8-Bit"},
 	ppu_team = { "Lancer Fan Club" },
 	attributes = { "economy" },
     atlas = "lfc_seals",
     pos = {x=0,y=0},
     calculate = function (self, card, context)
-        if context.main_scoring then
+        if context.individual and context.cardarea == G.play and not context.end_of_round then
             G.E_MANAGER:add_event(Event({func = function ()
                 Wormhole.LancerFanClub.create_meteor(card.ability.seal.extra.dollars,1)
             return true end}))
