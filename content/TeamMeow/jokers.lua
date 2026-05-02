@@ -100,7 +100,7 @@ SMODS.Joker({
     calculate = function(self, card, context)
         if context.other_joker and (context.other_joker:has_attribute("cat")) then
             return {
-                xmult = card.ability.extra.xmult
+                mult = card.ability.extra.mult
             }
         end
     end,
