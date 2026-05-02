@@ -69,10 +69,11 @@ return {
             "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
-            "If played hand is a",
-            "{C:attention}#2#{}, destroy {C:attention}#1#{} card#3#",
+            "If played hand is a {C:attention}#2#{},",
+            "{C:green}#4# in #5#{} chance to destroy a card",
             "in full deck of rank#3#",
-            "not in the {C:attention}#2#"
+            "not in the {C:attention}#2#",
+            "{C:attention}#1#{} time#3#"
           }
         }
       },
@@ -84,10 +85,11 @@ return {
             "{C:worm_jr_satellite}Satellite{} to {S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){}",
           },
           {
-            "If played hand is a",
-            "{C:attention}#2#{}, convert {C:attention}#1#{} card#3#",
+            "If played hand is a {C:attention}#2#{},",
+            "{C:green}#4# in #5#{} chance to convert a card",
             "in full deck to the",
-            "{C:attention}#2#{}'s most common suit"
+            "{C:attention}#2#{}'s most common suit",
+            "{C:attention}#1#{} time#3#"
           }
         }
       },

@@ -169,7 +169,7 @@ Wormhole.JR_UTILS.Satellite {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and '' or 's',
+        _level == 1 and '' or 's',
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
     }
@@ -234,7 +234,7 @@ Wormhole.JR_UTILS.Satellite {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and '' or 's',
+        _level == 1 and '' or 's',
         num,
         den,
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
@@ -248,7 +248,7 @@ Wormhole.JR_UTILS.Satellite {
 Wormhole.JR_UTILS.Satellite {
   key = 'cassini_huygens',
   name = 'cassini_huygens',
-  config = { extra = { hand_type = 'Straight' }, },
+  config = { extra = { hand_type = 'Straight', num = 1, den = 2  }, },
   pos = { x = 4, y = 0 },
   soul_pos = { x = 4, y = 1, draw = Wormhole.JR_UTILS.draw_satellite_soul },
   jr_calculate = function(self, context, vars)
@@ -264,7 +264,9 @@ Wormhole.JR_UTILS.Satellite {
       -- change cards in deck
       local targets = {}
       for _, v in pairs(G.playing_cards) do
-        if SMODS.has_no_rank(v) or (not ranks[v:get_id()]) then targets[#targets + 1] = v end
+        if SMODS.pseudorandom_probability(nil, 'worm_jr_cassini_huygens', vars.num, vars.den) then
+          if (SMODS.has_no_rank(v) or (not ranks[v:get_id()])) then targets[#targets + 1] = v end
+        end
       end
 
       --print(#targets)
@@ -286,11 +288,14 @@ Wormhole.JR_UTILS.Satellite {
   end,
   loc_vars = function(self, info_queue, card)
     local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
+    local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.den, "worm_jr_cassini_huygens")
+
     return {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and '' or 's',
+        _level == 1 and '' or 's',
+        num, den,
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
     }
@@ -302,7 +307,7 @@ Wormhole.JR_UTILS.Satellite {
 Wormhole.JR_UTILS.Satellite {
   key = 'galileo',
   name = 'galileo',
-  config = { extra = { hand_type = 'Flush' }, },
+  config = { extra = { hand_type = 'Flush', num = 1, den = 2  }, },
   pos = { x = 5, y = 0 },
   soul_pos = { x = 5, y = 1, draw = Wormhole.JR_UTILS.draw_satellite_soul },
   jr_calculate = function(self, context, vars)
@@ -338,20 +343,26 @@ Wormhole.JR_UTILS.Satellite {
 
       for _ = 1, Wormhole.JR_UTILS.get_level(vars.hand_type) do
         if #not_suit == 0 then return end
-        local _card, pos = pseudorandom_element(not_suit, "worm_jr_galileo")
-        _card:change_suit(target)
-        _card:juice_up()
-        table.remove(not_suit, pos)
+
+        if SMODS.pseudorandom_probability(nil, 'worm_jr_galileo', vars.num, vars.den) then
+          local _card, pos = pseudorandom_element(not_suit, "worm_jr_galileo")
+          _card:change_suit(target)
+          _card:juice_up()
+          table.remove(not_suit, pos)
+        end
       end
     end
   end,
   loc_vars = function(self, info_queue, card)
     local _level = Wormhole.JR_UTILS.get_level(card.ability.extra.hand_type, not card.fake_card)
+    local num, den = SMODS.get_probability_vars(card, card.ability.extra.num, card.ability.extra.den, "worm_jr_galileo")
+
     return {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and '' or 's',
+        _level == 1 and '' or 's',
+        num, den,
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
     }
@@ -397,7 +408,7 @@ Wormhole.JR_UTILS.Satellite {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and '' or 's',
+        _level == 1 and '' or 's',
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
     }
@@ -593,7 +604,7 @@ Wormhole.JR_UTILS.Satellite {
       vars = {
         _level,
         localize(card.ability.extra.hand_type, 'poker_hands'),
-        _level <= 1 and '' or 's',
+        _level == 1 and '' or 's',
         colours = { (_level == 1 and G.C.UI.TEXT_DARK or G.C.HAND_LEVELS[math.min(7, _level)]) }
       }
     }
