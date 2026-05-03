@@ -208,7 +208,7 @@ return {
             bl_worm_stew_pull = {
                 name = "The Pull",
                 text = {
-                    "{C:blind}+2X{} Blind Size per",
+                    "+2X Blind Size per",
                     "round played",
                     "this Ante",
                 },
