@@ -187,7 +187,7 @@ return {
     },
     Voucher = {
       v_worm_jr_launch_pad = {
-        name = 'Launch pad',
+        name = 'Launchpad',
         text = {
           "Adds {C:attention}#1#{} {C:worm_jr_satellite}Satellite{} card",
           "to {C:planet}Celestial{} packs"
