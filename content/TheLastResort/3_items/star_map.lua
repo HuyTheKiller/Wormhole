@@ -27,7 +27,13 @@ SMODS.Consumable{
 				return true
 			end
 		}))
-		for _, _card in ipairs(G.consumeables.cards) do
+		local constellations = {}
+		for k, v in pairs(G.consumeables.cards) do
+			if v.config.center.set == "worm_tlr_constellation" then
+				constellations[#constellations+1] = v
+			end
+		end
+		for _, _card in ipairs(constellations) do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
 				delay = 0.15,
@@ -40,7 +46,7 @@ SMODS.Consumable{
 			}))
 		end
 		delay(0.2)
-		for _, _card in ipairs(G.consumeables.cards) do
+		for _, _card in ipairs(constellations) do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
 				delay = 0.1,
@@ -51,7 +57,7 @@ SMODS.Consumable{
 				end
 			}))
 		end
-		for _, _card in ipairs(G.consumeables.cards) do
+		for _, _card in ipairs(constellations) do
 			G.E_MANAGER:add_event(Event({
 				trigger = 'after',
 				delay = 0.15,
