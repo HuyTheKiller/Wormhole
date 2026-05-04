@@ -1351,7 +1351,7 @@ local booster_loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.choose, card.ability.extra } }
 end
 
-tbp_booster_weight_base = 1
+tbp_booster_weight_base = 0.5
 -- Module boosters
 SMODS.Booster({
 	key = "module_normal_1",
