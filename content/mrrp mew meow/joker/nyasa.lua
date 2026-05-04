@@ -43,11 +43,7 @@ SMODS.Joker {
             if negative or #G.jokers.cards + (G.GAME.joker_buffer or 0) < G.jokers.config.card_limit then
                 SMODS.add_card{
                     attributes = {"space"},
-                    edition = card.ability.extra.edition,
-                    stickers = {
-                        card.ability.extra.sticker
-                    },
-                    force_stickers = true
+                    edition = negative and card.ability.extra.edition or nil,
                 }
                 return nil, true
             end
