@@ -143,10 +143,12 @@ SMODS.Joker {
   end,
 
   calculate = function(self, card, context)
-    if context.new_level and not context.blueprint and (context.new_level > context.old_level) then
-      card.ability.extra.counter = card.ability.extra.counter + 1
+    if context.poker_hand_changed and not context.blueprint and (context.new_level > context.old_level) then
+      card.ability.extra.counter = card.ability.extra.counter + (context.new_level - context.old_level)
 
-      if card.ability.extra.counter == card.ability.extra.req then
+      SMODS.calculate_effect({ message = card.ability.extra.counter .. '/' .. card.ability.extra.req, colour = G.C.ATTENTION }, card)
+
+      if card.ability.extra.counter >= card.ability.extra.req then
         card.ability.extra.counter = 0
         
         if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
