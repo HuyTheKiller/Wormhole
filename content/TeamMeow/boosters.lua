@@ -240,7 +240,7 @@ SMODS.Booster({
 	config = { extra = 3, choose = 1 },
 	group_key = "k_worm_meow_Zodicat_pack",
     kind = "worm_meow_Zodicat",
-	draw_hand = true,
+	select_card = "consumeables",
     cost = 4,
 	weight = 1,
 
@@ -266,7 +266,7 @@ SMODS.Booster({
 	config = { extra = 3, choose = 1 },
 	group_key = "k_worm_meow_Zodicat_pack",
     kind = "worm_meow_Zodicat",
-	draw_hand = true,
+	select_card = "consumeables",
     cost = 4,
 	weight = 1,
 
@@ -292,7 +292,7 @@ SMODS.Booster({
 	config = { extra = 5, choose = 1 },
 	group_key = "k_worm_meow_Zodicat_pack",
     kind = "worm_meow_Zodicat",
-	draw_hand = true,
+	select_card = "consumeables",
     cost = 6,
 	weight = 1,
 
@@ -318,7 +318,7 @@ SMODS.Booster({
 	config = { extra = 5, choose = 2 },
 	group_key = "k_worm_meow_Zodicat_pack",
     kind = "worm_meow_Zodicat",
-	draw_hand = true,
+	select_card = "consumeables",
     cost = 8,
 	weight = 0.25,
 

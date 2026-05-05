@@ -75,6 +75,19 @@ function Wormhole.TEAM_MEOW.zodicat_use(card, condition, func)
 	delay(0.5)
 end
 
+---Determines if a Zodicat can be used based on hand contents
+---@param func fun(p_card: Card): nil
+function Wormhole.TEAM_MEOW.zodicat_can_use(func)
+	if G.hand and #G.hand.cards > 0 then
+		for _, c in pairs(G.hand.cards) do
+			if func(c) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
 SMODS.Consumable({
 	key = "crimson",
 	set = "worm_meow_Zodicat",
@@ -99,7 +112,9 @@ SMODS.Consumable({
 		end)
 	end,
 	can_use = function(self, card)
-		return G.hand and #G.hand.cards > 0
+		return Wormhole.TEAM_MEOW.zodicat_can_use(function(p_card)
+			return p_card:get_id() == 14 or p_card:get_id() == 2
+		end)
 	end,
 	atlas = "cat_zodiacs",
 	pos = { x = 0, y = 0 },
@@ -132,7 +147,9 @@ SMODS.Consumable({
 		end)
 	end,
 	can_use = function(self, card)
-		return G.hand and #G.hand.cards > 0
+		return Wormhole.TEAM_MEOW.zodicat_can_use(function(p_card)
+			return p_card:get_id() == 3 or p_card:get_id() == 4
+		end)
 	end,
 	atlas = "cat_zodiacs",
 	pos = { x = 1, y = 0 },
@@ -172,7 +189,9 @@ SMODS.Consumable({
 		end)
 	end,
 	can_use = function(self, card)
-		return G.hand and #G.hand.cards > 0
+		return Wormhole.TEAM_MEOW.zodicat_can_use(function(p_card)
+			return p_card:get_id() == 5 or p_card:get_id() == 6
+		end)
 	end,
 	atlas = "cat_zodiacs",
 	pos = { x = 2, y = 0 },
@@ -205,7 +224,9 @@ SMODS.Consumable({
 		end)
 	end,
 	can_use = function(self, card)
-		return G.hand and #G.hand.cards > 0
+		return Wormhole.TEAM_MEOW.zodicat_can_use(function(p_card)
+			return p_card:get_id() == 7 or p_card:get_id() == 8
+		end)
 	end,
 	atlas = "cat_zodiacs",
 	pos = { x = 0, y = 1 },
@@ -238,7 +259,9 @@ SMODS.Consumable({
 		end)
 	end,
 	can_use = function(self, card)
-		return G.hand and #G.hand.cards > 0
+		return Wormhole.TEAM_MEOW.zodicat_can_use(function(p_card)
+			return p_card:get_id() == 9 or p_card:get_id() == 10
+		end)
 	end,
 	atlas = "cat_zodiacs",
 	pos = { x = 1, y = 1 },
@@ -271,7 +294,9 @@ SMODS.Consumable({
 		end)
 	end,
 	can_use = function(self, card)
-		return G.hand and #G.hand.cards > 0
+		return Wormhole.TEAM_MEOW.zodicat_can_use(function(p_card)
+			return p_card:is_face()
+		end)
 	end,
 	atlas = "cat_zodiacs",
 	pos = { x = 2, y = 1 },
