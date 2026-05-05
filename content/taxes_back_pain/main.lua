@@ -720,7 +720,7 @@ Wormhole.tbp.Module({
                     local modules = Wormhole.tbp.get_equipped_modules(card)
                     local used_modules = {}
                     for key, module in pairs(modules) do
-                        if module ~= self.slot and module.durability < module.total_durability then
+                        if key ~= self.slot and module.durability < module.total_durability then
                             used_modules[#used_modules+1] = key
                         end
                     end
