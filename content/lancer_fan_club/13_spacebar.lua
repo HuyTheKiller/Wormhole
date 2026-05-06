@@ -160,6 +160,8 @@ function love.draw()
 		targettimer = space.pre_timer>0 and "pre_timer" or "timer"
 		--love.graphics.print(targettimer..": "..space[targettimer],10,50) -- Debug line
 		
+		local min, mag, anisotropy = love.graphics.getDefaultFilter( )
+
 		-- Minigame drawing :3
 		local c = love.graphics.getCanvas()
 		love.graphics.setCanvas(space.canvas)
@@ -196,6 +198,8 @@ function love.draw()
 		if space.timingoffset then
 			love.graphics.print(math.floor(space.timingoffset*1000).."ms",x/2-w+28,y/5*2+10)
 		end
+
+		love.graphics.setDefaultFilter(min, mag, anisotropy)
 	end
 end
 
