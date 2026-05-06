@@ -698,18 +698,16 @@ SMODS.Consumable { -- Cosmospolitan
     calculate = function(self, card, context)
         if context.setting_blind and card.ability.drink_values.primed and card.ability.drink_values.filled then
             local cosmos_filter = function(pool)
+                local all_unavailable = true
                 for i, v in ipairs(pool) do
                     if G.P_CENTERS[v.key] and G.P_CENTERS[v.key].set == 'Back' then
                         pool[i] = 'UNAVAILABLE'
+                    elseif v.key ~= 'UNAVAILABLE' then
+                        all_unavailable = false
                     end
                 end
 
-                local pool_exists = false
-                for i, k in ipairs(pool) do
-                    if not pool_exists and k ~= 'UNAVAILABLE' then pool_exists = true; break end
-                end
-
-                if not pool_exists then pool = {{key = 'j_joker', type = 'Joker'}} end
+                if all_unavailable then pool = {{key = 'j_joker', type = 'Joker'}} end
 
                 return pool
             end
