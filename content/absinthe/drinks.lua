@@ -698,13 +698,12 @@ SMODS.Consumable { -- Cosmospolitan
     calculate = function(self, card, context)
         if context.setting_blind and card.ability.drink_values.primed and card.ability.drink_values.filled then
             local cosmos_filter = function(pool)
-                local new_pool = {}
-                for _, v in pairs(pool) do
-                    if G.P_CENTERS[v.key] and G.P_CENTERS[v.key].set ~= 'Back' then
-                        table.insert(new_pool, v)
+                for i, v in ipairs(pool) do
+                    if G.P_CENTERS[v.key] and G.P_CENTERS[v.key].set == 'Back' then
+                        pool[i].key = 'UNAVAILABLE'
                     end
                 end
-                return new_pool
+                return pool
             end
             local key = SMODS.poll_object({ attributes = { card.ability.extra.current_team }, rarity = false, filter = cosmos_filter })
             local area = G[Wormhole.Absinthe.get_card_area_to_emplace(key)]
