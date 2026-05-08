@@ -1150,7 +1150,7 @@ Wormhole.tbp.Module({
 		return { vars = { module.ability.extra.repetitions } }
     end,
     module_calculate = function (self, module, context, card)
-        if context.repetition and context.cardarea == G.play and next(SMODS.get_enhancements(context.other_card)) then
+        if context.repetition and context.cardarea == G.play and context.other_card and next(SMODS.get_enhancements(context.other_card)) then
             return {
                 repetitions = module.repetitions
             }
